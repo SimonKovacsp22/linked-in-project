@@ -1,7 +1,14 @@
 import React from 'react'
 import "../style/Profile.css"
+import { useSelector } from 'react-redux'
+
 
 const Profile = () => {
+
+    const myProfile = useSelector((state) => state.myProfile.profileData)
+    console.log(myProfile[0]._id);
+
+
     return (
         <div className='profile-container'>
             <div className='header'>
@@ -9,16 +16,16 @@ const Profile = () => {
                     <img className='cover-image' src="https://images.fastcompany.net/image/upload/w_596,c_limit,q_auto:best,f_auto/wp-cms/uploads/2021/03/LinkedIn-Default-Background-2020-.jpg" alt="" />
                 </div>
                 <div className="profile-deatails">
-                    <strong>Sidath Dabare</strong>
-                    <p>Web Developer</p>
+                    <strong>{myProfile[0].name} {myProfile[0].surname}</strong>
+                    <p>{myProfile[0].title}</p>
                 </div>
                 <div className="image-container">
-                    <img className="profile-image" src="https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png" alt="" />
+                    <img className="profile-image" src={myProfile[0].image} alt="" />
                 </div>
             </div>
             <div className="section-1 d-flex justify-content-between p-2">
                 <div className="connection-details">
-                    <p>Connection</p>
+                    <p>Connections</p>
                     <strong>Grow your network</strong>
                 </div>
                 <div className="connection-count">

@@ -24,7 +24,11 @@
   border-top: 0.5px solid rgb(207, 207, 207);
   text-align: center;
 }
+.discover-div:hover {
+  background-color: rgb(236, 236, 236);
+  cursor: pointer;
+}
 .discover-div p {
-  margin: 5px 0;
+  padding: 5px 5px;
   cursor: pointer;
 }

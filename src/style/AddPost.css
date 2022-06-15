@@ -23,6 +23,10 @@
   padding-left: 10px;
   border: 0.5px solid rgb(207, 207, 207);
 }
+.post-input:focus {
+  border: 0.5px solid rgb(162, 162, 162);
+  outline: none;
+}
 .action-container {
   width: 90%;
   display: flex;
