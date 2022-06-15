@@ -1,14 +1,6 @@
 /** @format */
 
-import {
-  Nav,
-  Button,
-  Navbar,
-  NavDropdown,
-  Container,
-  Dropdown,
-  Col,
-} from "react-bootstrap"
+import { Nav, Navbar, Dropdown } from "react-bootstrap"
 import "../style/Navbar.css"
 import { useSelector } from "react-redux"
 import { FaSearch, FaGripHorizontal, FaFlushed } from "react-icons/fa"
@@ -19,12 +11,12 @@ import { ImHome3 } from "react-icons/im"
 
 const Customnavbar = () => {
   const myProfile = useSelector((state) => state.myProfile.profileData)
-  console.log(myProfile[0]._id)
+  // console.log(myProfile[0]._id)
   return (
     <Navbar className='navbarbg px-0 mb-3' expand='lg'>
       <Navbar.Brand href='#home'>
         <img
-          className="logo"
+          className='logo'
           src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/640px-LinkedIn_logo_initials.png'
           alt=''
         />
@@ -39,43 +31,49 @@ const Customnavbar = () => {
             className='mr-sm-5 navbarSearch'
           />
         </Nav>
-        <Nav.Link href='/' className='ml-lg-5 ml-md-3 mb-1'>
-          <ImHome3 className='d-block HomeMargin iconFont2 ' />
-          <small className='giveColor'>Home</small>
-        </Nav.Link>
-        <Nav.Link href='/' className='giveMargin'>
-          <MdPeopleAlt className='d-block ml-4 iconFont2' />
-          <small className='giveColor'>MyNetwork</small>
-        </Nav.Link>
-        <Nav.Link href='/' className='giveMargin ml-lg-0 ml-md-4'>
-          <MdWork className='d-block iconFont2' />
-          <small className='giveColor'>jobs</small>
-        </Nav.Link>
-        <Nav.Link href='/' className='mb-1'>
-          <FiMessageSquare className='d-block  iconFont1' />
-          <small className='giveColor'>Messaging</small>
-        </Nav.Link>
-        <Nav.Link href='/' className=''>
-          <GrNotification className='iconFont d-block ml-4' />
-          <small className='giveColor'>Notification</small>
-        </Nav.Link>
-        <Dropdown className='pr-3 ml-lg-0 ml-md-3'>
-          {/* <img className='navbar-profile' src={myProfile[0].image} alt='' /> */}
+        <div className='d-flex align-items-center'>
+          <Nav.Link href='/' className='ml-lg-5 ml-md-3 mb-1'>
+            <ImHome3 className='d-block HomeMargin iconFont2 ' />
+            <small className='giveColor'>Home</small>
+          </Nav.Link>
+          <Nav.Link href='/' className='giveMargin text-center'>
+            <MdPeopleAlt className='d-block ml-4 iconFont2' />
+            <small className='giveColor'>MyNetwork</small>
+          </Nav.Link>
+          <Nav.Link href='/' className='giveMargin ml-lg-0 ml-md-4'>
+            <MdWork className='d-block iconFont2' />
+            <small className='giveColor'>jobs</small>
+          </Nav.Link>
+          <Nav.Link href='/' className='mb-1'>
+            <FiMessageSquare className='d-block  iconFont1' />
+            <small className='giveColor'>Messaging</small>
+          </Nav.Link>
+          <Nav.Link href='/' className=''>
+            <GrNotification className='iconFont d-block ml-4' />
+            <small className='giveColor'>Notification</small>
+          </Nav.Link>
+          <Nav.Link href='/' className='text-center'>
+            <img
+              className='navbar-profile py-0'
+              src={myProfile[0].image}
+              alt=''
+            />
+            <Dropdown className='ml-lg-0 ml-md-3 py-0'>
+              <Dropdown.Toggle
+                variant='transparent'
+                id='dropdown-basic'
+                className='py-0'>
+                <small className='giveColor'>Me</small>
+              </Dropdown.Toggle>
 
-          <Dropdown.Toggle variant="transparent" id="dropdown-basic">
-            <img className='navbar-profile' src={myProfile[0].image} alt='' />
-            <span>
-
-              <div className="d-inline"><small>Me</small></div>
-            </span>
-          </Dropdown.Toggle>
-
-          <Dropdown.Menu>
-            <Dropdown.Item href='#/action-1'>Action</Dropdown.Item>
-            <Dropdown.Item href='#/action-2'>Another action</Dropdown.Item>
-            <Dropdown.Item href='#/action-3'>Something else</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
+              <Dropdown.Menu>
+                <Dropdown.Item href='#/action-1'>Action</Dropdown.Item>
+                <Dropdown.Item href='#/action-2'>Another action</Dropdown.Item>
+                <Dropdown.Item href='#/action-3'>Something else</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </Nav.Link>
+        </div>
 
         <Dropdown className='giveBorder pl-3'>
           <Dropdown.Toggle variant='transparent' id='dropdown-basic'>

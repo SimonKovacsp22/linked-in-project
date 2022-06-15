@@ -4,7 +4,7 @@ import { useSelector } from "react-redux"
 
 const AddPost = () => {
     const myProfile = useSelector((state) => state.myProfile.profileData)
-    console.log(myProfile[0]._id)
+    //console.log(myProfile[0]._id)
     return (
         <div className='add-post'>
             <div className="input-container d-flex justify-content-between p-2">

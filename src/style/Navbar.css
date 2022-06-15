@@ -35,11 +35,11 @@
   font-size: 20px;
   color: #666666;
 }
-.giveMargin {
+/* .giveMargin {
   margin-bottom: 0.4rem;
-}
+} */
 .iconFont2 {
-  font-size: 23px;
+  font-size: 20px;
   color: #666666;
 }
 .iconFont1 {
@@ -48,8 +48,8 @@
   color: #666666;
 }
 .navbar-profile {
-  height: 25px;
-  width: 25px;
+  height: 23px;
+  width: 23px;
   border-radius: 50%;
 }
 .HomeMargin {
