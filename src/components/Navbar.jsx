@@ -1,5 +1,5 @@
 import { Nav , Form , FormControl , Button , Navbar , NavDropdown, Container } from "react-bootstrap";
-import "./customNav.css";
+
 
 const Customnavbar = () =>{
     return(
