@@ -2,10 +2,13 @@ import {
     combineReducers,
     configureStore,
 } from '@reduxjs/toolkit';
+
 import myProfileReducer from '../reducers/myProfileReducer';
 import {persistStore, persistReducer} from 'redux-persist';
 import storage from "redux-persist/lib/storage";
 import { encryptTransform } from "redux-persist-transform-encrypt";
+import allProfilesReducer from '../reducers/allProfilesReducer';
+import userIdProfileReducer from '../reducers/userIdProfileReducer';
 
 const persistConfig = {
     key: 'root',
@@ -22,6 +25,8 @@ const persistConfig = {
 
 const combinedReducer = combineReducers({
     myProfile: myProfileReducer,
+    allProfiles: allProfilesReducer,
+    userIdProfile: userIdProfileReducer, 
     
   });
   
