@@ -21,9 +21,9 @@ const Customnavbar = () =>{
     <Nav.Link href="/" className="ml-lg-5 ml-md-3 mb-1"><ImHome3 className="d-block HomeMargin iconFont2 "/><small className="giveColor">Home</small></Nav.Link>
     <Nav.Link href="/" className="giveMargin"><MdPeopleAlt className="d-block ml-4 iconFont2"/><small className="giveColor">MyNetwork</small></Nav.Link>
     <Nav.Link href="/" className="giveMargin ml-lg-0 ml-md-4"><MdWork className="d-block iconFont2"/><small className="giveColor">jobs</small></Nav.Link>
-    <Nav.Link href="/" className="mb-1"><FiMessageSquare className="d-block  iconFont1"/><small className="giveColor">Messaging</small></Nav.Link>
+    <Nav.Link href="/" className="mb-1"><FiMessageSquare className="d-block iconFont1"/><small className="giveColor">Messaging</small></Nav.Link>
     <Nav.Link href="/" className=""><GrNotification className="iconFont d-block ml-4"/><small className="giveColor">Notification</small></Nav.Link>
-    <Dropdown className="pr-3 ml-lg-0 ml-md-3">
+    <Dropdown className="pr-3 ml-lg-0 marginForMe">
   <Dropdown.Toggle variant="transparent" id="dropdown-basic">
     <span>
     <FaFlushed className="ml-2 d-block iconFont"/>
@@ -41,7 +41,7 @@ const Customnavbar = () =>{
 
 
 
-      <Dropdown className="giveBorder pl-3">
+      <Dropdown className="giveBorder pl-3 ml-0">
   <Dropdown.Toggle variant="transparent" id="dropdown-basic">
     <span>
     <FaGripHorizontal className="ml-2 d-block iconFont"/>

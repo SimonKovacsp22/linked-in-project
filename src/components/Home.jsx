@@ -12,11 +12,6 @@ const Home = () => {
     return (
         <>
             <Navbar />
-            <Profile />
-            <AddPost />
-            <PostList />
-            <Feed />
-            <Footer />
         </>
     )
 }
