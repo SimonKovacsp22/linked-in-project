@@ -1,8 +1,10 @@
 /** @format */
 
 .about {
-  background-color: rgb(145, 145, 11);
+  background-color: rgb(255, 255, 255);
   width: 250px;
   height: 150px;
   margin-top: 1rem;
+  border: 0.5px solid rgb(207, 207, 207);
+  border-radius: 10px;
 }
