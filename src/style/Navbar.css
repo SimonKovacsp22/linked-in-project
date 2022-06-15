@@ -1,0 +1,48 @@
+.navbarbg{
+    background-color: white;
+    height: 9vh;
+}
+
+.navbarSearch{
+    height: 5vh;
+    padding-left: 2.7rem;
+    margin-top: 0.15rem;
+    background-color: #EEF3F7;
+    border: transparent;
+    border-radius: 5%;
+}
+.searchIcon{
+    position: absolute;
+    margin-top: 0.8rem;
+    margin-left: 1rem;
+}
+.premiumFree{
+    color: rgb(99, 99, 19);
+    line-height: 1rem;
+    min-width: 150px;
+}
+.giveBorder{
+    border-left: solid 1px rgb(184, 176, 176);
+}
+.iconFont{
+    font-size: 20px;
+    color: #666666;
+}
+.giveMargin{
+    margin-bottom: 0.4rem;
+}
+.iconFont2{
+    font-size: 23px;
+    color: #666666;
+}
+.iconFont1{
+    margin-left: 1.5rem;
+    font-size: 20px;
+    color: #666666;
+}
+.HomeMargin{
+    margin-left: 0.35rem;
+}
+.giveColor{
+    color: #666666;
+}

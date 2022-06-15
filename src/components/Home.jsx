@@ -10,15 +10,14 @@ import Profile from './Profile'
 
 const Home = () => {
     return (
-        <Container>
+        <>
             <Navbar />
             <Profile />
             <AddPost />
             <PostList />
             <Feed />
             <Footer />
-
-        </Container>
+        </>
     )
 }
 
