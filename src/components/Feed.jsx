@@ -1,8 +1,9 @@
 import React from 'react'
+import "../style/Feed.css"
 
 const Feed = () => {
     return (
-        <div>Feed</div>
+        <div className='feed'>Feed</div>
     )
 }
 

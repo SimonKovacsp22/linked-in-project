@@ -1,5 +1,6 @@
 
 import { Container } from 'react-bootstrap'
+import About from './About'
 
 import AddPost from './AddPost'
 import Feed from './Feed'
@@ -12,11 +13,24 @@ const Home = () => {
     return (
         <Container>
             <Navbar />
-            <Profile />
-            <AddPost />
-            <PostList />
-            <Feed />
-            <Footer />
+            <div className='d-flex justify-content-between'>
+                <div>
+                    <Profile />
+                    <About />
+                </div>
+
+                <div>
+                    <AddPost />
+                    <PostList />
+                </div>
+                <div>
+                    <Feed />
+                    <Footer />
+                </div>
+            </div>
+
+
+
 
         </Container>
     )
