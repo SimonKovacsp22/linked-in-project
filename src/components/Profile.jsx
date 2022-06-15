@@ -19,22 +19,22 @@ const Profile = () => {
             <div className="section-1 d-flex justify-content-between p-2">
                 <div className="connection-details">
                     <p>Connection</p>
-                    <p><strong>Grow your network</strong></p>
+                    <strong>Grow your network</strong>
                 </div>
                 <div className="connection-count">
                     <strong>12</strong>
                 </div>
             </div>
             <div className="section-2 p-2">
-                <div><small>Access exlusive tools & insights</small></div>
-                <div className='d-flex'>
+                <div><small>Access exlusive tools insights</small></div>
+                <div className='d-flex align-items-center'>
                     <div><i className="bi bi-app"></i></div>
                     <div className='ml-2'><strong>Network Smarter, Try Premium Free</strong></div>
                 </div>
 
             </div>
             <div className="section-3 p-2">
-                <div className='d-flex'>
+                <div className='d-flex align-items-center'>
                     <div><i className="bi bi-bookmark-fill"></i></div>
                     <div className='ml-2'><strong>My items</strong></div>
                 </div>

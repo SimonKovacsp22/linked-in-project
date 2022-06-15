@@ -8,3 +8,23 @@
   border: 0.5px solid rgb(207, 207, 207);
   border-radius: 10px;
 }
+.link-container {
+  width: 90%;
+}
+.link-container p {
+  margin: 8px 0;
+}
+.plus-container {
+  width: 10%;
+  display: flex;
+  align-items: center;
+  justify-items: flex-end;
+}
+.discover-div {
+  border-top: 0.5px solid rgb(207, 207, 207);
+  text-align: center;
+}
+.discover-div p {
+  margin: 5px 0;
+  cursor: pointer;
+}

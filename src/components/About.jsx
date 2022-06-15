@@ -4,14 +4,20 @@ import "../style/About.css"
 
 const About = () => {
     return (
-        <div className='about d-flex p-2'>
-            <div>
-                <p><Link to="/">Group</Link></p>
-                <p><Link to="/">Events</Link></p>
-                <p><Link to="/">Followed Hashtags</Link></p>
+        <div className='about p-2'>
+            <div className='d-flex'>
+                <div className='mb-0 link-container'>
+                    <p><Link to="/">Group</Link></p>
+                    <p><Link to="/">Events</Link></p>
+                    <p><Link to="/">Followed Hashtags</Link></p>
+                </div>
+                <div className='plus-container'>
+                    <i className="bi bi-plus-lg"></i>
+                </div>
             </div>
-            <div className='d-flex justify-content-center align-items-center'>
-                <i className="bi bi-plus-lg"></i>
+
+            <div className='discover-div'>
+                <p>Discover more</p>
             </div>
 
         </div>
