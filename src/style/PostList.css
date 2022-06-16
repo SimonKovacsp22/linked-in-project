@@ -50,6 +50,10 @@
   padding:1px 10px 1px 10px ;
 }
 
+.post-bottom-section-button:hover {
+ background-color: rgb(245, 245, 245);
+}
+
 .post-bottom-section h6 {
   margin: 0;
 }
@@ -134,6 +138,10 @@
   font-weight: 500;
   color:rgb(107, 107, 107); ;
   font-size: 0.9rem;
+}
+
+.post-bottom-section-large-icons-and-text:hover{
+  cursor: pointer;
 }
 
 .post-bottom-section-large-icons-container div:nth-child(1),
