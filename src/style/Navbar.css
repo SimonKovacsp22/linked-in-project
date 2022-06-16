@@ -1,6 +1,7 @@
 .navbarbg{
     background-color: white;
     height: 9vh;
+    z-index: 9999;
 }
 
 .navbarSearch{
@@ -25,11 +26,8 @@
     border-left: solid 1px rgb(184, 176, 176);
 }
 .iconFont{
-    font-size: 20px;
+    font-size: 19px;
     color: #666666;
-}
-.giveMargin{
-    margin-bottom: 0.4rem;
 }
 .iconFont2{
     font-size: 23px;
@@ -48,4 +46,32 @@
 }
 .marginForMe{
     margin-left: 1.2rem;
+}
+.marginNotif{
+    margin-left: 1.4rem;
+}
+.marginForMessaging{
+    margin-bottom: 0.2rem;
+}
+.giveMargin{
+    margin-bottom: 0.4rem;
+}
+.marginForHome{
+    margin-bottom: 0.39rem;
+}
+.marginForNotif{
+    margin-bottom: 0.1rem;
+}
+.iconFont3{
+    color: #666666;
+    font-size: 20px;
+    margin-bottom: 0.1rem;
+}
+.giveMargin2{
+    margin-bottom: 0.4rem;
+}
+.iconFont5{
+    font-size: 23px;
+    color: #666666;
+    margin-left: 0.10rem;
 }
