@@ -8,10 +8,30 @@ import { GrNotification } from "react-icons/gr"
 import { MdWork, MdPeopleAlt } from "react-icons/md"
 import { FiMessageSquare } from "react-icons/fi"
 import { ImHome3 } from "react-icons/im"
+import { useState } from "react";
 
-const Customnavbar = () => {
+const Customnavbar = (props ) => {
+  const {setSearchResult,setSearchTerm,searchTerm,searchResult} = props
   const myProfile = useSelector((state) => state.myProfile.profileData)
+  const allProfiles = useSelector((state)=> state.allProfiles.allProfilesData)
   // console.log(myProfile[0]._id)
+
+
+const handleSearch = (profileName)=> {
+  if(profileName.length >2){
+ const filteredProfiles =allProfiles[0].filter((profile)=> 
+  profile.name.toLowerCase().includes(profileName.toLowerCase()) ||  profile.surname.toLowerCase().includes(profileName.toLowerCase() || profile.username.toLowerCase().includes(profileName.toLowerCase())))
+ setSearchResult(filteredProfiles)
+}
+ 
+}
+
+ const handleKeyPress = (event) => {
+  if(event.key === 'Enter'){
+     handleSearch(event.target.value)
+   
+  }
+}
   return (
     <Navbar className="navbarbg px-0 mx-0" expand="lg" fixed="top">
       <Container>
@@ -20,9 +40,23 @@ const Customnavbar = () => {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
+          <Nav className="mr-auto position-relative">
             <FaSearch className="searchIcon giveColor" />
-            <input type="text" placeholder="Search" className="mr-sm-5 navbarSearch" />
+            <input type="text"
+             value={searchTerm}
+             onKeyDown={(e)=>{handleKeyPress(e)}}
+             onChange={(e)=> {
+              setSearchTerm(e.target.value)
+             }}
+             placeholder="Search"
+              className="mr-sm-5 navbarSearch" 
+              />
+            {(searchResult.length > 0) && <div className="position-absolute search-dropdown">
+              {searchResult.map((result)=>
+              <p key={result._id} style={{borderBottom:'1px solid',padding:'3px 5px 3px 5px',margin:'0'}}>{result.name}<br/>{result.surname}</p>
+              )}
+            </div>}
+  
 
           </Nav>
           <Nav.Link href="/" className="ml-lg-5 ml-md-3 mb-1 ml-sm-3 ml-3"><ImHome3 className="d-block HomeMargin iconFont2 " /><small className="giveColor">Home</small></Nav.Link>

@@ -1,5 +1,5 @@
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Container } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
 import { getAllProfilesActionWithThunk, getMyProfileDataActionWithThunk } from '../redux/actions'
@@ -20,9 +20,12 @@ const HomePage = () => {
         dispatch(getMyProfileDataActionWithThunk())
         dispatch(getAllProfilesActionWithThunk())
     }, [])
+
+    const [searchResult,setSearchResult]=useState([])
+    const [searchTerm,setSearchTerm]= useState('')
     return (
         <Container>
-            <Navbar />
+            <Navbar setSearchResult={setSearchResult} searchTerm={searchTerm} setSearchTerm={setSearchTerm} searchResult={searchResult}/>
             <div className='d-flex justify-content-between' style={{ marginTop: "10vh" }}>
                 <div>
                     <Profile />
