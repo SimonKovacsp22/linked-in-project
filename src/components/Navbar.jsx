@@ -10,7 +10,7 @@ const Customnavbar = () =>{
     return(
       <Navbar className="navbarbg" expand="lg">
   <Container>
-  <Navbar.Brand href="#home" className="mr-0 ml-2"><img src="https://brandlogos.net/wp-content/uploads/2016/06/linkedin-logo.png" alt="" height={50}/></Navbar.Brand>
+  <Navbar.Brand href="#home" className="mr-0"><img src="https://brandlogos.net/wp-content/uploads/2016/06/linkedin-logo.png" alt="" height={50}/></Navbar.Brand>
   <Navbar.Toggle aria-controls="basic-navbar-nav" />
   <Navbar.Collapse id="basic-navbar-nav">
     <Nav className="mr-auto">
