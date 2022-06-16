@@ -3,7 +3,7 @@
 import { GET_DATA_FOR_ALL_PROFILES } from "../actions"
 
 const initialState = {
-  allProfilesData: [],
+  allProfilesData: {},
 }
 
 const allProfilesReducer = (state = initialState, action) => {

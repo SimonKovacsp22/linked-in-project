@@ -1,38 +1,39 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
+import { Link } from "react-router-dom"
 import "../style/Feed.css"
 
 const Feed = () => {
+    const allProfile = useSelector((state) => state.allProfiles.allProfilesData[0])
+    //console.log("all" + allProfile[0][0].name + allProfile[0][0].surname);
+    //console.log("all" + allProfile[2].name + allProfile[2].surname);
+
     return (
         <div className='feed'>
-            <div className='p-2 d-flex justify-content-between'>
+
+            <div className='p-3 d-flex justify-content-between'>
                 <strong>Add to your feed</strong>
                 <span><i className="bi bi-info-square-fill"></i></span>
             </div>
-            <div className='d-flex pl-2 my-2'>
-                <div className="users-profile-div">
-                    <img className="users-profile-image" src="https://i.pinimg.com/736x/b8/69/5f/b8695f007aea9a08a0419479217ca6aa.jpg" alt="" />
+            {allProfile && allProfile.slice(0, 3).map((singleProfile, i) => (
+                // <p key={i}>{singleProfile.name}</p>
+                <div className='d-flex pl-2 ml-2 single-profile-div' key={i}>
+                    <div className="users-profile-div">
+                        <img className="users-profile-image" src={singleProfile.image} alt="" />
+                    </div>
+                    <div className="px-1 ml-2">
+                        <div className='font-weight-bold'>{singleProfile.name} {singleProfile.surname}</div>
+                        <div className='user-details pr-3'><small >{singleProfile.title}</small></div>
+                        <button type="button" className="btn btn-outline-secondary rounded-pill mt-2 px-3 py-1">
+                            <i className="bi bi-plus-lg"></i><strong> Follow</strong>
+                        </button>
+                    </div>
                 </div>
-                <div className="px-1">
-                    <div className='font-weight-bold'>sidath ssssds</div>
-                    <div className='user-details pr-3'><small >Digital Humanities Expert in the making && Teaching Assistant @ Epicode manities Expert in the making && Teaching Assistant @ Epicode </small></div>
-                    <button type="button" className="btn btn-outline-secondary rounded-pill mt-1 px-3">
-                        <i className="bi bi-plus-lg"></i> Follow
-
-                    </button>
-                </div>
-            </div>
-            <div className='d-flex my-2'>
-                <div className="users-profile-div">
-                    <img className="users-profile-image" src="https://i.pinimg.com/736x/b8/69/5f/b8695f007aea9a08a0419479217ca6aa.jpg" alt="" />
-                </div>
-                <div className="px-1">
-                    <div className='font-weight-bold'>sidath</div>
-                    <div className="user-details pr-3"><small>Digital Humanities Expert in the makinDigital Humanities Expert in the makig && Teaching Assistant @ Epicode </small></div>
-                    <button type="button" className="btn btn-outline-secondary rounded-pill mt-1 px-3">
-                        <i className="bi bi-plus-lg"></i>  Follow
-
-                    </button>
-                </div>
+            ))}
+            <div className='px-3 mt-0'>
+                <Link to="/"><span className='feed-bottom-text'>View all recommendations</span>
+                    <span className='feed-bottom-icon' ><i className="bi bi-arrow-right mt-2"></i></span>
+                </Link>
             </div>
         </div>
     )

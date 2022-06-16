@@ -1,7 +1,12 @@
 
+import { useEffect } from 'react'
 import { Container } from 'react-bootstrap'
-import About from './About'
+import { useDispatch } from 'react-redux'
+import { getAllProfilesActionWithThunk, getMyProfileDataActionWithThunk } from '../redux/actions'
 
+import "../style/HomePage.css"
+
+import About from './About'
 import AddPost from './AddPost'
 import Feed from './Feed'
 import Footer from './Footer'
@@ -9,11 +14,16 @@ import Navbar from './Navbar'
 import PostList from './PostList'
 import Profile from './Profile'
 
-const Home = () => {
+const HomePage = () => {
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(getMyProfileDataActionWithThunk())
+        dispatch(getAllProfilesActionWithThunk())
+    }, [])
     return (
         <Container>
             <Navbar />
-            <div className='d-flex justify-content-between'>
+            <div className='d-flex justify-content-between' style={{ marginTop: "10vh" }}>
                 <div>
                     <Profile />
                     <About />
@@ -32,8 +42,8 @@ const Home = () => {
 
 
 
-        </Container>
+        </Container >
     )
 }
 
-export default Home
+export default HomePage

@@ -4,11 +4,10 @@ import { useSelector } from "react-redux"
 
 const AddPost = () => {
     const myProfile = useSelector((state) => state.myProfile.profileData)
-    //console.log(myProfile[0]._id)
     return (
         <div className='add-post'>
             <div className="input-container d-flex justify-content-between p-2">
-                <img className='post-profile-image' src={myProfile[0].image} alt="" />
+                <img className='post-profile-image' src={myProfile.image} alt="" />
                 <input type="text" className="post-input" placeholder="Start a post" aria-label="Username" aria-describedby="addon-wrapping" />
             </div>
             <div className="action-container m-auto">

@@ -6,7 +6,8 @@ import { useSelector } from 'react-redux'
 const Profile = () => {
 
     const myProfile = useSelector((state) => state.myProfile.profileData)
-    console.log(myProfile[0]._id);
+    console.log(myProfile.name);
+    //console.log(myProfile[0]._id);
 
 
     return (
@@ -15,12 +16,17 @@ const Profile = () => {
                 <div className="cover-image-div">
                     <img className='cover-image' src="https://images.fastcompany.net/image/upload/w_596,c_limit,q_auto:best,f_auto/wp-cms/uploads/2021/03/LinkedIn-Default-Background-2020-.jpg" alt="" />
                 </div>
+
                 <div className="profile-deatails">
-                    <strong>{myProfile[0].name} {myProfile[0].surname}</strong>
-                    <p>{myProfile[0].title}</p>
+
+                    <strong>{myProfile.name} {myProfile.surname}</strong>
+                    <p>{myProfile.title}</p>
+
+
+
                 </div>
                 <div className="image-container">
-                    <img className="profile-image" src={myProfile[0].image} alt="" />
+                    <img className="profile-image" src={myProfile.image} alt="" />
                 </div>
             </div>
             <div className="section-1 d-flex justify-content-between p-2">

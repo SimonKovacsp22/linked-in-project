@@ -2,12 +2,18 @@
 
 .navbarbg {
   background-color: white;
-  height: 9vh;
+  height: 8vh;
   width: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 .logo {
+  position: relative;
   height: 35px;
-  padding-left: 0;
+  left: -5px;
 }
 
 .navbarSearch {
@@ -35,11 +41,11 @@
   font-size: 20px;
   color: #666666;
 }
-/* .giveMargin {
+.giveMargin {
   margin-bottom: 0.4rem;
-} */
+}
 .iconFont2 {
-  font-size: 20px;
+  font-size: 23px;
   color: #666666;
 }
 .iconFont1 {
@@ -47,14 +53,17 @@
   font-size: 20px;
   color: #666666;
 }
-.navbar-profile {
-  height: 23px;
-  width: 23px;
-  border-radius: 50%;
-}
 .HomeMargin {
   margin-left: 0.35rem;
 }
 .giveColor {
   color: #666666;
+}
+.marginForMe {
+  margin-left: 1.2rem;
+}
+.nav-profile-image {
+  height: 25px;
+  border-radius: 50%;
+  margin-bottom: -3px;
 }

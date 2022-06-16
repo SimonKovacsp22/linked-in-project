@@ -5,12 +5,12 @@ export const GET_DATA_FOR_ALL_PROFILES = "GET_DATA_FOR_ALL_PROFILES"
 export const GET_DATA_FOR_SINGLE_USER_ID = "GET_DATA_FOR_SINGLE_USER_ID"
 
 export const getMyProfileDataActionWithThunk = () => {
-  let headers = {
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmE5YzNkNzAxNjBiNTAwMTU1YmI0YzQiLCJpYXQiOjE2NTUyOTQyMTAsImV4cCI6MTY1NjUwMzgxMH0.ZqivIPQ8TjJRvVDjSA8kmF3IFZe4mzsLyqZlp-EIaCM",
-    "Content-type": "application/json",
-  }
   return async (dispatch) => {
+    let headers = {
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmFhZGM5Zjk5OTlmZTAwMTVlNjZlMjIiLCJpYXQiOjE2NTUzNjQ3NjgsImV4cCI6MTY1NjU3NDM2OH0.JXJ65n1oTxFcYw90c-b5HB1OJGtIJ9L_-BZcySGIct4",
+      "Content-type": "application/json",
+    }
     try {
       let response = await fetch(
         "https://striveschool-api.herokuapp.com/api/profile/me",
@@ -36,7 +36,7 @@ export const getMyProfileDataActionWithThunk = () => {
 export const getAllProfilesActionWithThunk = () => {
   let headers = {
     Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmE5YzNkNzAxNjBiNTAwMTU1YmI0YzQiLCJpYXQiOjE2NTUyOTQyMTAsImV4cCI6MTY1NjUwMzgxMH0.ZqivIPQ8TjJRvVDjSA8kmF3IFZe4mzsLyqZlp-EIaCM",
+      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmFhZGM5Zjk5OTlmZTAwMTVlNjZlMjIiLCJpYXQiOjE2NTUzNjQ3NjgsImV4cCI6MTY1NjU3NDM2OH0.JXJ65n1oTxFcYw90c-b5HB1OJGtIJ9L_-BZcySGIct4",
     "Content-type": "application/json",
   }
   return async (dispatch) => {
@@ -65,7 +65,7 @@ export const getAllProfilesActionWithThunk = () => {
 export const getProfileBasedOnId = (userId) => {
   let headers = {
     Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmE5YzNkNzAxNjBiNTAwMTU1YmI0YzQiLCJpYXQiOjE2NTUyOTQyMTAsImV4cCI6MTY1NjUwMzgxMH0.ZqivIPQ8TjJRvVDjSA8kmF3IFZe4mzsLyqZlp-EIaCM",
+      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmFhZGM5Zjk5OTlmZTAwMTVlNjZlMjIiLCJpYXQiOjE2NTUzNjQ3NjgsImV4cCI6MTY1NjU3NDM2OH0.JXJ65n1oTxFcYw90c-b5HB1OJGtIJ9L_-BZcySGIct4",
     "Content-type": "application/json",
   }
   return async (dispatch) => {

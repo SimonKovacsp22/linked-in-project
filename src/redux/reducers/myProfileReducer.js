@@ -3,7 +3,7 @@
 import { GET_DATA_FOR_MY_PROFILE } from "../actions"
 
 const initialState = {
-  profileData: [],
+  profileData: {},
 }
 
 const myProfileReducer = (state = initialState, action) => {
@@ -11,7 +11,7 @@ const myProfileReducer = (state = initialState, action) => {
     case GET_DATA_FOR_MY_PROFILE:
       return {
         ...state,
-        profileData: [action.payload],
+        profileData: action.payload,
       }
 
     default:
