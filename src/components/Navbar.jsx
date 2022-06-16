@@ -14,7 +14,7 @@ const Customnavbar = () =>{
   <Navbar.Toggle aria-controls="basic-navbar-nav" />
   <Navbar.Collapse id="basic-navbar-nav">
     <Nav className="mr-auto">
-    <FaSearch className="searchIcon giveColor "/>
+    <FaSearch className="searchIcon giveColor"/>
       <input type="text" placeholder="Search" className="mr-sm-5 navbarSearch" />
 
     </Nav>

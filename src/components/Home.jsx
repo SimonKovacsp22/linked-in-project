@@ -1,17 +1,14 @@
 
 import { Container } from 'react-bootstrap'
-
-import AddPost from './AddPost'
-import Feed from './Feed'
-import Footer from './Footer'
 import Navbar from './Navbar'
-import PostList from './PostList'
-import Profile from './Profile'
-
+import Experiance from './Experiance'
 const Home = () => {
     return (
         <>
-            <Navbar />
+            <Container fluid style={{ backgroundColor: "#F3F2EF", height: "100vh" }} className='px-0'>
+                <Navbar />
+                <Experiance />
+            </Container>
         </>
     )
 }
