@@ -1,5 +1,8 @@
 import React from 'react'
 import "../style/PostList.css"
+import {Card} from 'react-bootstrap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHandsClapping,faShare,faPaperPlane,faHeart,faThumbsUp, } from '@fortawesome/free-solid-svg-icons'
 
 export default function Post() {
   return (
