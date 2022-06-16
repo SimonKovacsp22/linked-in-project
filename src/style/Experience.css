@@ -1,0 +1,8 @@
+.lineHeight{
+    line-height: 1.3rem;
+    border-radius: 10px;
+    border: 0.1px solid rgb(227, 221, 221);
+}
+.changeTheFont{
+    font-size: 14px;
+}

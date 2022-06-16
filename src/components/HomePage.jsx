@@ -35,6 +35,7 @@ const HomePage = () => {
                 </div>
                 <div>
                     <Feed />
+                    
                     <Footer />
                 </div>
             </div>
