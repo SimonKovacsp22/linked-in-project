@@ -15,7 +15,7 @@ const ExperianceItem = () => {
             {pplExp.map((singleExp, i) => (
                 <Row key={i} className=''>
                     <Col sm={1}>
-                        <img src={singleExp.image} alt="" height={50} className='ml-3' />
+                        <img src={singleExp.image ? singleExp.image : "https://www.google.com/search?q=not+found+picture&sxsrf=ALiCzsZqIm0OmyJNFsBQlEAwNfdYIRHL6Q:1655469469229&source=lnms&tbm=isch&sa=X&ved=2ahUKEwiF-5itwLT4AhXB_qQKHadwAGYQ_AUoAXoECAEQAw&biw=1495&bih=723&dpr=1.25#imgrc=AXK1OmDRv7BqKM"} alt="" height={50} className='ml-3' />
                     </Col>
                     <Col sm={11}>
                         <div className="ml-md-3 ml-lg-3 ml-sm-4 ml-3"><b>{singleExp.area}</b></div>
