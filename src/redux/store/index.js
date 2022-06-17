@@ -8,6 +8,7 @@ import storage from "redux-persist/lib/storage"
 import { encryptTransform } from "redux-persist-transform-encrypt"
 import userIdProfileReducer from "../reducers/userIdProfileReducer"
 import allProfilesReducer from "../reducers/allProfileReducer"
+import expReducer from "../reducers/expReducer"
 
 const persistConfig = {
   key: "root",
@@ -26,6 +27,7 @@ const combinedReducer = combineReducers({
   myProfile: myProfileReducer,
   allProfiles: allProfilesReducer,
   userIdProfile: userIdProfileReducer,
+  userIdExp: expReducer,
 })
 
 const persistedReducer = persistReducer(persistConfig, combinedReducer)

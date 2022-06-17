@@ -1,6 +1,7 @@
 import React from 'react'
 import "../style/Profile.css"
 import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 
 const Profile = () => {
@@ -12,14 +13,17 @@ const Profile = () => {
 
     return (
         <div className='profile-container'>
-            <div className='header'>
+            <div
+                className='header'
+            >
                 <div className="cover-image-div">
                     <img className='cover-image' src="https://images.fastcompany.net/image/upload/w_596,c_limit,q_auto:best,f_auto/wp-cms/uploads/2021/03/LinkedIn-Default-Background-2020-.jpg" alt="" />
                 </div>
 
                 <div className="profile-deatails">
+                    <Link to={`/profile-page/${myProfile.name}_${myProfile.surname}`} ><strong>{myProfile.name} {myProfile.surname}</strong></Link>
 
-                    <strong>{myProfile.name} {myProfile.surname}</strong>
+
                     <p>{myProfile.title}</p>
 
 
