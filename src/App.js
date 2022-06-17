@@ -11,8 +11,8 @@ const App = () => (
   <BrowserRouter>
     <Routes>
       <Route path='/' element={<HomePage />} />
-      <Route path='/profile-page' element={<ProfilePage />} />
-      <Route path='/user-profile' element={<UserProfile />} />
+      <Route path='/profile-page/:name' element={<ProfilePage />} />
+      <Route path='/user-profile/:_id' element={<UserProfile />} />
     </Routes>
   </BrowserRouter>
 )

@@ -3,7 +3,7 @@
 import { GET_DATA_FOR_SINGLE_USER_ID } from "../actions"
 
 const initialState = {
-  userIdProfileData: [],
+  userIdProfileData: {},
 }
 
 const userIdProfileReducer = (state = initialState, action) => {
