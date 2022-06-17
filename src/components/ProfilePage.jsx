@@ -18,7 +18,7 @@ const ProfilePage = () => {
     }, [])
 
     const myProfile = useSelector((state) => state.myProfile.profileData)
-    console.log(myProfile.name);
+    console.log(myProfile._id);
     return (
         <Container>
             <Navbar />
@@ -106,7 +106,7 @@ const ProfilePage = () => {
 
                     </div>
                     <div className="my-profile-section04 mt-3">
-                        <Experience />
+                        <Experience id={myProfile._id} />
                     </div>
 
 

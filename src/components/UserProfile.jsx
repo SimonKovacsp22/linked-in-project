@@ -115,7 +115,7 @@ const UserProfile = () => {
 
                     </div>
                     <div className="my-profile-section04 mt-3">
-                        <Experience />
+                        <Experience id={userProfile._id} />
                     </div>
 
 
