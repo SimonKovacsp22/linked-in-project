@@ -8,7 +8,7 @@ import { getUserExpById } from '../Redux/Actions';
 const Experiance = () => {
     const dispatch = useDispatch()
     useEffect(()=>{
-        dispatch(getUserExpById('5fc4af0bb708c200175de88e'))
+        dispatch(getUserExpById('5fc4af46b708c200175de88f'))
     },[])
     return (
         <Container>

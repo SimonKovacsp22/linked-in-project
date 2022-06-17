@@ -9,7 +9,7 @@ const expReducer = (state=initialState, action) =>{
         case GET_SINGLE_USER_EXP:
             return {
                 ...state,
-                singleUserExperiences : [action.payload]
+                singleUserExperiences : [...action.payload]
             }
     
         default:

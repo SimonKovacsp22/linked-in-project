@@ -17,8 +17,6 @@ export const getUserExpById = (userId)=>{
               );
                 
               let singleUserExperiences = await response.json();
-              console.log(singleUserExperiences)
-      
               dispatch( {
                 type: GET_SINGLE_USER_EXP,
                 payload: singleUserExperiences

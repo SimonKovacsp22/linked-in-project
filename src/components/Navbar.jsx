@@ -32,7 +32,10 @@ const Customnavbar = () =>{
   </Dropdown.Toggle>
 
   <Dropdown.Menu>
-    <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+    <Dropdown.Item href="#/action-1">
+    <img src="https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?cs=srgb&dl=pexels-anjana-c-674010.jpg&fm=jpg" alt="" height={60}  className='ml-3'/>
+      Action
+      </Dropdown.Item>
     <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
     <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
   </Dropdown.Menu>
@@ -55,7 +58,7 @@ const Customnavbar = () =>{
     <Nav className="mr-auto">
     
     </Nav>
-      <Nav.Link className="premiumFree mb-1 ml-auto mr-auto"><small>Network Smarter,Try Premium Free</small></Nav.Link>
+      <Nav.Link className="premiumFree mb-1 ml-auto mr-auto "><small>Network Smarter,Try Premium Free</small></Nav.Link>
 </Container>
 </Navbar>
     )
