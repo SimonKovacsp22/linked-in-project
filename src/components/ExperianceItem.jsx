@@ -1,11 +1,18 @@
+import { useEffect } from "react";
 import { Col, Row } from "react-bootstrap"
+import { useSelector } from "react-redux";
 
 
 const ExperianceItem = () =>{
+    const pplExp = useSelector((state)=>state.userIdExp.singleUserExperiences);
+    // useEffect(()=>{
+    //     console.log(pplExp);
+    // },[])
     return(
         <Row>
         <Col sm={1}>
-            <img src="https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?cs=srgb&dl=pexels-anjana-c-674010.jpg&fm=jpg" alt="" height={60}  className='ml-3'/>
+            <img src="https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?cs=srgb&dl=pexels-anjana-c-674010.jpg&fm=jpg" alt="" height={60}  className='ml-3'
+            onClick={()=>{console.log(pplExp)}}/>
         </Col>
         <Col sm={11}>
             <div><b>Docente de Español</b></div>

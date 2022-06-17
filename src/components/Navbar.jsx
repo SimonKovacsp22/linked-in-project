@@ -20,7 +20,7 @@ const Customnavbar = () =>{
     </Nav>
     <Nav.Link href="/" className="ml-lg-5 ml-md-3 marginForHome ml-sm-3 ml-3"><ImHome3 className="d-block HomeMargin iconFont3 "/><small className="giveColor">Home</small></Nav.Link>
     <Nav.Link href="/" className="giveMargin2"><MdPeopleAlt className="d-block ml-4 iconFont2"/><small className="giveColor">MyNetwork</small></Nav.Link>
-    <Nav.Link href="/" className="giveMargin ml-lg-0 ml-md-4 ml-sm-4 ml-4"><MdWork className="d-block iconFont5"/><small className="giveColor">Jobs</small></Nav.Link>
+    <Nav.Link href="/" className="giveMargin ml-lg-0 ml-md-4 ml-sm-4 ml-4"><MdWork className="d-block iconFont5"/><small className="giveColor">jobs</small></Nav.Link>
     <Nav.Link href="/" className="marginForMessaging"><FiMessageSquare className="d-block iconFont1"/><small className="giveColor">Messaging</small></Nav.Link>
     <Nav.Link href="/" className="marginForNotif"><GrNotification className="iconFont d-block marginNotif"/><small className="giveColor">Notification</small></Nav.Link>
     <Dropdown className="pr-3 ml-lg-0 marginForMe">

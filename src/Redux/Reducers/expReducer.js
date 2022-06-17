@@ -7,8 +7,10 @@ const initialState = {
 const expReducer = (state=initialState, action) =>{
     switch (action.type) {
         case GET_SINGLE_USER_EXP:
-            
-            break;
+            return {
+                ...state,
+                singleUserExperiences : [action.payload]
+            }
     
         default:
             return state;

@@ -2,7 +2,7 @@ export const GET_SINGLE_USER_EXP = 'GET_SINGLE_USER_EXP';
 
 export const getUserExpById = (userId)=>{
     let headers = {
-        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmE5YzNkNzAxNjBiNTAwMTU1YmI0YzQiLCJpYXQiOjE2NTUyOTQyMTAsImV4cCI6MTY1NjUwMzgxMH0.ZqivIPQ8TjJRvVDjSA8kmF3IFZe4mzsLyqZlp-EIaCM",
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmFjMzMwM2E2ZmE5ZTAwMTVlYjE3NTUiLCJpYXQiOjE2NTU0NTI0MjQsImV4cCI6MTY1NjY2MjAyNH0.SLChBTo_mTBL1GH8dYRNmbUiQ32D2Eb9Ly2slWaOsfE",
         "Content-type": "application/json",
     }
     return async (dispatch) => {
