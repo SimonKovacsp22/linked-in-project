@@ -8,22 +8,22 @@ import { ImHome3 } from 'react-icons/im';
 
 const Customnavbar = () =>{
     return(
-      <Navbar className="navbarbg" expand="lg">
+      <Navbar className="navbarbg py-0" expand="lg">
   <Container>
   <Navbar.Brand href="#home" className="mr-0"><img src="https://brandlogos.net/wp-content/uploads/2016/06/linkedin-logo.png" alt="" height={50}/></Navbar.Brand>
-  <Navbar.Toggle aria-controls="basic-navbar-nav" />
-  <Navbar.Collapse id="basic-navbar-nav">
-    <Nav className="mr-auto">
-    <FaSearch className="searchIcon giveColor"/>
-      <input type="text" placeholder="Search" className="mr-sm-5 navbarSearch" />
-
-    </Nav>
-    <Nav.Link href="/" className="ml-lg-5 ml-md-3 marginForHome ml-sm-3 ml-3"><ImHome3 className="d-block HomeMargin iconFont3 "/><small className="giveColor">Home</small></Nav.Link>
-    <Nav.Link href="/" className="giveMargin2"><MdPeopleAlt className="d-block ml-4 iconFont2"/><small className="giveColor">MyNetwork</small></Nav.Link>
-    <Nav.Link href="/" className="giveMargin ml-lg-0 ml-md-4 ml-sm-4 ml-4"><MdWork className="d-block iconFont5"/><small className="giveColor">jobs</small></Nav.Link>
-    <Nav.Link href="/" className="marginForMessaging"><FiMessageSquare className="d-block iconFont1"/><small className="giveColor">Messaging</small></Nav.Link>
-    <Nav.Link href="/" className="marginForNotif"><GrNotification className="iconFont d-block marginNotif"/><small className="giveColor">Notification</small></Nav.Link>
-    <Dropdown className="pr-3 ml-lg-0 marginForMe">
+  <span className="mr-sm-auto mr-md-auto mr-auto forSearch">
+  <input type="text" placeholder="Search" className="navbarSearch"/>
+  <FaSearch className="searchIcon giveColor"/>
+  </span>
+  <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+  <Navbar.Collapse id="basic-navbar-nav" style={{backgroundColor:'white'}}>
+    <Nav.Link href="/" className=" ml-lg-5 ml-md-4 marginForHome ml-sm-3 ml-3 forHover giveColor"><ImHome3 className="d-block HomeMargin iconFont3 "/><small className="">Home</small></Nav.Link>
+    <Nav.Link href="/" className=" giveMargin2 ml-md-1 forHover giveColor"><MdPeopleAlt className="d-block ml-4 iconFont2 "/><small className="">MyNetwork</small></Nav.Link>
+    <Nav.Link href="/" className=" giveMargin ml-lg-0 ml-md-4 ml-sm-4 ml-4 forHover giveColor"><MdWork className="d-block iconFont5"/><small className="">jobs</small></Nav.Link>
+    <Nav.Link href="/" className=" marginForMessaging ml-md-1 forHover giveColor"><FiMessageSquare className="d-block iconFont1"/><small className="">Messaging</small></Nav.Link>
+    <Nav.Link href="/" className=" marginForNotif ml-md-1 forHover giveColor"><GrNotification className="iconFont d-block marginNotif
+    "/><small className="">Notification</small></Nav.Link>
+    <Dropdown className="pr-3 ml-lg-0 ml-md-4 marginForMe">
   <Dropdown.Toggle variant="white" id="dropdown-basic">
     <span>
     <FaFlushed className="ml-1 d-block iconFont"/>
@@ -37,11 +37,7 @@ const Customnavbar = () =>{
     <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
   </Dropdown.Menu>
 </Dropdown>
-
-
-
-
-      <Dropdown className="giveBorder pl-3 ml-0">
+<Dropdown className="giveBorder pl-3 ml-0">
   <Dropdown.Toggle variant="transparent" id="dropdown-basic">
     <span>
     <FaGripHorizontal className="ml-2 d-block iconFont"/>
@@ -55,8 +51,11 @@ const Customnavbar = () =>{
     <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
   </Dropdown.Menu>
 </Dropdown>
-      <Nav.Link className="premiumFree mb-1 mr-5"><small>Network Smarter,Try Premium Free</small></Nav.Link>
-  </Navbar.Collapse>
+    </Navbar.Collapse>
+    <Nav className="mr-auto">
+    
+    </Nav>
+      <Nav.Link className="premiumFree mb-1 ml-auto mr-auto"><small>Network Smarter,Try Premium Free</small></Nav.Link>
 </Container>
 </Navbar>
     )

@@ -1,21 +1,24 @@
 .navbarbg{
     background-color: white;
-    height: 9vh;
     z-index: 9999;
+    min-width: 100px;
 }
 
 .navbarSearch{
     height: 5vh;
-    padding-left: 2.7rem;
+    padding-left: 2.4rem;
     margin-top: 0.15rem;
     background-color: #EEF3F7;
     border: transparent;
-    border-radius: 5%;
+    border-radius: 5px;
 }
 .searchIcon{
     position: absolute;
-    margin-top: 0.8rem;
-    margin-left: 1rem;
+    bottom: 28%;
+    left: 10px;
+}
+.forSearch{
+    position: relative;
 }
 .premiumFree{
     color: rgb(99, 99, 19);
@@ -43,6 +46,9 @@
 }
 .giveColor{
     color: #666666;
+}
+.giveColor:hover{
+    border-bottom: 1px solid black;
 }
 .marginForMe{
     margin-left: 1.2rem;
@@ -74,4 +80,7 @@
     font-size: 23px;
     color: #666666;
     margin-left: 0.10rem;
+}
+.forHover:hover{
+    color: black;
 }
