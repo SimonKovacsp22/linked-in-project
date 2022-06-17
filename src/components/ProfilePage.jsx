@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container, ProgressBar, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { getMyProfileDataActionWithThunk } from '../redux/actions'
@@ -8,10 +8,13 @@ import "../style/ProfilePage.css"
 import CardInfo from './CardInfo'
 import ViewedUsers from './ViewedUsers'
 import Experience from './Experience'
-
 import MainFooter from './MainFooter'
+import EditProfile from './EditProfile'
+
+
 
 const ProfilePage = () => {
+    const [modalShow, setModalShow] = useState(false);
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getMyProfileDataActionWithThunk())
@@ -19,6 +22,7 @@ const ProfilePage = () => {
 
     const myProfile = useSelector((state) => state.myProfile.profileData)
     console.log(myProfile._id);
+
     return (
         <Container>
             <Navbar />
@@ -42,8 +46,9 @@ const ProfilePage = () => {
                                     <small>12 connections</small>
 
                                 </div>
-                                <div>
-                                    <i className="bi bi-pen"></i>
+                                <div className='edit-btn'>
+                                    <i className="bi bi-pen" onClick={() => setModalShow(true)} ></i>
+                                    <EditProfile show={modalShow} onHide={() => setModalShow(false)} />
                                 </div>
 
                             </div>

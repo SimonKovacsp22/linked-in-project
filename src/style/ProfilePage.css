@@ -76,6 +76,33 @@ i.bi-camera-fill:hover {
 }
 .my-profile-deatails {
   margin-top: 50px;
+  position: relative;
+}
+.edit-btn {
+  background-color: rgb(213, 213, 213);
+  width: 35px;
+  height: 35px;
+  font-size: 17px;
+  border-radius: 50%;
+  text-align: center;
+  position: absolute;
+  right: 10px;
+  top: 16px;
+  cursor: pointer;
+}
+.edit-btn i {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: 5px;
+}
+.edit-btn:hover {
+  background-color: rgb(222, 219, 219);
+}
+.edit-btn i:hover {
+  color: rgb(5, 144, 144);
 }
 .my-profile-deatails div small {
   color: rgb(4, 104, 154);

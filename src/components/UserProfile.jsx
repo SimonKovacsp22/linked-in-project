@@ -12,22 +12,22 @@ import Experience from './Experience'
 import MainFooter from './MainFooter'
 
 const UserProfile = () => {
-    let id = useParams()
+    let id = useParams()._id
     console.log(id)
 
-    const [user, setUser] = useState(id._id)
+    const [user, setUser] = useState(null)
     const userProfile = useSelector((state) => state.userIdProfile.userIdProfileData[0])
 
     const dispatch = useDispatch()
     useEffect(() => {
-        setUser(id._id)
-        dispatch(getProfileBasedOnId(id._id))
-    }, [])
+        setUser(id)
+        dispatch(getProfileBasedOnId(id))
+    }, [id])
 
 
-    console.log(userProfile.name);
+
     //const [user, setUser] = useState(userProfile)
-    console.log(user._id);
+
     return (
         <Container>
             <Navbar />
