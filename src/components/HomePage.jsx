@@ -18,7 +18,7 @@ const HomePage = () => {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getMyProfileDataActionWithThunk())
-        dispatch(getAllProfilesActionWithThunk())
+        dispatch(getAllProfilesActionWithThunk())  
     }, [])
 
     const [searchResult,setSearchResult]=useState([])
