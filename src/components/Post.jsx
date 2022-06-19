@@ -12,41 +12,13 @@ export default function Post() {
           <div className="d-flex">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-             
-              fill="currentColor"
-              className="bi bi-three-dots"
-              
               width="30"
               height="30"
               viewBox="0 0 24 24"
             >
               <path d="M0 0v24h24v-24h-24zm8 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.397-2.586 7-2.777 7 2.476v6.759z" />
             </svg>
-            </div>
             <div className="d-flex flex-column">
-              <div
-                className="d-flex align-items-center justify-content-between mx-3"
-                style={{
-                  borderBottom: "1px solid rgb(220,220,220)",
-                  paddingBottom: "5px",
-                  paddingTop:"5px"
-                }}
-              >
-                <div className="d-flex align-items-center">
-                  <div
-                    className="position-relative d-flex"
-                    style={{ color: "white" }}
-                  >
-                    <div className="post-bottom-section-circle-icon post-bottom-section-circle-icon-thumbs-up">
-                      <FontAwesomeIcon icon={faThumbsUp} />
-                    </div>
-                    ||||||||
-                    <div className="post-bottom-section-circle-icon-clap post-bottom-section-circle-icon position-absolute">
-                      <FontAwesomeIcon icon={faHandsClapping} />
-                    </div>
-                    <div className="post-bottom-section-circle-icon post-bottom-section-circle-icon-heart position-absolute">
-                      <FontAwesomeIcon icon={faHeart} />
-                    </div>
               <h6 className="post-top-title">LinkedIn</h6>
               <p className="post-top-subtitle">Promoted</p>
             </div>
@@ -73,8 +45,6 @@ export default function Post() {
         variant="top"
         src="https://scontent-vie1-1.xx.fbcdn.net/v/t45.1600-4/287636361_6272126964962_2072049515045365016_n.jpg?stp=c25.0.1150.600a_cp0_dst-jpg_q75_s526x296_spS444&_nc_cat=107&ccb=1-7&_nc_sid=67cdda&_nc_ohc=JtlfDVWlAlIAX9d37H2&_nc_ht=scontent-vie1-1.xx&oh=00_AT9tWHmpasegZVS_DNZK2J37Dt0aB7OZNqRY05jhgf-KAg&oe=62AF194C"
       />
-      </div>
-      </div>
       <Card.Body>
         <div className="post-bottom-section">
           <div className="d-flex flex-column post-bottom-title ">
