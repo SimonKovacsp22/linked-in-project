@@ -20,11 +20,14 @@ const ProfilePage = () => {
         dispatch(getMyProfileDataActionWithThunk())
     }, [])
 
+    const [searchResult,setSearchResult]=useState([])
+    const [searchTerm,setSearchTerm]= useState('')
+
     const myProfile = useSelector((state) => state.myProfile.profileData)
     console.log(myProfile._id);
     return (
         <Container>
-            <Navbar />
+            <Navbar setSearchResult={setSearchResult} searchTerm={searchTerm} setSearchTerm={setSearchTerm} searchResult={searchResult}/>
             <div className='d-flex justify-content-between' style={{ marginTop: "10vh" }}>
                 <div className="left-container">
                     <div className="my-profile-div">
