@@ -26,7 +26,7 @@ const HomePage = () => {
     return (
         <Container>
             <Navbar setSearchResult={setSearchResult} searchTerm={searchTerm} setSearchTerm={setSearchTerm} searchResult={searchResult}/>
-            <div className='d-flex justify-content-between' style={{ marginTop: "10vh" }}>
+            <div className='d-flex justify-content-between' style={{ marginTop: "13vh" }}>
                 <div>
                     <Profile />
                     <About />
