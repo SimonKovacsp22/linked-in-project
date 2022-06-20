@@ -60,6 +60,7 @@
 
 .post-bottom-section p {
   margin: 0;
+  margin-left: 4px;
   color:rgb(157, 157, 157);
   font-size: 0.8rem;
   line-height: 10px;
@@ -165,6 +166,7 @@
 }
 .modal-content {
 border-radius:0.5rem!important ;
+top: 100px
 }
 
 .modal-footer {
@@ -240,18 +242,23 @@ border-radius:0.5rem!important ;
 .modal-footer-post-button {
   border-radius: 20px !important;
   padding: 4px 16px !important;
-  background-color:rgba(94, 94, 94, 0.2) !important;
-  color: var(--secondary) !important;
+  background-color:#186bbd !important;
+  color: white !important;
   border: none !important;
   outline: none!important;
   font-weight: 500 !important;
   margin: 0 !important;
 }
 
-.modal-footer-post-button.disabled {
-  cursor: auto;
-  pointer-events: none;
+.modal-footer-post-button:hover {
+  background-color:#004182 !important;;
 }
+
+.btn-primary:disabled{
+  background-color:rgba(94, 94, 94, 0.2) !important;
+  color:var(--secondary) !important ;
+}
+
 
 .modal-footer-post-button:focus {
   box-shadow: none !important;

@@ -6,19 +6,46 @@ import { faCaretDown,
   faSuitcase,
   faAward,
   faChartSimple,
-  faClapperboard,
   faEllipsis,
   faImage,
-  faCirclePlay,
   faCommentDots, 
-  faFile,
   faPlayCircle} from '@fortawesome/free-solid-svg-icons';
+  import {useEffect, useState} from 'react'
+
+const samplePost = {
+    text:'',
+}
 
 
- 
+ const handlePostRequest = async (body)=> {
+    try{ let response = await fetch('https://striveschool-api.herokuapp.com/api/posts/',
+     { 
+      method:'POST',
+      headers: { Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmFhZGM5Zjk5OTlmZTAwMTVlNjZlMjIiLCJpYXQiOjE2NTUzNjQ3NjgsImV4cCI6MTY1NjU3NDM2OH0.JXJ65n1oTxFcYw90c-b5HB1OJGtIJ9L_-BZcySGIct4",
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify(body.text)
+     } 
+     )}
+     catch(error){
+      console.log(error)
+     }
+ }
 
 
-const ModalPost=({handleClose,handleShow,createPost,profile})=> {
+const ModalPost=({handleClose,createPost,profile})=> {
+  const [post, setPost]= useState(samplePost)
+  const [isDisabled, setIsDisabled] = useState(true);
+
+  useEffect(()=>{
+    if(post.text.length >= 3){
+      setIsDisabled(false)
+    }
+    else if(post.text.length < 3){
+      setIsDisabled(true)
+    }
+  },[post])
 
     return (
       <>
@@ -46,7 +73,16 @@ const ModalPost=({handleClose,handleShow,createPost,profile})=> {
                 </div>
                 </div>
                 <div>
-                  <textarea className='modal-body-textarea'  cols="30" rows="5" placeholder='What do you want to talk about?'></textarea>
+                  <textarea
+                  onChange={(e)=>{
+                      setPost({...post,text: e.target.value});
+                  }}
+                  value={post.text}
+                   className='modal-body-textarea'
+                     cols="30"
+                      rows="5"
+                       placeholder='What do you want to talk about?'>
+                        </textarea>
                 </div>
                 <button className='modal-body-addhashtag-button'>Add hashtag</button>
           </Modal.Body>
@@ -78,7 +114,9 @@ const ModalPost=({handleClose,handleShow,createPost,profile})=> {
             <Button className='modal-footer-anyone-button ml-2'>
              <FontAwesomeIcon icon={faCommentDots}/> Anyone
             </Button>
-              <Button className='modal-footer-post-button disabled' variant="primary" onClick={handleClose}>
+              <Button className='modal-footer-post-button'
+              disabled={isDisabled}
+               variant="primary" onClick={()=>{ handlePostRequest(post); handleClose() }}>
                 Post
               </Button>
            </div>

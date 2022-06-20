@@ -1,6 +1,5 @@
 import {useState} from 'react'
 import "../style/AddPost.css"
-import { Modal,Button } from 'react-bootstrap'
 import { useSelector } from "react-redux"
 import ModalPost from './ModalPost'
 
@@ -27,7 +26,7 @@ const AddPost = () => {
                     <p><i className="bi bi-file-text text-danger mr-2"></i>Write article</p>
                 </div>
             </div>
-            <ModalPost handleClose={handleClose} handleShow={handleShow} createPost={createPost} profile={myProfile}/> 
+            <ModalPost handleClose={handleClose} createPost={createPost} profile={myProfile}/> 
        </>
         
     )

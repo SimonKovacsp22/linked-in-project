@@ -279,6 +279,11 @@
   gap: 15px;
 }
 
+.navbar-search-item:hover {
+  background-color: #e6e6e6;
+  cursor: pointer;
+}
+
 
 .navbar-search-item-recent {
   display: flex;
@@ -286,6 +291,11 @@
   align-items: center;
   padding-left: 15px;
   padding-bottom: 15px;
+}
+
+.navbar-search-item-recent:hover {
+  background-color: #e6e6e6;
+  cursor: pointer;
 }
 
 .fw-light {

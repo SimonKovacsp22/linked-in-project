@@ -56,7 +56,7 @@ export default function Post() {
             </div>
             <p>linkedin.com</p>
           </div>
-          <div className="d-flex flex-column">
+          <div className="d-flex flex-column mt-1">
             <div
               className="d-flex align-items-center justify-content-between mx-3"
               style={{
@@ -72,7 +72,7 @@ export default function Post() {
                   <div className="post-bottom-section-circle-icon post-bottom-section-circle-icon-thumbs-up">
                     <FontAwesomeIcon icon={faThumbsUp} />
                   </div>
-                  ||||||||
+                  <p style={{opacity:'0'}}>||||||||</p>
                   <div className="post-bottom-section-circle-icon-clap post-bottom-section-circle-icon position-absolute">
                     <FontAwesomeIcon icon={faHandsClapping} />
                   </div>
