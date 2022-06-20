@@ -138,7 +138,7 @@ export const getAllPostsActionWithThunk = () => {
       )
 
       let allPostsData = await response.json()
-      console.log(allPostsData)
+      
 
       dispatch({
         type: GET_DATA_FOR_ALL_POSTS,

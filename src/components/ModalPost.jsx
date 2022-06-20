@@ -12,9 +12,7 @@ import { faCaretDown,
   faPlayCircle} from '@fortawesome/free-solid-svg-icons';
   import {useEffect, useState} from 'react'
 
-const samplePost = {
-    text:'',
-}
+
 
 
  const handlePostRequest = async (body)=> {
@@ -25,7 +23,7 @@ const samplePost = {
         "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmFhZGM5Zjk5OTlmZTAwMTVlNjZlMjIiLCJpYXQiOjE2NTUzNjQ3NjgsImV4cCI6MTY1NjU3NDM2OH0.JXJ65n1oTxFcYw90c-b5HB1OJGtIJ9L_-BZcySGIct4",
       "Content-type": "application/json",
     },
-    body: JSON.stringify(body.text)
+    body: JSON.stringify({text:body})
      } 
      )}
      catch(error){
@@ -35,14 +33,14 @@ const samplePost = {
 
 
 const ModalPost=({handleClose,createPost,profile})=> {
-  const [post, setPost]= useState(samplePost)
+  const [post, setPost]= useState('')
   const [isDisabled, setIsDisabled] = useState(true);
 
   useEffect(()=>{
-    if(post.text.length >= 3){
+    if(post.length >= 3){
       setIsDisabled(false)
     }
-    else if(post.text.length < 3){
+    else if(post.length < 3){
       setIsDisabled(true)
     }
   },[post])
@@ -75,9 +73,9 @@ const ModalPost=({handleClose,createPost,profile})=> {
                 <div>
                   <textarea
                   onChange={(e)=>{
-                      setPost({...post,text: e.target.value});
+                      setPost( e.target.value);
                   }}
-                  value={post.text}
+                  value={post}
                    className='modal-body-textarea'
                      cols="30"
                       rows="5"
