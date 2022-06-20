@@ -127,8 +127,10 @@ const ProfilePage = () => {
                 </div>
 
             </div>
+            <div className='mt-3'>
+                <MainFooter />
+            </div>
 
-            <MainFooter />
 
 
         </Container >

@@ -165,7 +165,7 @@ i.bi-camera-fill:hover {
 }
 .my-profile-section04 {
   width: 780px;
-  height: 310px;
+  height: auto;
   border: 0.5px solid rgb(207, 207, 207);
   background-color: rgb(255, 255, 255);
   border-radius: 10px;

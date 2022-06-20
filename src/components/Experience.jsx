@@ -10,15 +10,18 @@ const Experiance = ({ id }) => {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getUserExpById(id))
-    }, [])
+    }, [id])
     return (
         <Container>
-            <Row className='mt-2'>
-                <Col lg={10} style={{ backgroundColor: 'white' }} className={'lineHeight'}>
-                    <Col lg={12}>
+            <Row>
+                <Col lg={12} style={{ backgroundColor: 'white', height: "auto" }} className={'lineHeight'}>
+                    <Col lg={12} className="border-bottom">
                         <h5 className='mt-3'>Experience</h5>
                     </Col>
-                    <ExperianceItem />
+                    <Col className='experiance-container'>
+                        <ExperianceItem />
+                    </Col>
+
                 </Col>
             </Row>
 

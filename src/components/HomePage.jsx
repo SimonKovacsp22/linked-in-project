@@ -21,21 +21,20 @@ const HomePage = () => {
         dispatch(getAllProfilesActionWithThunk())
     }, [])
     return (
-        <Container>
+        <Container className='home-main-container'>
             <Navbar />
-            <div className='d-flex justify-content-between' style={{ marginTop: "10vh" }}>
-                <div>
+            <div className='d-flex justify-content-between home-container'>
+                <div className='mt-3'>
                     <Profile />
                     <About />
                 </div>
 
-                <div>
+                <div className='mt-3'>
                     <AddPost />
                     <PostList />
                 </div>
-                <div>
+                <div className='mt-3'>
                     <Feed />
-                    
                     <Footer />
                 </div>
             </div>
