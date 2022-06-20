@@ -6,6 +6,8 @@ export default function EditProfile(props) {
     const myProfile = useSelector((state) => state.myProfile.profileData)
     console.log(myProfile._id);
 
+    
+
     const [editDetails, setEditDetails] = useState({
         id: myProfile._id,
         name: myProfile.name,
