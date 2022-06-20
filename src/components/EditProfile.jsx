@@ -40,13 +40,13 @@ export default function EditProfile(props) {
                     Authorization:
                     "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmFkZThmMjY0OGVhODAwMTViZDhhZTEiLCJpYXQiOjE2NTU1NjQ1MzEsImV4cCI6MTY1Njc3NDEzMX0._-K2RTj3Yy2fqnV-4zPUH9sgSLayqXfW1aciSiV9tmg",
                     "Content-Type" : "application/json",
-                    body : JSON.stringify(blog),
-                }
+                },
+                body : JSON.stringify(blog) 
             })
-            let data = await response.json()
-            console.log(data);
+            let data = response.json()
+            console.log(data,"AGHA rouzbehhhh");
         }catch(err){
-            console.log(err);
+            console.log(err,'AGHA rouzbeh error');
     }
     }
 
