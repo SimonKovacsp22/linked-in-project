@@ -107,7 +107,7 @@ const Customnavbar = (props) => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" style={{ backgroundColor: 'white' }}>
           <Nav className="mr-auto position-relative">
-            {(searchResult.length > 0) && <div className="position-absolute search-dropdown">
+            {searchResult && (searchResult.length > 0) && <div className="position-absolute search-dropdown">
               {searchResult.map((result) =>
                 <p key={result._id} style={{ borderBottom: '1px solid', padding: '3px 5px 3px 5px', margin: '0' }}>{result.name}<br />{result.surname}</p>
               )}
