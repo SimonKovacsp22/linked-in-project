@@ -13,15 +13,12 @@ const Experiance = ({ id }) => {
     }, [id])
     return (
         <Container>
-            <Row>
-                <Col lg={12} style={{ backgroundColor: 'white', height: "auto" }} className={'lineHeight'}>
-                    <Col lg={12} className="border-bottom">
-                        <h5 className='mt-3'>Experience</h5>
+            <Row className='mt-1'>
+                <Col lg={10} style={{ backgroundColor: 'white' }} className={'lineHeight'}>
+                    <Col lg={12}>
+                        <h5 className='mt-2'>Experience</h5>
                     </Col>
-                    <Col className='experiance-container'>
-                        <ExperianceItem />
-                    </Col>
-
+                    <ExperianceItem/>
                 </Col>
             </Row>
 
