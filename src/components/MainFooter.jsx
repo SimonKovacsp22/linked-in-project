@@ -3,7 +3,7 @@ import "../style/MainFooter.css"
 
 const MainFooter = () => {
     return (
-        <div className='main-footer mt-4'>
+        <div className='main-footer my-5'>
             <div><img className="my-footer-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/LinkedIn_Logo_2013.svg/2560px-LinkedIn_Logo_2013.svg.png" alt="" /></div>
             <div className='d-flex my-3'>
                 <div className='footer-div'>

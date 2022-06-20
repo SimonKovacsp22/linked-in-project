@@ -18,27 +18,26 @@ const HomePage = () => {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getMyProfileDataActionWithThunk())
-        dispatch(getAllProfilesActionWithThunk())  
+        dispatch(getAllProfilesActionWithThunk())
     }, [])
 
-    const [searchResult,setSearchResult]=useState([])
-    const [searchTerm,setSearchTerm]= useState('')
+    const [searchResult, setSearchResult] = useState([])
+    const [searchTerm, setSearchTerm] = useState('')
     return (
-        <Container>
-            <Navbar setSearchResult={setSearchResult} searchTerm={searchTerm} setSearchTerm={setSearchTerm} searchResult={searchResult}/>
-            <div className='d-flex justify-content-between' style={{ marginTop: "13vh" }}>
-                <div>
+        <Container className='home-main-container'>
+            <Navbar />
+            <div className='d-flex justify-content-between home-container'>
+                <div className='mt-3'>
                     <Profile />
                     <About />
                 </div>
 
-                <div>
+                <div className='mt-3'>
                     <AddPost />
                     <PostList />
                 </div>
-                <div>
+                <div className='mt-3'>
                     <Feed />
-                    
                     <Footer />
                 </div>
             </div>

@@ -7,6 +7,13 @@
   border: 0.5px solid rgb(207, 207, 207);
   background-color: rgb(255, 255, 255);
 }
+@media only screen and (max-width: 1000px) {
+  /* place here CSS for when the screen is less than 1000px wide */
+  .feed {
+    display: none;
+  }
+}
+
 .feed div strong {
   color: rgb(103, 103, 103);
 }

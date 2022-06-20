@@ -8,6 +8,8 @@ import { GrNotification } from "react-icons/gr"
 import { MdWork, MdPeopleAlt } from "react-icons/md"
 import { FiMessageSquare } from "react-icons/fi"
 import { ImHome3 } from "react-icons/im"
+import { Link } from "react-router-dom";
+import ToggleMenu from "./ToggleMenu";
 import { useState } from "react";
 
 const Customnavbar = (props) => {
@@ -105,7 +107,7 @@ const Customnavbar = (props) => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" style={{ backgroundColor: 'white' }}>
           <Nav className="mr-auto position-relative">
-            {(searchResult.length > 0) && <div className="position-absolute search-dropdown">
+            {searchResult && (searchResult.length > 0) && <div className="position-absolute search-dropdown">
               {searchResult.map((result) =>
                 <p key={result._id} style={{ borderBottom: '1px solid', padding: '3px 5px 3px 5px', margin: '0' }}>{result.name}<br />{result.surname}</p>
               )}
@@ -129,16 +131,39 @@ const Customnavbar = (props) => {
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
-              <div className="d-flex px-1 nav-profile-dropdown">
-                <div className="p-1"><img src={myProfile.image} alt="" className="ml-2 d-block iconFont nav-profile-image-dropdown" /></div>
-                <div className="ml-3 nav-profile-dropdown-details">
-                  <p>{myProfile.name} {myProfile.surname}</p>
-                  <p>{myProfile.title}</p>
+              <div className="px-1 nav-profile-dropdown">
+                <div className="nav-dropdown-section01 d-flex">
+                  <div className="p-1"><img src={myProfile.image} alt="" className="ml-2 d-block iconFont nav-profile-image-dropdown" /></div>
+                  <div className="ml-3 nav-profile-dropdown-details">
+                    <p className="font-weight-bold">{myProfile.name} {myProfile.surname}</p>
+                    <p>{myProfile.title}</p>
+                  </div>
+
+                </div>
+                <button type="button" className="btn btn-outline-info btn-block rounded-pill px-5 py-1">View profile</button>
+                <div className="nav-dropdown-section02">
+                  <div className="ml-3 nav-profile-dropdown-details">
+                    <p className="font-weight-bold">Account</p>
+                    <p><Link to="/">Settings & Privacy</Link></p>
+                    <p><Link to="/">Help</Link></p>
+                    <p><Link to="/">Language</Link></p>
+                  </div>
+                </div>
+                <div className="nav-dropdown-section03 border-top">
+                  <div className="ml-3 nav-profile-dropdown-details">
+                    <p className="font-weight-bold">Manage</p>
+                    <p><Link to="/">Posts & Activity</Link></p>
+                    <p><Link to="/">Job Posting Account</Link></p>
+                    <div className="border-top">
+                      <p><Link to="/">Sign Out</Link></p>
+                    </div>
+
+                  </div>
                 </div>
               </div>
-              <Dropdown.Item href="#/action-1">{myProfile.name} {myProfile.surname}</Dropdown.Item>
+              {/* <Dropdown.Item href="#/action-1">{myProfile.name} {myProfile.surname}</Dropdown.Item>
               <Dropdown.Item href="#/action-2">{myProfile.title}</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">{myProfile.area}</Dropdown.Item>
+              <Dropdown.Item href="#/action-3">{myProfile.area}</Dropdown.Item> */}
             </Dropdown.Menu>
           </Dropdown>
 
@@ -153,10 +178,11 @@ const Customnavbar = (props) => {
               </span>
             </Dropdown.Toggle>
 
-            <Dropdown.Menu>
-              <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+            <Dropdown.Menu className="toggle-container">
+              <ToggleMenu />
+              {/* <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
               <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+              <Dropdown.Item href="#/action-3">Something else</Dropdown.Item> */}
             </Dropdown.Menu>
           </Dropdown>
         </Navbar.Collapse>

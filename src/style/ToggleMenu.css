@@ -1,0 +1,27 @@
+/** @format */
+
+.toggle-menu {
+  position: absolute;
+  top: 0;
+  right: 1%;
+  width: 30vw;
+  height: 92vh;
+  background-color: rgb(253, 253, 253);
+  border-radius: 15px 0 0 15px;
+}
+.toggle-section01 {
+  width: 80%;
+}
+.toggle-item {
+  width: 70px;
+  height: 70px;
+  margin: 5px;
+  background-color: aqua;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+.toggle-item i {
+  font-size: 35px;
+}
