@@ -1,5 +1,5 @@
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Container } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
 import { getAllProfilesActionWithThunk, getMyProfileDataActionWithThunk } from '../redux/actions'
@@ -20,6 +20,9 @@ const HomePage = () => {
         dispatch(getMyProfileDataActionWithThunk())
         dispatch(getAllProfilesActionWithThunk())
     }, [])
+
+    const [searchResult, setSearchResult] = useState([])
+    const [searchTerm, setSearchTerm] = useState('')
     return (
         <Container className='home-main-container'>
             <Navbar />

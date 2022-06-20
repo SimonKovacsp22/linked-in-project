@@ -2,26 +2,24 @@
 
 .navbarbg {
   background-color: white;
-  height: 9vh;
   z-index: 9999;
-}
-.logo {
-  position: relative;
-  height: 35px;
-  left: -5px;
+  min-width: 350px;
 }
 .navbarSearch {
   height: 5vh;
-  padding-left: 2.7rem;
+  padding-left: 2.4rem;
   margin-top: 0.15rem;
   background-color: #eef3f7;
   border: transparent;
-  border-radius: 5%;
+  border-radius: 5px;
 }
 .searchIcon {
   position: absolute;
-  margin-top: 0.8rem;
-  margin-left: 1rem;
+  bottom: 28%;
+  left: 10px;
+}
+.forSearch {
+  position: relative;
 }
 .premiumFree {
   color: rgb(99, 99, 19);
@@ -50,6 +48,9 @@
 .giveColor {
   color: #666666;
 }
+.giveColor:hover {
+  border-bottom: 1px solid black;
+}
 .marginForMe {
   margin-left: 1.2rem;
 }
@@ -73,11 +74,6 @@
   font-size: 20px;
   margin-bottom: 0.1rem;
 }
-.nav-profile-image {
-  height: 28px;
-  border-radius: 50%;
-  margin-bottom: -3px;
-}
 .giveMargin2 {
   margin-bottom: 0.5rem;
 }
@@ -86,15 +82,18 @@
   color: #666666;
   margin-left: 0.1rem;
 }
-.dropdown-menu {
-  left: -170px !important;
-  top: 67px !important;
+.forHover:hover {
+  color: black;
 }
-
-.nav-profile-dropdown {
-  width: 270px;
-  height: 350px;
-  margin-right: 0;
+.logo {
+  position: relative;
+  height: 35px;
+  left: -5px;
+}
+.nav-profile-image {
+  height: 28px;
+  border-radius: 50%;
+  margin-bottom: -3px;
 }
 .nav-profile-image-dropdown {
   height: 45px;
@@ -120,4 +119,13 @@
   width: 100vw !important;
   height: 92vh;
   background-color: #00000099 !important;
+}
+
+.search-dropdown {
+  width: 200px;
+
+  background-color: white;
+  border: 0.5px solid rgb(207, 207, 207);
+  top: 45px;
+  left: 10px;
 }

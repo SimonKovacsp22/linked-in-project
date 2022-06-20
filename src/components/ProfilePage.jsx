@@ -22,7 +22,6 @@ const ProfilePage = () => {
 
     const myProfile = useSelector((state) => state.myProfile.profileData)
     console.log(myProfile._id);
-
     return (
         <Container>
             <Navbar />

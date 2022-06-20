@@ -9,6 +9,7 @@ import { encryptTransform } from "redux-persist-transform-encrypt"
 import userIdProfileReducer from "../reducers/userIdProfileReducer"
 import allProfilesReducer from "../reducers/allProfileReducer"
 import expReducer from "../reducers/expReducer"
+import allPostsReducer from "../reducers/allPostsReducer"
 
 const persistConfig = {
   key: "root",
@@ -28,6 +29,7 @@ const combinedReducer = combineReducers({
   allProfiles: allProfilesReducer,
   userIdProfile: userIdProfileReducer,
   userIdExp: expReducer,
+  allPosts: allPostsReducer,
 })
 
 const persistedReducer = persistReducer(persistConfig, combinedReducer)
