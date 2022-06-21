@@ -3,19 +3,22 @@
 import { Nav, Navbar, Container, Dropdown } from "react-bootstrap";
 import "../style/Navbar.css"
 import { useSelector } from "react-redux"
-import { FaSearch, FaGripHorizontal, FaFlushed } from "react-icons/fa"
+import { FaSearch, FaGripHorizontal } from "react-icons/fa"
 import { GrNotification } from "react-icons/gr"
 import { MdWork, MdPeopleAlt } from "react-icons/md"
 import { FiMessageSquare } from "react-icons/fi"
 import { ImHome3 } from "react-icons/im"
 import { Link } from "react-router-dom";
 import ToggleMenu from "./ToggleMenu";
-import { useState } from "react";
+import HomePage from "./HomePage";
+
 
 const Customnavbar = (props) => {
   const { setSearchResult, setSearchTerm, searchTerm, searchResult } = props
   const myProfile = useSelector((state) => state.myProfile.profileData)
   const allProfiles = useSelector((state) => state.allProfiles.allProfilesData)
+  // const [searchTerm, setSearchTerm] = useState('')
+  // const [modalShow, setModalShow] = useState(false);
   // console.log(myProfile[0]._id)
 
 
@@ -34,61 +37,9 @@ const Customnavbar = (props) => {
 
     }
   }
+
   return (
-    // <Navbar className="navbarbg px-0 mx-0" expand="lg" fixed="top">
-    //   <Container>
-    //     <Navbar.Brand href="#home" className="mr-0 ml-2">
-    //       <img className="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/640px-LinkedIn_logo_initials.png" alt="" height={50} />
-    //     </Navbar.Brand>
-    //     <Navbar.Toggle aria-controls="basic-navbar-nav" />
-    //     <Navbar.Collapse id="basic-navbar-nav">
-    //       <Nav className="mr-auto">
-    //         <FaSearch className="searchIcon giveColor" />
-    //         <input type="text" placeholder="Search" className="mr-sm-5 navbarSearch" />
 
-    //       </Nav>
-    //       <Nav.Link href="/" className="ml-lg-5 ml-md-3 mb-1 ml-sm-3 ml-3"><ImHome3 className="d-block HomeMargin iconFont2 " /><small className="giveColor">Home</small></Nav.Link>
-    //       <Nav.Link href="/" className="giveMargin"><MdPeopleAlt className="d-block ml-4 iconFont2" /><small className="giveColor">MyNetwork</small></Nav.Link>
-    //       <Nav.Link href="/" className="giveMargin ml-lg-0 ml-md-4 ml-sm-4 ml-4"><MdWork className="d-block iconFont2" /><small className="giveColor">jobs</small></Nav.Link>
-    //       <Nav.Link href="/" className="mb-1"><FiMessageSquare className="d-block iconFont1" /><small className="giveColor">Messaging</small></Nav.Link>
-    //       <Nav.Link href="/" className=""><GrNotification className="iconFont d-block ml-4" /><small className="giveColor">Notification</small></Nav.Link>
-    //       <Dropdown className="pr-3 ml-lg-0 marginForMe">
-    //         <Dropdown.Toggle variant="transparent" id="dropdown-basic">
-    //           <span>
-    //             <img src={myProfile.image} alt="" className="ml-2 d-block iconFont nav-profile-image" />
-    //             {/* <FaFlushed className="ml-2 d-block iconFont" /> */}
-    //             <div className="d-inline"><small>Me</small></div>
-    //           </span>
-    //         </Dropdown.Toggle>
-
-    //         <Dropdown.Menu>
-    //           <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-    //           <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-    //           <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-    //         </Dropdown.Menu>
-    //       </Dropdown>
-
-
-
-
-    //       <Dropdown className="giveBorder pl-3 ml-0">
-    //         <Dropdown.Toggle variant="transparent" id="dropdown-basic">
-    //           <span>
-    //             <FaGripHorizontal className="ml-2 d-block iconFont" />
-    //             <div className="d-inline"><small>Work</small></div>
-    //           </span>
-    //         </Dropdown.Toggle>
-
-    //         <Dropdown.Menu>
-    //           <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-    //           <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-    //           <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-    //         </Dropdown.Menu>
-    //       </Dropdown>
-    //       <Nav.Link className="premiumFree mb-1 mr-5"><small>Network Smarter,Try Premium Free</small></Nav.Link>
-    //     </Navbar.Collapse>
-    //   </Container>
-    // </Navbar>
     <Navbar className="navbarbg pb-0 pt-0" expand="lg" fixed="top">
       <Container>
         <Navbar.Brand href="#home" className="mr-0"><img src="https://brandlogos.net/wp-content/uploads/2016/06/linkedin-logo.png" alt="" height={50} /></Navbar.Brand>
@@ -115,11 +66,11 @@ const Customnavbar = (props) => {
 
 
           </Nav>
-          <Nav.Link href="/" className=" ml-lg-5 ml-md-4 marginForHome ml-sm-3 ml-3 forHover giveColor"><ImHome3 className="d-block HomeMargin iconFont3 " /><small className="">Home</small></Nav.Link>
-          <Nav.Link href="/" className=" giveMargin2 ml-md-1 forHover giveColor"><MdPeopleAlt className="d-block ml-4 iconFont2 " /><small className="">MyNetwork</small></Nav.Link>
-          <Nav.Link href="/" className=" giveMargin ml-lg-0 ml-md-4 ml-sm-4 ml-4 forHover giveColor"><MdWork className="d-block iconFont5" /><small className="">jobs</small></Nav.Link>
-          <Nav.Link href="/" className=" marginForMessaging ml-md-1 forHover giveColor"><FiMessageSquare className="d-block iconFont1" /><small className="">Messaging</small></Nav.Link>
-          <Nav.Link href="/" className=" marginForNotif ml-md-1 forHover giveColor"><GrNotification className="iconFont d-block marginNotif
+          <Link to="/" element={<HomePage />} className=" ml-lg-5 ml-md-4 marginForHome ml-sm-3 ml-3 forHover giveColor"><ImHome3 className="d-block HomeMargin iconFont3 " /><small className="">Home</small></Link>
+          <Nav.Link to="/" className=" giveMargin2 ml-md-1 forHover giveColor"><MdPeopleAlt className="d-block ml-4 iconFont2 " /><small className="">MyNetwork</small></Nav.Link>
+          <Nav.Link to="/" className=" giveMargin ml-lg-0 ml-md-4 ml-sm-4 ml-4 forHover giveColor"><MdWork className="d-block iconFont5" /><small className="">jobs</small></Nav.Link>
+          <Nav.Link to="/" className=" marginForMessaging ml-md-1 forHover giveColor"><FiMessageSquare className="d-block iconFont1" /><small className="">Messaging</small></Nav.Link>
+          <Nav.Link to="/" className=" marginForNotif ml-md-1 forHover giveColor"><GrNotification className="iconFont d-block marginNotif
     "/><small className="">Notification</small></Nav.Link>
           <Dropdown className="pr-3 ml-lg-0 marginForMe">
             <Dropdown.Toggle variant="white" id="dropdown-basic">
@@ -140,8 +91,8 @@ const Customnavbar = (props) => {
                   </div>
 
                 </div>
-                <button type="button" className="btn btn-outline-info btn-block rounded-pill px-5 py-1">View profile</button>
-                <div className="nav-dropdown-section02">
+                {/* <button type="button" className="btn btn-outline-info btn-block rounded-pill px-5 py-1">View profile</button> */}
+                <Link className="btn btn-outline-info btn-block rounded-pill py-1" to={`/profile-page/${myProfile.name}_${myProfile.surname}`}>View profile</Link>                <div className="nav-dropdown-section02">
                   <div className="ml-3 nav-profile-dropdown-details">
                     <p className="font-weight-bold">Account</p>
                     <p><Link to="/">Settings & Privacy</Link></p>

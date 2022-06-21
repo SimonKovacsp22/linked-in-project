@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { Container, ProgressBar, } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { getProfileBasedOnId,getAllProfilesActionWithThunk } from '../redux/actions'
+import { getProfileBasedOnId, getAllProfilesActionWithThunk } from '../redux/actions'
 import { Link, useParams } from 'react-router-dom'
 import Navbar from './Navbar'
 import "../style/UserProfile.css"
@@ -16,21 +16,24 @@ const UserProfile = () => {
     console.log(id)
 
     const [user, setUser] = useState(null)
-    const [searchResult,setSearchResult]=useState([])
-    const [searchTerm,setSearchTerm]= useState('')
+    const [searchResult, setSearchResult] = useState([])
+    const [searchTerm, setSearchTerm] = useState('')
     const userProfile = useSelector((state) => state.userIdProfile.userIdProfileData[0])
-    useEffect(() => {
-        dispatch(getAllProfilesActionWithThunk())
-      
-    }, [])
-
- 
-
     const dispatch = useDispatch()
     useEffect(() => {
+        dispatch(getAllProfilesActionWithThunk())
         setUser(id)
         dispatch(getProfileBasedOnId(id))
+
     }, [id])
+
+
+
+    //const dispatch = useDispatch()
+    // useEffect(() => {
+    //     setUser(id)
+    //     dispatch(getProfileBasedOnId(id))
+    // }, [id])
 
 
 
@@ -39,7 +42,7 @@ const UserProfile = () => {
     return (
         <Container>
             <Navbar setSearchResult={setSearchResult} searchTerm={searchTerm} setSearchTerm={setSearchTerm} searchResult={searchResult} />
-            <div className='d-flex justify-content-between' style={{ marginTop: "10vh" }}>
+            <div className='d-flex justify-content-between user-profile' style={{ marginTop: "12vh" }}>
                 <div className="left-container">
                     <div className="my-profile-div">
                         <div className='profile-header-div'>

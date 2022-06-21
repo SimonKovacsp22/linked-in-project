@@ -112,20 +112,22 @@
   color: #666666;
   font-size: 15px;
 }
-.toggle-container {
-  position: absolute;
-  left: -70vw !important;
-  margin-top: -5px !important;
-  width: 100vw !important;
-  height: 92vh;
-  background-color: #00000099 !important;
-}
 
 .search-dropdown {
   width: 200px;
-
   background-color: white;
   border: 0.5px solid rgb(207, 207, 207);
   top: 45px;
   left: 10px;
+}
+.nav-profile-dropdown,
+.dropdown-menu {
+  width: 250px;
+  min-width: 250px;
+  left: -170px !important;
+}
+@media only screen and (max-width: 800px) {
+  .premiumFree small {
+    display: none;
+  }
 }

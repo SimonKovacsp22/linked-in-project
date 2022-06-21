@@ -25,7 +25,7 @@ const HomePage = () => {
     const [searchTerm, setSearchTerm] = useState('')
     return (
         <Container className='home-main-container'>
-            <Navbar />
+            <Navbar setSearchResult={setSearchResult} searchTerm={searchTerm} setSearchTerm={setSearchTerm} searchResult={searchResult} />
             <div className='d-flex justify-content-between home-container'>
                 <div className='mt-3'>
                     <Profile />

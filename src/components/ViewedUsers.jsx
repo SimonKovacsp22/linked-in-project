@@ -15,7 +15,7 @@ const ViewedUsers = () => {
                 <strong>People also viewed</strong>
                 <span><i className="bi bi-info-square-fill"></i></span>
             </div>
-            {allProfile && allProfile.slice(0, 7).map((singleProfile, i) => (
+            {allProfile && allProfile.slice(0, 6).map((singleProfile, i) => (
                 // <p key={i}>{singleProfile.name}</p>
                 <div className='d-flex pl-2 ml-2 single-profile-div' key={i}>
                     <div className="users-profile-div">

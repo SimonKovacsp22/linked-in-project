@@ -15,6 +15,7 @@
 .profile-header-div {
   position: relative;
 }
+
 .profile-cover-div {
   width: 780px;
   border-radius: 10px 10px 0 0;
@@ -23,6 +24,85 @@
   min-width: 780px;
   border-radius: 10px 10px 0 0;
   border: none;
+}
+@media only screen and (max-width: 1000px) {
+  .profile-main-container {
+    min-width: 100%;
+    padding: 0 5px 0 5px !important;
+    margin: 0 5px 0 5px !important;
+  }
+  .left-container {
+    width: 60%;
+    min-width: 60%;
+    height: auto;
+  }
+  .my-profile-div {
+    max-width: 100%;
+  }
+  .profile-cover-div {
+    width: 100%;
+    min-width: 100%;
+  }
+  .right-container {
+    width: 37% !important;
+    min-width: 37%;
+  }
+
+  .profile-header-div {
+    width: 100%;
+    min-width: 100%;
+  }
+  .profile-cover-div {
+    width: 100%;
+    min-width: 100%;
+  }
+  .my-cover-image {
+    width: 100%;
+    min-width: 100%;
+  }
+  .my-image-container {
+    max-width: 100px;
+    max-height: 100px;
+  }
+  .my-profile-image {
+    max-width: 90px;
+    max-height: 90px;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .profile-main-container {
+    max-width: 100%;
+    padding: 0 5px 0 5px !important;
+    margin: 0 5px 0 5px !important;
+  }
+  .profile-cover-div {
+    width: 110%;
+    max-width: 100%;
+  }
+  .my-profile-div {
+    max-width: 95%;
+  }
+  .left-container {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+  .right-container {
+    display: none;
+  }
+
+  .profile-header-div {
+    width: 100%;
+    min-width: 100%;
+  }
+  .profile-cover-div {
+    width: 100%;
+    min-width: 100%;
+  }
+  .my-cover-image {
+    width: 100%;
+    min-width: 100%;
+  }
 }
 .camera-div {
   background-color: rgb(255, 255, 255);
@@ -75,6 +155,7 @@ i.bi-camera-fill:hover {
   bottom: 0;
 }
 .my-profile-deatails {
+  width: 100%;
   margin-top: 50px;
   position: relative;
 }

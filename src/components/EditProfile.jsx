@@ -5,7 +5,7 @@ import "../style/EditProfile.css"
 
 export default function EditProfile(props) {
     const myProfile = useSelector((state) => state.myProfile.profileData)
-    console.log(myProfile._id);
+    //console.log(myProfile._id);
     const [image, setImage] = useState(null)
 
     const [editDetails, setEditDetails] = useState({
@@ -32,16 +32,15 @@ export default function EditProfile(props) {
             formData.get("profile")
             let response = await fetch(
                 `https://striveschool-api.herokuapp.com/api/profile/${editDetails.id}/picture`,
+                // `https://striveschool-api.herokuapp.com/api/profile/`,
+
                 {
                     method: "POST",
                     headers: {
                         Authorization:
                             "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmFkZThmMjY0OGVhODAwMTViZDhhZTEiLCJpYXQiOjE2NTU1NjQ1MzEsImV4cCI6MTY1Njc3NDEzMX0._-K2RTj3Yy2fqnV-4zPUH9sgSLayqXfW1aciSiV9tmg",
-
                     },
                     body: formData,
-
-
                 }
             )
             let data = await response.json()
