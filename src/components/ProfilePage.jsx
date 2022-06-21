@@ -22,6 +22,7 @@ const ProfilePage = () => {
         dispatch(getMyProfileDataActionWithThunk())
     }, [])
 
+
     const myProfile = useSelector((state) => state.myProfile.profileData)
     console.log(myProfile._id)
     return (
