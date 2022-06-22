@@ -3,9 +3,9 @@
 import { Col, Container, Row } from "react-bootstrap"
 import "../style/Experience.css"
 import ExperianceItem from "./ExperianceItem"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import React, { useEffect, useState } from "react"
-import { getUserExpById } from "../redux/actions"
+import { getSingletUserExpById, getUserExpById } from "../redux/actions"
 import AddExperiance from "./AddExperiance"
 
 const Experiance = ({ id }) => {
@@ -27,13 +27,13 @@ const Experiance = ({ id }) => {
                             <span>
 
                                 <i className='bi bi-plus-square pr-3' onClick={() => setModalShow(true)} style={{ cursor: "pointer" }}></i>
-                                <AddExperiance show={modalShow}
+                                <AddExperiance show={modalShow} 
                                     onHide={() => setModalShow(false)} />
                             </span>
                         </h5>
                     </Col>
                     <Col className='experiance-container'>
-                        <ExperianceItem />
+                        <ExperianceItem userId={id}/>
                     </Col>
                 </Col>
             </Row>

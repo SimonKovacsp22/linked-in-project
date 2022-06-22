@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Button, Col, Form, Modal, Row } from "react-bootstrap"
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Moment from 'moment';
 import "../style/ExperianceItem.css"
 import EditExperience from "./EditExperience";
+import { getSingletUserExpById } from "../redux/actions";
 
-const ExperianceItem = () => {
+const ExperianceItem = ({userId}) => {
     const pplExp = useSelector((state) => state.userIdExp.singleUserExperiences);
     const [modalShow, setModalShow] = React.useState(false);
+    const [expId,getExpId] = useState('')
+    const dispatch = useDispatch();
 
     // useEffect(() => {
     //     console.log(pplExp.area);
@@ -30,12 +33,20 @@ const ExperianceItem = () => {
                         <hr style={{ width: '100%' }} />
                     </Col>
                     <Col sm={1}>
-                        <i className="bi bi-pen" onClick={() => setModalShow(true)} style={{ cursor: "pointer" }}>
+                        <i className="bi bi-pen" onClick={() =>{
+                                    setModalShow(true)
+                                    dispatch(getSingletUserExpById(userId,singleExp._id))  
+                                    console.log('this is profile id');
+                                    console.log(userId);
+                                    console.log('this is exp id');
+                                    console.log(singleExp._id);
+                                    getExpId(singleExp._id)
+                        } } style={{ cursor: "pointer" }}>
 
                         </i>
 
                     </Col>
-                    <EditExperience show={modalShow}
+                    <EditExperience show={modalShow} expid={expId}
                         onHide={() => setModalShow(false)} />
                 </Row>
             ))}
