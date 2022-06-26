@@ -34,7 +34,7 @@ const UserProfile = () => {
 
 
 
-    //const [user, setUser] = useState(userProfile)
+    
 
     return (
         <Container>

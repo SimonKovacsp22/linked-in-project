@@ -20,7 +20,7 @@ const ViewedUsers = () => {
                 <div className='d-flex pl-2 ml-2 single-profile-div' key={i}>
                     <div className="users-profile-div">
                         <img className="users-profile-image" src={singleProfile.image} alt="" />
-                    </div>
+                    </div> 
                     <div className="px-1 ml-2">
                         <Link className='user-page-link' to={`/user-profile/${singleProfile._id}`} ><strong className='user-page-link'>{singleProfile.name} {singleProfile.surname}</strong></Link>
                         {/* <div className='font-weight-bold'>{singleProfile.name} {singleProfile.surname}</div> */}

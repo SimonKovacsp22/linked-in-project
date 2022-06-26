@@ -10,6 +10,7 @@ import userIdProfileReducer from "../reducers/userIdProfileReducer"
 import allProfilesReducer from "../reducers/allProfileReducer"
 import expReducer from "../reducers/expReducer"
 import allPostsReducer from "../reducers/allPostsReducer"
+import refreshReducer from "../reducers/refreshReducer"
 
 const persistConfig = {
   key: "root",
@@ -30,6 +31,7 @@ const combinedReducer = combineReducers({
   userIdProfile: userIdProfileReducer,
   userIdExp: expReducer,
   allPosts: allPostsReducer,
+  allChanges: refreshReducer,
 })
 
 const persistedReducer = persistReducer(persistConfig, combinedReducer)

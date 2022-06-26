@@ -27,7 +27,23 @@
 .post-description-top-paragraph {
   margin-bottom: 0;
   color:rgb(98, 98, 98) ;
-  line-height: 10px;
+  overflow: hidden;
+
+}
+
+.post-description-top-see-more {
+  background: none;
+  border: none;
+  outline: none;
+  color: #007bff;
+}
+
+.see-more {
+  height:auto
+}
+
+.post-description-top-see-more:hover {
+  color: #004182;
   
 }
 

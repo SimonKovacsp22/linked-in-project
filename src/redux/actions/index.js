@@ -5,6 +5,9 @@ export const GET_DATA_FOR_ALL_PROFILES = "GET_DATA_FOR_ALL_PROFILES"
 export const GET_DATA_FOR_SINGLE_USER_ID = "GET_DATA_FOR_SINGLE_USER_ID"
 export const GET_SINGLE_USER_EXP = "GET_SINGLE_USER_EXP"
 export const GET_DATA_FOR_ALL_POSTS = "GET_DATA_FOR_ALL_POSTS"
+export const PUT_REQUEST = 'PUT_REQUEST'
+export const SET_LOADING_TRUE =' SET_LOADING_TRUE'
+export const SET_LOADING_FALSE = 'SET_LOADING_FALSE'
 
 export const getMyProfileDataActionWithThunk = () => {
   return async (dispatch) => {
@@ -144,8 +147,31 @@ export const getAllPostsActionWithThunk = () => {
         type: GET_DATA_FOR_ALL_POSTS,
         payload: allPostsData,
       })
+      dispatch(resetLoadingAction())
+      
     } catch (err) {
       console.log(err)
     }
+  }
+}
+
+export const putRequestAction = (dataSend)=> {
+
+    return {
+      type: PUT_REQUEST,
+      payload: dataSend
+    }
+}
+
+export const setLoadingAction = () => {
+  return {
+    type: SET_LOADING_TRUE,
+   
+}}
+
+export const resetLoadingAction = () => {
+  return {
+    type: SET_LOADING_FALSE,
+    
   }
 }
