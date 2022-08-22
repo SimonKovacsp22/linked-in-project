@@ -30,7 +30,7 @@ const AddExperiance = (props) => {
 
     try {
       let response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/${myProfile._id}/experiences`,
+        `${process.env.REACT_APP_URL}/profile/${myProfile._id}/experiences`,
         {
           method: "POST",
           headers: {

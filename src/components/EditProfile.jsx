@@ -30,7 +30,7 @@ export default function EditProfile(props) {
       formData.append("profile", image)
       formData.get("profile")
       let response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/${editDetails.id}/picture`,
+        `${process.env.REACT_APP_URL}/profile/${editDetails.id}/picture`,
         // `https://striveschool-api.herokuapp.com/api/profile/`,
 
         {

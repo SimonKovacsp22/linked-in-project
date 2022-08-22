@@ -37,7 +37,7 @@ const EditExperience = (props) => {
 
     try {
       let response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/${myProfile._id}/experiences/${props.expid}`,
+        `${process.env.REACT_APP_URL}/profile/${myProfile._id}/experiences/${props.expid}`,
         {
           method: "PUT",
           headers: {
