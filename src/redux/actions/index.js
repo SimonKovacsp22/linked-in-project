@@ -10,8 +10,7 @@ export const GET_SINGLE_EXP = "GET_SINGLE_EXP"
 export const getMyProfileDataActionWithThunk = () => {
   return async (dispatch) => {
     let headers = {
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmFkZThmMjY0OGVhODAwMTViZDhhZTEiLCJpYXQiOjE2NTU1NjQ1MzEsImV4cCI6MTY1Njc3NDEzMX0._-K2RTj3Yy2fqnV-4zPUH9sgSLayqXfW1aciSiV9tmg",
+      Authorization: `Bearer ${process.env.REACT_APP_TOKEN_MY}`,
       "Content-type": "application/json",
     }
     try {
@@ -38,8 +37,7 @@ export const getMyProfileDataActionWithThunk = () => {
 
 export const getAllProfilesActionWithThunk = () => {
   let headers = {
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmFkZThmMjY0OGVhODAwMTViZDhhZTEiLCJpYXQiOjE2NTU1NjQ1MzEsImV4cCI6MTY1Njc3NDEzMX0._-K2RTj3Yy2fqnV-4zPUH9sgSLayqXfW1aciSiV9tmg",
+    Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
     "Content-type": "application/json",
   }
   return async (dispatch) => {
@@ -67,8 +65,7 @@ export const getAllProfilesActionWithThunk = () => {
 
 export const getProfileBasedOnId = (userId) => {
   let headers = {
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmFkZThmMjY0OGVhODAwMTViZDhhZTEiLCJpYXQiOjE2NTU1NjQ1MzEsImV4cCI6MTY1Njc3NDEzMX0._-K2RTj3Yy2fqnV-4zPUH9sgSLayqXfW1aciSiV9tmg",
+    Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
     "Content-type": "application/json",
   }
   return async (dispatch) => {
@@ -95,8 +92,7 @@ export const getProfileBasedOnId = (userId) => {
 }
 export const getUserExpById = (userId) => {
   let headers = {
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmFkZThmMjY0OGVhODAwMTViZDhhZTEiLCJpYXQiOjE2NTU1NjQ1MzEsImV4cCI6MTY1Njc3NDEzMX0._-K2RTj3Yy2fqnV-4zPUH9sgSLayqXfW1aciSiV9tmg",
+    Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
     "Content-type": "application/json",
   }
   return async (dispatch) => {
@@ -122,36 +118,33 @@ export const getUserExpById = (userId) => {
   }
 }
 
-
-export const getSingletUserExpById = (userId ,expId) =>{
-  return async (dispatch) =>{
-    try{
-      let response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences/${expId}`,{
-        method: 'GET',
-        headers: {
-          Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmFkZThmMjY0OGVhODAwMTViZDhhZTEiLCJpYXQiOjE2NTU1NjQ1MzEsImV4cCI6MTY1Njc3NDEzMX0._-K2RTj3Yy2fqnV-4zPUH9sgSLayqXfW1aciSiV9tmg",
-        "Content-type": "application/json",
+export const getSingletUserExpById = (userId, expId) => {
+  return async (dispatch) => {
+    try {
+      let response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences/${expId}`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
+            "Content-type": "application/json",
+          },
         }
-      })
-      let singleExperiences = await response.json();
+      )
+      let singleExperiences = await response.json()
       dispatch({
         type: GET_SINGLE_EXP,
         payload: singleExperiences,
       })
-
-    }catch(err){
-      console.log(err);
+    } catch (err) {
+      console.log(err)
     }
   }
 }
 
-
-
 export const getAllPostsActionWithThunk = () => {
   let headers = {
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmFkZThmMjY0OGVhODAwMTViZDhhZTEiLCJpYXQiOjE2NTU1NjQ1MzEsImV4cCI6MTY1Njc3NDEzMX0._-K2RTj3Yy2fqnV-4zPUH9sgSLayqXfW1aciSiV9tmg",
+    Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
     "Content-type": "application/json",
   }
   return async (dispatch) => {
