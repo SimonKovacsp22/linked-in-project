@@ -1,94 +1,25 @@
 /** @format */
 
-/* .navbarbg {
-  background-color: white;
-  height: 8vh;
-  width: 100%;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  right: 0;
-}
-.logo {
-  position: relative;
-  height: 35px;
-  left: -5px;
-}
-
-.navbarSearch {
-  height: 5vh;
-  padding-left: 2.7rem;
-  margin-top: 0.15rem;
-  background-color: #eef3f7;
-  border: transparent;
-  border-radius: 5%;
-}
-.searchIcon {
-  position: absolute;
-  margin-top: 0.8rem;
-  margin-left: 1rem;
-}
-.premiumFree {
-  color: rgb(99, 99, 19);
-  line-height: 1rem;
-  min-width: 150px;
-}
-.giveBorder {
-  border-left: solid 1px rgb(184, 176, 176);
-}
-.iconFont {
-  font-size: 20px;
-  color: #666666;
-}
-.giveMargin {
-  margin-bottom: 0.4rem;
-}
-.iconFont2 {
-  font-size: 23px;
-  color: #666666;
-}
-.iconFont1 {
-  margin-left: 1.5rem;
-  font-size: 20px;
-  color: #666666;
-}
-.HomeMargin {
-  margin-left: 0.35rem;
-}
-.giveColor {
-  color: #666666;
-}
-.marginForMe {
-  margin-left: 1.2rem;
-}
-.nav-profile-image {
-  height: 25px;
-  border-radius: 50%;
-  margin-bottom: -3px;
-} */
 .navbarbg {
   background-color: white;
-  height: 9vh;
   z-index: 9999;
-}
-.logo {
-  position: relative;
-  height: 35px;
-  left: -5px;
+  min-width: 350px;
 }
 .navbarSearch {
   height: 5vh;
-  padding-left: 2.7rem;
+  padding-left: 2.4rem;
   margin-top: 0.15rem;
   background-color: #eef3f7;
   border: transparent;
-  border-radius: 5%;
+  border-radius: 5px;
 }
 .searchIcon {
   position: absolute;
-  margin-top: 0.8rem;
-  margin-left: 1rem;
+  bottom: 28%;
+  left: 10px;
+}
+.forSearch {
+  position: relative;
 }
 .premiumFree {
   color: rgb(99, 99, 19);
@@ -117,6 +48,9 @@
 .giveColor {
   color: #666666;
 }
+.giveColor:hover {
+  border-bottom: 1px solid black;
+}
 .marginForMe {
   margin-left: 1.2rem;
 }
@@ -140,11 +74,6 @@
   font-size: 20px;
   margin-bottom: 0.1rem;
 }
-.nav-profile-image {
-  height: 25px;
-  border-radius: 50%;
-  margin-bottom: -3px;
-}
 .giveMargin2 {
   margin-bottom: 0.5rem;
 }
@@ -153,119 +82,52 @@
   color: #666666;
   margin-left: 0.1rem;
 }
-.nav-profile-image-dropdown {
-  height: 45px;
-  border-radius: 50%;
-  margin-bottom: -3px;
-}
-.nav-profile-dropdown {
-  width: 300px;
-  height: 400px;
-  margin-right: 0;
-}
-.nav-profile-dropdown-details p {
-  margin-bottom: 0;
+.forHover:hover {
+  color: black;
 }
 .logo {
   position: relative;
   height: 35px;
   left: -5px;
 }
-.navbarSearch {
-  height: 5vh;
-  padding-left: 2.7rem;
-  margin-top: 0.15rem;
-  background-color: #eef3f7;
-  border: transparent;
-  border-radius: 5%;
-}
-.searchIcon {
-  position: absolute;
-  margin-top: 0.8rem;
-  margin-left: 1rem;
-}
-.premiumFree {
-  color: rgb(99, 99, 19);
-  line-height: 1rem;
-  min-width: 150px;
-}
-.giveBorder {
-  border-left: solid 1px rgb(184, 176, 176);
-}
-.iconFont {
-  font-size: 19px;
-  color: #666666;
-}
-.iconFont2 {
-  font-size: 23px;
-  color: #666666;
-}
-.iconFont1 {
-  margin-left: 1.5rem;
-  font-size: 20px;
-  color: #666666;
-}
-.HomeMargin {
-  margin-left: 0.35rem;
-}
-.giveColor {
-  color: #666666;
-}
-.marginForMe {
-  margin-left: 1.2rem;
-}
-.marginNotif {
-  margin-left: 1.4rem;
-}
-.marginForMessaging {
-  margin-bottom: 0.2rem;
-}
-.giveMargin {
-  margin-bottom: 0.5rem;
-}
-.marginForHome {
-  margin-bottom: 0.45rem;
-}
-.marginForNotif {
-  margin-bottom: 0.1rem;
-}
-.iconFont3 {
-  color: #666666;
-  font-size: 20px;
-  margin-bottom: 0.1rem;
-}
 .nav-profile-image {
-  height: 25px;
+  height: 28px;
   border-radius: 50%;
   margin-bottom: -3px;
-}
-.giveMargin2 {
-  margin-bottom: 0.5rem;
-}
-.iconFont5 {
-  font-size: 23px;
-  color: #666666;
-  margin-left: 0.1rem;
 }
 .nav-profile-image-dropdown {
   height: 45px;
   border-radius: 50%;
   margin-bottom: -3px;
 }
-.nav-profile-dropdown {
-  width: 300px;
-  height: 400px;
-  margin-right: 0;
+.nav-dropdown-section01 {
+  width: 100%;
+  height: 70px;
+  /* border-bottom: 1px solid rgb(190, 190, 190); */
 }
 .nav-profile-dropdown-details p {
-  margin-bottom: 0;
+  margin: 5px 0 5px 0;
+}
+.nav-profile-dropdown-details p a {
+  color: #666666;
+  font-size: 15px;
 }
 
 .search-dropdown {
   width: 200px;
-  
   background-color: white;
   border: 0.5px solid rgb(207, 207, 207);
   top: 45px;
   left: 10px;
+}
+.nav-profile-dropdown,
+.dropdown-menu {
+  width: 250px;
+  min-width: 250px;
+  left: -170px !important;
+}
+@media only screen and (max-width: 800px) {
+  .premiumFree small {
+    display: none;
+  }
 }

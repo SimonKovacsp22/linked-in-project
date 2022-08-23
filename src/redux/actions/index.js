@@ -5,22 +5,22 @@ export const GET_DATA_FOR_ALL_PROFILES = "GET_DATA_FOR_ALL_PROFILES"
 export const GET_DATA_FOR_SINGLE_USER_ID = "GET_DATA_FOR_SINGLE_USER_ID"
 export const GET_SINGLE_USER_EXP = "GET_SINGLE_USER_EXP"
 export const GET_DATA_FOR_ALL_POSTS = "GET_DATA_FOR_ALL_POSTS"
+export const GET_SINGLE_EXP = "GET_SINGLE_EXP"
+
+// https://striveschool-api.herokuapp.com/api
 
 export const getMyProfileDataActionWithThunk = () => {
   return async (dispatch) => {
     let headers = {
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmFhZGM5Zjk5OTlmZTAwMTVlNjZlMjIiLCJpYXQiOjE2NTUzNjQ3NjgsImV4cCI6MTY1NjU3NDM2OH0.JXJ65n1oTxFcYw90c-b5HB1OJGtIJ9L_-BZcySGIct4",
+      Authorization: `Bearer ${process.env.REACT_APP_TOKEN_MY}`,
       "Content-type": "application/json",
     }
     try {
-      let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/me",
-        {
-          method: "GET",
-          headers,
-        }
-      )
+      // https://striveschool-api.herokuapp.com/api
+      let response = await fetch(`${process.env.REACT_APP_URL}/profile/me`, {
+        method: "GET",
+        headers,
+      })
 
       let myProfileData = await response.json()
       console.log(myProfileData)
@@ -37,19 +37,15 @@ export const getMyProfileDataActionWithThunk = () => {
 
 export const getAllProfilesActionWithThunk = () => {
   let headers = {
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmFhZGM5Zjk5OTlmZTAwMTVlNjZlMjIiLCJpYXQiOjE2NTUzNjQ3NjgsImV4cCI6MTY1NjU3NDM2OH0.JXJ65n1oTxFcYw90c-b5HB1OJGtIJ9L_-BZcySGIct4",
+    Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
     "Content-type": "application/json",
   }
   return async (dispatch) => {
     try {
-      let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/",
-        {
-          method: "GET",
-          headers,
-        }
-      )
+      let response = await fetch(`${process.env.REACT_APP_URL}/profile/`, {
+        method: "GET",
+        headers,
+      })
 
       let allProfilesData = await response.json()
       console.log(allProfilesData)
@@ -66,14 +62,13 @@ export const getAllProfilesActionWithThunk = () => {
 
 export const getProfileBasedOnId = (userId) => {
   let headers = {
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmFhZGM5Zjk5OTlmZTAwMTVlNjZlMjIiLCJpYXQiOjE2NTUzNjQ3NjgsImV4cCI6MTY1NjU3NDM2OH0.JXJ65n1oTxFcYw90c-b5HB1OJGtIJ9L_-BZcySGIct4",
+    Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
     "Content-type": "application/json",
   }
   return async (dispatch) => {
     try {
       let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/" + userId,
+        `${process.env.REACT_APP_URL}/profile/${userId}`,
         {
           method: "GET",
           headers,
@@ -94,16 +89,13 @@ export const getProfileBasedOnId = (userId) => {
 }
 export const getUserExpById = (userId) => {
   let headers = {
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmFhZGM5Zjk5OTlmZTAwMTVlNjZlMjIiLCJpYXQiOjE2NTUzNjQ3NjgsImV4cCI6MTY1NjU3NDM2OH0.JXJ65n1oTxFcYw90c-b5HB1OJGtIJ9L_-BZcySGIct4",
+    Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
     "Content-type": "application/json",
   }
   return async (dispatch) => {
     try {
       let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/" +
-          userId +
-          "/experiences",
+        `${process.env.REACT_APP_URL}/profile/${userId}/experiences`,
         {
           method: "GET",
           headers,
@@ -121,21 +113,41 @@ export const getUserExpById = (userId) => {
   }
 }
 
+export const getSingletUserExpById = (userId, expId) => {
+  return async (dispatch) => {
+    try {
+      let response = await fetch(
+        `${process.env.REACT_APP_URL}/profile/${userId}/experiences/${expId}`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
+            "Content-type": "application/json",
+          },
+        }
+      )
+      let singleExperiences = await response.json()
+      dispatch({
+        type: GET_SINGLE_EXP,
+        payload: singleExperiences,
+      })
+    } catch (err) {
+      console.log(err)
+    }
+  }
+}
+
 export const getAllPostsActionWithThunk = () => {
   let headers = {
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmFhZGM5Zjk5OTlmZTAwMTVlNjZlMjIiLCJpYXQiOjE2NTUzNjQ3NjgsImV4cCI6MTY1NjU3NDM2OH0.JXJ65n1oTxFcYw90c-b5HB1OJGtIJ9L_-BZcySGIct4",
+    Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
     "Content-type": "application/json",
   }
   return async (dispatch) => {
     try {
-      let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/posts/",
-        {
-          method: "GET",
-          headers,
-        }
-      )
+      let response = await fetch(`${process.env.REACT_APP_URL}/posts/`, {
+        method: "GET",
+        headers,
+      })
 
       let allPostsData = await response.json()
       console.log(allPostsData)

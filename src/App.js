@@ -3,9 +3,9 @@
 import "./App.css"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
-import HomePage from "./components/HomePage"
-import ProfilePage from "./components/ProfilePage"
-import UserProfile from "./components/UserProfile"
+import HomePage from "./pages/HomePage"
+import ProfilePage from "./pages/ProfilePage"
+import UserProfile from "./pages/UserProfilePage"
 
 const App = () => (
   <BrowserRouter>
