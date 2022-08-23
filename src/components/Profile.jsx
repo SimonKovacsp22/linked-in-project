@@ -7,8 +7,8 @@ import { Link } from "react-router-dom"
 
 const Profile = () => {
   const myProfile = useSelector((state) => state.myProfile.profileData)
-  console.log(myProfile)
-  //console.log(myProfile[0]._id);
+ 
+  
 
   return (
     <div className='profile-container'>
