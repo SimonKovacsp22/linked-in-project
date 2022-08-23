@@ -8,32 +8,29 @@ import { getAllPostsActionWithThunk,resetLoadingAction } from "../redux/actions"
 const PostList = () => {
  const dispatch =  useDispatch()
  const change = useSelector((state)=> state.allChanges.changes)
- console.log(change)
-  
- let posts =  useSelector((state) => state.allPosts.allPosts[0] )
- 
- 
+
  useEffect(()=>{
-   dispatch(getAllPostsActionWithThunk())
-   
-   
- },[change])
+  dispatch(getAllPostsActionWithThunk())
+  
+  
+},[change])
 
+ useEffect(()=> {
+ 
+   resetLoadingAction()
+ },[])
 
+  
+ let posts =  useSelector((state) => state.allPosts.allPosts )
+ 
+ 
 
-
-
-
-  useEffect(()=> {
-    dispatch(getAllPostsActionWithThunk())
-    resetLoadingAction()
-  },[])
 
 
   return (
         <div className='post-list'>
-          <Post data={posts[2258]}  />
-          {posts.slice(0,12).map((post)=>(
+       
+          {posts?.map((post)=>(
             <Post key={post._id} data={post}/>
           ))}
         </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import "../style/PostList.css";
-import { Card,Spinner } from "react-bootstrap";
+import { Card, Spinner } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHandsClapping,
@@ -13,50 +13,42 @@ import {
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import { putRequestAction } from "../redux/actions";
-import {setLoadingAction } from "../redux/actions";
+import { setLoadingAction } from "../redux/actions";
 
-
-
-
-export default function Post({ data}) {
+export default function Post({ data }) {
   const [seeMore, setSeeMore] = useState(false);
   const [heightAuto, setHeightAuto] = useState("22px");
   const [showEdit, setShowEdit] = useState(false);
-  const [textInput, setTextInput] = useState(data.text)
- 
+  const [textInput, setTextInput] = useState(data.text);
+
   const myProfile = useSelector((state) => state.myProfile.profileData);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const isLoading = useSelector((state)=> state.allChanges.isLoading)
+  const isLoading = useSelector((state) => state.allChanges.isLoading);
 
+  const handlePutRequest = async (input) => {
+    try {
+      let response = await fetch(
+        "https://striveschool-api.herokuapp.com/api/posts/" + data._id,
+        {
+          method: "PUT",
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmFhZGM5Zjk5OTlmZTAwMTVlNjZlMjIiLCJpYXQiOjE2NTUzNjQ3NjgsImV4cCI6MTY1NjU3NDM2OH0.JXJ65n1oTxFcYw90c-b5HB1OJGtIJ9L_-BZcySGIct4",
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({ text: input }),
+        }
+      );
 
-
-  const handlePutRequest = async (input)=> {
-    
-    try{ let response = await fetch('https://striveschool-api.herokuapp.com/api/posts/' + data._id ,
-    { 
-     method:'PUT',
-     headers: { Authorization:
-       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmFhZGM5Zjk5OTlmZTAwMTVlNjZlMjIiLCJpYXQiOjE2NTUzNjQ3NjgsImV4cCI6MTY1NjU3NDM2OH0.JXJ65n1oTxFcYw90c-b5HB1OJGtIJ9L_-BZcySGIct4",
-     "Content-type": "application/json",
-   },
-   body: JSON.stringify({text:input})
-    } ,
-    
-    )
-    
-  dispatch(setLoadingAction())}
-    
-    catch(error){
-     console.log(error)
+      dispatch(setLoadingAction());
+    } catch (error) {
+      console.log(error);
     }
-  }
-
-
-
+  };
 
   return (
-    <Card style={{ width: "100%", height: "100%" }}>
+    <Card >
       <div className="d-flex flex-column post-top-section">
         <div className="d-flex justify-content-between mb-3 ">
           <div className="d-flex">
@@ -77,52 +69,57 @@ export default function Post({ data}) {
             className=""
             onClick={() => {
               setShowEdit(true);
-              
             }}
           >
             {myProfile.username === data.username && (
               <i className="bi bi-pen"></i>
             )}
           </div>
-         
-            {myProfile.username !== data.username &&  <div>
 
-              <FontAwesomeIcon style={{ height: "25px" }} icon={faEllipsis} /></div>
-            }
-          
+          {myProfile.username !== data.username && (
+            <div>
+              <FontAwesomeIcon style={{ height: "25px" }} icon={faEllipsis} />
+            </div>
+          )}
         </div>
         <div className="d-flex flex-column">
           {!showEdit && (
-           <>{ !isLoading &&<p
-           className={"post-description-top-paragraph"}
-           style={{ height: heightAuto }}
-         >
-           {data.text}
-           
-         </p>}
-           {isLoading && <Spinner animation="grow" variant="info" />}</> 
-            
+            <>
+              {!isLoading && (
+                <p
+                  className={"post-description-top-paragraph"}
+                  style={{ height: heightAuto }}
+                >
+                  {data.text}
+                </p>
+              )}
+              {isLoading && <Spinner animation="grow" variant="info" />}
+            </>
           )}
-          {showEdit &&<div>
-            <textarea
-            value={textInput}
-            onChange={(e) => { setTextInput(e.target.value); } }
-            cols="65"
-            rows="2"
-          >
-          </textarea> 
-           <button 
-           className="btn btn-primary modal-footer-post-button"
-           onClick={()=>{
-            handlePutRequest(textInput);
-            dispatch(putRequestAction(textInput))
-            setShowEdit(false)
-            
-           }}
-           >Save</button></div>
-            }
-           
-          {!showEdit && !seeMore && (
+          {showEdit && (
+            <div>
+              <textarea
+                value={textInput}
+                onChange={(e) => {
+                  setTextInput(e.target.value);
+                }}
+                cols="65"
+                rows="2"
+              ></textarea>
+              <button
+                className="btn btn-primary modal-footer-post-button"
+                onClick={() => {
+                  handlePutRequest(textInput);
+                  dispatch(putRequestAction(textInput));
+                  setShowEdit(false);
+                }}
+              >
+                Save
+              </button>
+            </div>
+          )}
+
+          {!showEdit && !seeMore &&  (data.text.length > 67) && (
             <button
               onClick={() => {
                 setSeeMore(true);
@@ -135,15 +132,15 @@ export default function Post({ data}) {
           )}
         </div>
       </div>
-      <div className="mt-2 ml-3">
-        <a href="#" className="post-description-top-anchor">
+      <div className="mt-2 ml-3 mb-2">
+        <a href="/" className="post-description-top-anchor">
           https://lnkd.in/eAnha1w
         </a>
       </div>
 
       <Card.Img
         variant="top"
-        src="https://scontent-vie1-1.xx.fbcdn.net/v/t45.1600-4/121630170_6209037290896_4924280649432737797_n.png?stp=cp0_dst-jpg_q90_s526x296_spS444&_nc_cat=106&ccb=1-7&_nc_sid=68ce8d&_nc_ohc=U1a0DM_xfDgAX_aFUI0&_nc_ht=scontent-vie1-1.xx&oh=00_AT-s5stl-6434bqdqLU58TCmSxfO2EYE9EYU9MLOFLx9qQ&oe=62B76F00"
+        src={data.image || "https://media-exp1.licdn.com/dms/image/sync/D4D34AQFJTYjm-lVQNw/ugc-proxy-shrink_800/0/1660125678728?e=1661860800&v=beta&t=h-OxA5cXZeRlSihpjbeaZneOWseytLD7sTSgVF-9Lm8"}
       />
       <Card.Body>
         <div className="post-bottom-section">

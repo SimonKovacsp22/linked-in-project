@@ -1,4 +1,6 @@
 import {Modal,Button} from 'react-bootstrap'
+import { useDispatch,useSelector } from "react-redux"
+import {createPostActionWithThunk} from '../redux/actions/index'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown,
   faEarthAmericas,
@@ -11,36 +13,28 @@ import { faCaretDown,
   faCommentDots, 
   faPlayCircle} from '@fortawesome/free-solid-svg-icons';
   import {useEffect, useState} from 'react'
+import { useRef } from 'react';
 
 
-
-
- const handlePostRequest = async (body)=> {
-    try{ let response = await fetch('https://striveschool-api.herokuapp.com/api/posts/',
-     { 
-      method:'POST',
-      headers: { Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmFhZGM5Zjk5OTlmZTAwMTVlNjZlMjIiLCJpYXQiOjE2NTUzNjQ3NjgsImV4cCI6MTY1NjU3NDM2OH0.JXJ65n1oTxFcYw90c-b5HB1OJGtIJ9L_-BZcySGIct4",
-      "Content-type": "application/json",
-    },
-    body: JSON.stringify({text:body})
-     } 
-     )}
-     catch(error){
-      console.log(error)
-     }
+ const samplePost = {
+  text:"", image:"",username:"Sidath",userId:"63037d303468197c9c3c8a51"
  }
 
 
-const ModalPost=({handleClose,createPost,profile})=> {
-  const [post, setPost]= useState('')
+const ModalPost =({handleClose,createPost,profile}) => {
+
+  const dispatch = useDispatch()
+  const userId = useSelector((state) => state.myProfile.profileData)
+
+  const [post, setPost]= useState(samplePost)
+  const [image,setImage] = useState(null)
   const [isDisabled, setIsDisabled] = useState(true);
 
   useEffect(()=>{
-    if(post.length >= 3){
+    if(post.text.length >= 3){
       setIsDisabled(false)
     }
-    else if(post.length < 3){
+    else if(post.text.length < 3){
       setIsDisabled(true)
     }
   },[post])
@@ -73,9 +67,9 @@ const ModalPost=({handleClose,createPost,profile})=> {
                 <div>
                   <textarea
                   onChange={(e)=>{
-                      setPost( e.target.value);
+                      setPost({...post, text:e.target.value});
                   }}
-                  value={post}
+                  value={post.text}
                    className='modal-body-textarea'
                      cols="30"
                       rows="5"
@@ -86,8 +80,12 @@ const ModalPost=({handleClose,createPost,profile})=> {
           </Modal.Body>
           <Modal.Footer>
             <div className='d-flex align-items-center justify-content-between flex-grow-1'>
-             <div className='modal-footer-dark-button-container'>
-             <FontAwesomeIcon icon={faImage}/>
+             <div className='modal-footer-file-input-container'>
+             <input type="file" name="file" id="file" className="inputfile" onChange={(e)=> setImage(e.target.files[0])}/>
+             
+              <label className='mb-0' htmlFor="file"><FontAwesomeIcon icon={faImage}/></label>
+              
+             
              </div>
              <div className='modal-footer-dark-button-container'>
              <FontAwesomeIcon icon={faPlayCircle}/>
@@ -114,7 +112,7 @@ const ModalPost=({handleClose,createPost,profile})=> {
             </Button>
               <Button className='modal-footer-post-button'
               disabled={isDisabled}
-               variant="primary" onClick={()=>{ handlePostRequest(post); handleClose() }}>
+               variant="primary" onClick={()=>{ dispatch(createPostActionWithThunk(post,image)); handleClose(); setImage(null); setPost(samplePost) }}>
                 Post
               </Button>
            </div>

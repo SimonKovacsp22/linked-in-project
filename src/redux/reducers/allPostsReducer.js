@@ -1,4 +1,4 @@
-import {GET_DATA_FOR_ALL_POSTS} from '../actions'
+import {GET_DATA_FOR_ALL_POSTS , CREATE_POST} from '../actions'
 
 const initialState = {
   allPosts: [],
@@ -9,7 +9,12 @@ const allPostsReducer = (state = initialState, action) => {
     case GET_DATA_FOR_ALL_POSTS:
       return {
         ...state,
-        allPosts:[action.payload]
+        allPosts: action.payload
+      }
+
+    case CREATE_POST:
+      return {
+        ...state, allPosts:[...state.allPosts,action.payload]
       }
 
     default:
