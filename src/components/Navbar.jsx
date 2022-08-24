@@ -1,7 +1,6 @@
 /** @format */
 
-
-import { Nav, Navbar, Container, Dropdown } from "react-bootstrap";
+import { Nav, Navbar, Container, Dropdown } from "react-bootstrap"
 
 import "../style/Navbar.css"
 import { useSelector } from "react-redux"
@@ -13,17 +12,18 @@ import { ImHome3 } from "react-icons/im"
 import { Link } from "react-router-dom"
 import ToggleMenu from "./ToggleMenu"
 import HomePage from "../pages/HomePage"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClock } from "@fortawesome/free-regular-svg-icons";
-import SearchItem from "./SearchItem";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faClock } from "@fortawesome/free-regular-svg-icons"
+import SearchItem from "./SearchItem"
+import { useEffect } from "react"
 
 const Customnavbar = (props) => {
   const { setSearchResult, setSearchTerm, searchTerm, searchResult } = props
-  const myProfile = useSelector((state) => state.myProfile.profileData)
+  //const myProfile = useSelector((state) => state.myProfile.profileData)
+  const myProfile = useSelector((state) => state.logUser.loginData)
+  console.log(myProfile)
 
-  const allProfiles = useSelector((state)=> state.allProfiles.allProfilesData)
- 
-
+  const allProfiles = useSelector((state) => state.allProfiles.allProfilesData)
 
   const handleSearch = (profileName) => {
     if (profileName.length > 2) {
@@ -48,72 +48,127 @@ const Customnavbar = (props) => {
       handleSearch(event.target.value)
     }
   }
-
+  useEffect(() => {}, [myProfile])
   return (
-
-
-   
-    <Navbar className="navbarbg" expand="lg" fixed="top">
+    <Navbar className='navbarbg' expand='lg' fixed='top'>
       <Container>
-        <Navbar.Brand href="#home" className="mr-0"><img src="https://brandlogos.net/wp-content/uploads/2016/06/linkedin-logo.png" alt="" height={50} /></Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto position-relative">
-            <FaSearch className="searchIcon giveColor" />
-            <input type="text"
-             value={searchTerm}
-             onClick={(event)=>{handleSearch(event.target.value)}}
-             onKeyDown={(e)=>{handleKeyPress(e)}}
-             onChange={(e)=> {
-              setSearchTerm(e.target.value)
-             }}
-             placeholder="Search"
-              className="mr-sm-5 navbarSearch" 
-              />
-            {(searchResult.length > 0) && <div className="position-absolute search-dropdown">
-             <div className="border-bottom">
-              
-                <div className="d-flex justify-content-between text-secondary fw-light">
-                  <p className="ml-3 mt-3">Recent</p>
-                  <p className="mr-3 mt-3 hover-pointer"
-                   onClick={()=> {
-                   setSearchResult('')
-                  }}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-x-lg" viewBox="0 0 16 16">
-                  <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-                </svg></p>
-                  
+        <Navbar.Brand href='#home' className='mr-0'>
+          <img
+            src='https://brandlogos.net/wp-content/uploads/2016/06/linkedin-logo.png'
+            alt=''
+            height={50}
+          />
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls='basic-navbar-nav' />
+        <Navbar.Collapse id='basic-navbar-nav'>
+          <Nav className='mr-auto position-relative'>
+            <FaSearch className='searchIcon giveColor' />
+            <input
+              type='text'
+              value={searchTerm}
+              onClick={(event) => {
+                handleSearch(event.target.value)
+              }}
+              onKeyDown={(e) => {
+                handleKeyPress(e)
+              }}
+              onChange={(e) => {
+                setSearchTerm(e.target.value)
+              }}
+              placeholder='Search'
+              className='mr-sm-5 navbarSearch'
+            />
+            {searchResult.length > 0 && (
+              <div className='position-absolute search-dropdown'>
+                <div className='border-bottom'>
+                  <div className='d-flex justify-content-between text-secondary fw-light'>
+                    <p className='ml-3 mt-3'>Recent</p>
+                    <p
+                      className='mr-3 mt-3 hover-pointer'
+                      onClick={() => {
+                        setSearchResult("")
+                      }}>
+                      <svg
+                        xmlns='http://www.w3.org/2000/svg'
+                        width='16'
+                        height='16'
+                        fill='currentColor'
+                        className='bi bi-x-lg'
+                        viewBox='0 0 16 16'>
+                        <path d='M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z' />
+                      </svg>
+                    </p>
+                  </div>
+                  <div className='d-flex mb-3 align-items-center'>
+                    <div className='d-flex flex-column mx-3 align-items-center'>
+                      <svg
+                        style={{ height: "20px" }}
+                        xmlns='http://www.w3.org/2000/svg'
+                        width='20'
+                        height='20'
+                        fill='blue'
+                        className='bi bi-meta'
+                        viewBox='0 0 16 16'>
+                        <path
+                          fillRule='evenodd'
+                          d='M8.217 5.243C9.145 3.988 10.171 3 11.483 3 13.96 3 16 6.153 16.001 9.907c0 2.29-.986 3.725-2.757 3.725-1.543 0-2.395-.866-3.924-3.424l-.667-1.123-.118-.197a54.944 54.944 0 0 0-.53-.877l-1.178 2.08c-1.673 2.925-2.615 3.541-3.923 3.541C1.086 13.632 0 12.217 0 9.973 0 6.388 1.995 3 4.598 3c.319 0 .625.039.924.122.31.086.611.22.913.407.577.359 1.154.915 1.782 1.714Zm1.516 2.224c-.252-.41-.494-.787-.727-1.133L9 6.326c.845-1.305 1.543-1.954 2.372-1.954 1.723 0 3.102 2.537 3.102 5.653 0 1.188-.39 1.877-1.195 1.877-.773 0-1.142-.51-2.61-2.87l-.937-1.565ZM4.846 4.756c.725.1 1.385.634 2.34 2.001A212.13 212.13 0 0 0 5.551 9.3c-1.357 2.126-1.826 2.603-2.581 2.603-.777 0-1.24-.682-1.24-1.9 0-2.602 1.298-5.264 2.846-5.264.091 0 .181.006.27.018Z'
+                        />
+                      </svg>
+                      Meta
+                    </div>
+                    <div className='d-flex flex-column mx-3 align-items-center'>
+                      <svg
+                        style={{ height: "20px" }}
+                        xmlns='http://www.w3.org/2000/svg'
+                        width='16'
+                        height='16'
+                        fill='currentColor'
+                        className='bi bi-twitter'
+                        viewBox='0 0 16 16'>
+                        <path d='M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z' />
+                      </svg>
+                      Twitter
+                    </div>
+                    <div className='d-flex flex-column mx-3 align-items-center text-center'>
+                      <img
+                        src='https://res.cloudinary.com/dmqsfltrf/image/upload/v1631287709/linkedin/lhjztgb9mlolvrm8ozn0.jpg'
+                        style={{ width: "28px", height: "28px" }}
+                        alt=''
+                      />
+                      {allProfiles[0][36].name}
+                    </div>
+                  </div>
+
+                  <div className='navbar-search-item-recent'>
+                    {" "}
+                    <FontAwesomeIcon icon={faClock} />
+                    Alesio Cavone
+                  </div>
+                  <div className='navbar-search-item-recent'>
+                    {" "}
+                    <FontAwesomeIcon icon={faClock} />
+                    epicode
+                  </div>
+                  <div className='navbar-search-item-recent'>
+                    {" "}
+                    <FontAwesomeIcon icon={faClock} />
+                    Epitalk
+                  </div>
                 </div>
-             <div className="d-flex mb-3 align-items-center">
-                  <div className="d-flex flex-column mx-3 align-items-center"><svg style={{height:'20px'}} xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="blue" className="bi bi-meta" viewBox="0 0 16 16">
-    <path fillRule="evenodd" d="M8.217 5.243C9.145 3.988 10.171 3 11.483 3 13.96 3 16 6.153 16.001 9.907c0 2.29-.986 3.725-2.757 3.725-1.543 0-2.395-.866-3.924-3.424l-.667-1.123-.118-.197a54.944 54.944 0 0 0-.53-.877l-1.178 2.08c-1.673 2.925-2.615 3.541-3.923 3.541C1.086 13.632 0 12.217 0 9.973 0 6.388 1.995 3 4.598 3c.319 0 .625.039.924.122.31.086.611.22.913.407.577.359 1.154.915 1.782 1.714Zm1.516 2.224c-.252-.41-.494-.787-.727-1.133L9 6.326c.845-1.305 1.543-1.954 2.372-1.954 1.723 0 3.102 2.537 3.102 5.653 0 1.188-.39 1.877-1.195 1.877-.773 0-1.142-.51-2.61-2.87l-.937-1.565ZM4.846 4.756c.725.1 1.385.634 2.34 2.001A212.13 212.13 0 0 0 5.551 9.3c-1.357 2.126-1.826 2.603-2.581 2.603-.777 0-1.24-.682-1.24-1.9 0-2.602 1.298-5.264 2.846-5.264.091 0 .181.006.27.018Z"/>
-  </svg>
-  Meta</div>
-  <div className="d-flex flex-column mx-3 align-items-center"><svg style={{height:'20px'}} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-twitter" viewBox="0 0 16 16">
-  <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
-</svg>
-  Twitter</div>
-  <div className="d-flex flex-column mx-3 align-items-center text-center">
-    <img src="https://res.cloudinary.com/dmqsfltrf/image/upload/v1631287709/linkedin/lhjztgb9mlolvrm8ozn0.jpg" style={{width:'28px',height:'28px'}} alt="" />
-  {allProfiles[0][36].name}</div>
-             </div>
-               
-                  <div className="navbar-search-item-recent">  <FontAwesomeIcon icon={faClock} />Alesio Cavone</div>
-                  <div  className="navbar-search-item-recent">  <FontAwesomeIcon icon={faClock} />epicode</div>
-                  <div  className="navbar-search-item-recent">  <FontAwesomeIcon icon={faClock} />Epitalk</div>
-               
-             </div>
-              <div className="navbar-search-results">
-                <p className="navbar-dropdown-search-results-title">Search Results</p>
-                {searchResult.map((result)=>
-                <SearchItem className='SearchItem' key={result._id}
-                  firstName={result.name}
-                   surname={result.surname}>
-                </SearchItem>
-                )}
+                <div className='navbar-search-results'>
+                  <p className='navbar-dropdown-search-results-title'>
+                    Search Results
+                  </p>
+                  {searchResult.map((result) => (
+                    <SearchItem
+                      className='SearchItem'
+                      key={result._id}
+                      firstName={result.name}
+                      surname={result.surname}></SearchItem>
+                  ))}
+                </div>
               </div>
-            </div>}
-
-
+            )}
           </Nav>
           <Link
             to='/'

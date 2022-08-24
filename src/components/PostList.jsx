@@ -1,3 +1,5 @@
+/** @format */
+
 import React from "react"
 import "../style/PostList.css"
 import Post from "./Post"
@@ -9,38 +11,26 @@ import {
 } from "../redux/actions"
 
 const PostList = () => {
+  const dispatch = useDispatch()
+  const change = useSelector((state) => state.allChanges.changes)
 
- const dispatch =  useDispatch()
- const change = useSelector((state)=> state.allChanges.changes)
+  useEffect(() => {
+    dispatch(getAllPostsActionWithThunk())
+  }, [change])
 
- useEffect(()=>{
-  dispatch(getAllPostsActionWithThunk())
-  
-  
-},[change])
+  useEffect(() => {
+    resetLoadingAction()
+  }, [])
 
- useEffect(()=> {
- 
-   resetLoadingAction()
- },[])
-
-  
- let posts =  useSelector((state) => state.allPosts.allPosts )
- 
- 
-
-
+  let posts = useSelector((state) => state.allPosts.allPosts)
 
   return (
-        <div className='post-list'>
-       
-          {posts?.map((post)=>(
-            <Post key={post._id} data={post}/>
-          ))}
-        </div>
-    )
-
+    <div className='post-list'>
+      {posts?.map((post) => (
+        <Post key={post._id} data={post} />
+      ))}
+    </div>
+  )
 }
 
 export default PostList
-

@@ -4,10 +4,13 @@ import React from "react"
 import { useState } from "react"
 import "../style/SignPage.css"
 import { Row, Container, Col } from "react-bootstrap"
-import { getMyProfileDataActionWithThunk } from "../redux/actions"
+import {
+  getMyProfileDataActionWithThunk,
+  loginUserDataActionWithThunk,
+} from "../redux/actions"
 import Button from "react-bootstrap/Button"
 import Form from "react-bootstrap/Form"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 
 import { MenuItem, TextField } from "@mui/material"
@@ -20,25 +23,42 @@ import { useEffect } from "react"
 // import VisibilityOff from "@mui/icons-material/VisibilityOff"
 
 const SignInPage = () => {
-  const profiles = useSelector((state) => state.allProfiles.allProfilesData[0])
+  //const profiles = useSelector((state) => state.allProfiles.allProfilesData[0])
   //console.log(profiles)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const [email, setEmail] = useState("admin@strive.school")
   const [password, setPassword] = useState("123456")
-  const [logUser, setLogUser] = useState({})
+  const [logUsers, setLogUsers] = useState([])
+  const [error, setError] = useState("")
+
+  const getAllUsers = async () => {
+    let response = await fetch(`${process.env.REACT_APP_URL}/users`, {
+      method: "GET",
+    })
+    let data = await response.json()
+    console.log(data)
+    setLogUsers(data)
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    let user = profiles.filter((profile) => profile.email === email)
-    console.log(user[0])
-    // setLogUser(user[0])
-    // dispatch(getMyProfileDataActionWithThunk(user[0]))
+
+    let user = logUsers.filter((profile) => profile.email === email)
+
+    if (user.length > 0 && user[0].password === password) {
+      dispatch(loginUserDataActionWithThunk(user[0]))
+      console.log(user[0])
+      navigate("/")
+    } else {
+      setError("Please check your email & password")
+    }
+
     //localStorage.setItem("signInUser", JSON.stringify(user[0]))
   }
   useEffect(() => {
-    //dispatch(getMyProfileDataActionWithThunk(logUser))
-    //console.log(logUser)
-  }, [logUser])
+    getAllUsers()
+  }, [])
 
   return (
     <Container className='col-11 mt-4'>
@@ -54,6 +74,7 @@ const SignInPage = () => {
           <div className='mt-2'>
             <h2>Sign in</h2>
             <p>Stay updated on your professional world</p>
+            <small className='text-danger'>{error}</small>
           </div>
           <Form>
             <TextField
@@ -66,6 +87,7 @@ const SignInPage = () => {
               defaultValue={email}
               onChange={(e) => setEmail(e.target.value)}
             />
+
             <TextField
               sx={{
                 marginTop: "10px",

@@ -3,7 +3,10 @@
 import React, { useEffect, useState } from "react"
 import { Container, ProgressBar, Row } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
-import { getMyProfileDataActionWithThunk } from "../redux/actions"
+import {
+  getMyProfileDataActionWithThunk,
+  loginUserDataActionWithThunk,
+} from "../redux/actions"
 import { Link } from "react-router-dom"
 import Navbar from "../components/Navbar"
 import "../style/ProfilePage.css"
@@ -14,16 +17,19 @@ import MainFooter from "../components/MainFooter"
 import EditProfile from "../components/EditProfile"
 
 const ProfilePage = () => {
+  //const myProfile = useSelector((state) => state.myProfile.profileData)
+  const myProfile = useSelector((state) => state.logUser.loginData)
+  console.log(myProfile)
   const [searchResult, setSearchResult] = useState([])
   const [searchTerm, setSearchTerm] = useState("")
   const [modalShow, setModalShow] = React.useState(false)
-  const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(getMyProfileDataActionWithThunk())
-  }, [])
+  //const dispatch = useDispatch()
 
-  const myProfile = useSelector((state) => state.myProfile.profileData)
-  console.log(myProfile._id)
+  // useEffect(() => {
+  //   //dispatch(getMyProfileDataActionWithThunk())
+  //   //dispatch(loginUserDataActionWithThunk())
+  // }, [])
+
   return (
     <Container className='profile-main-container'>
       <Navbar

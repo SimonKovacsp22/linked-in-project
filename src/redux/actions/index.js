@@ -1,3 +1,5 @@
+/** @format */
+
 import axios from "axios"
 
 export const GET_DATA_FOR_MY_PROFILE = "GET_DATA_FOR_MY_PROFILE"
@@ -6,11 +8,11 @@ export const GET_DATA_FOR_SINGLE_USER_ID = "GET_DATA_FOR_SINGLE_USER_ID"
 export const GET_SINGLE_USER_EXP = "GET_SINGLE_USER_EXP"
 export const GET_DATA_FOR_ALL_POSTS = "GET_DATA_FOR_ALL_POSTS"
 export const GET_SINGLE_EXP = "GET_SINGLE_EXP"
-export const PUT_REQUEST = 'PUT_REQUEST'
-export const SET_LOADING_TRUE =' SET_LOADING_TRUE'
-export const SET_LOADING_FALSE = 'SET_LOADING_FALSE'
-export const CREATE_POST = 'CREATE_POST'
-
+export const PUT_REQUEST = "PUT_REQUEST"
+export const SET_LOADING_TRUE = " SET_LOADING_TRUE"
+export const SET_LOADING_FALSE = "SET_LOADING_FALSE"
+export const CREATE_POST = "CREATE_POST"
+export const USER_LOGGED_IN = "USER_LOGGED_IN"
 
 export const getMyProfileDataActionWithThunk = () => {
   return async (dispatch) => {
@@ -19,7 +21,6 @@ export const getMyProfileDataActionWithThunk = () => {
       "Content-type": "application/json",
     }
     try {
-     
       let response = await fetch(
         `https://striveschool-api.herokuapp.com/api/profile/me`,
         {
@@ -29,7 +30,6 @@ export const getMyProfileDataActionWithThunk = () => {
       )
 
       let myProfileData = await response.json()
-      
 
       dispatch({
         type: GET_DATA_FOR_MY_PROFILE,
@@ -40,7 +40,20 @@ export const getMyProfileDataActionWithThunk = () => {
     }
   }
 }
-
+export const loginUserDataActionWithThunk = (userData) => {
+  return async (dispatch) => {
+    try {
+      let loggedInData = await userData
+      console.log(loggedInData)
+      dispatch({
+        type: USER_LOGGED_IN,
+        payload: loggedInData,
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
 export const getAllProfilesActionWithThunk = () => {
   let headers = {
     Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
@@ -54,7 +67,6 @@ export const getAllProfilesActionWithThunk = () => {
       })
 
       let allProfilesData = await response.json()
-      
 
       dispatch({
         type: GET_DATA_FOR_ALL_PROFILES,
@@ -82,7 +94,6 @@ export const getProfileBasedOnId = (userId) => {
       )
 
       let singleUserData = await response.json()
-     
 
       dispatch({
         type: GET_DATA_FOR_SINGLE_USER_ID,
@@ -144,17 +155,18 @@ export const getSingletUserExpById = (userId, expId) => {
 }
 
 export const getAllPostsActionWithThunk = () => {
-   const url = process.env.HEROKU_BE_URL
+  const url = process.env.HEROKU_BE_URL
   return async (dispatch) => {
     try {
-      let response = await axios.get("https://linkedin-epicode.herokuapp.com/api/posts")
+      let response = await axios.get(
+        "https://linkedin-epicode.herokuapp.com/api/posts"
+      )
 
       let data = response.data
-      
 
       dispatch({
         type: GET_DATA_FOR_ALL_POSTS,
-        payload: data
+        payload: data,
       })
       dispatch(resetLoadingAction())
     } catch (err) {
@@ -163,33 +175,29 @@ export const getAllPostsActionWithThunk = () => {
   }
 }
 
-
-
-export const createPostActionWithThunk = (body,data) => async (dispatch) => {
+export const createPostActionWithThunk = (body, data) => async (dispatch) => {
   try {
-      let response = await axios.post("https://linkedin-epicode.herokuapp.com/api/posts",body)
+    let response = await axios.post(
+      "https://linkedin-epicode.herokuapp.com/api/posts",
+      body
+    )
 
-      let post = await handleFileSend(data, response.data.id)
+    let post = await handleFileSend(data, response.data.id)
 
-      console.log(post.data)
-      
-      dispatch({
-        type: CREATE_POST,
-        payload: post.data
-      })
+    console.log(post.data)
 
-  } catch (error) {
-    
-  }
+    dispatch({
+      type: CREATE_POST,
+      payload: post.data,
+    })
+  } catch (error) {}
 }
 
-export const putRequestAction = (dataSend)=> {
-
-    return {
-      type: PUT_REQUEST,
-      payload: dataSend
-    }
-
+export const putRequestAction = (dataSend) => {
+  return {
+    type: PUT_REQUEST,
+    payload: dataSend,
+  }
 }
 
 export const setLoadingAction = () => {
@@ -204,9 +212,12 @@ export const resetLoadingAction = () => {
   }
 }
 
- const handleFileSend = async(selectedFile,id)=> {
+const handleFileSend = async (selectedFile, id) => {
   const data = new FormData()
-  data.append("post",selectedFile)
-  const response = await axios.post("https://linkedin-epicode.herokuapp.com/api/posts/" + id, data)
+  data.append("post", selectedFile)
+  const response = await axios.post(
+    "https://linkedin-epicode.herokuapp.com/api/posts/" + id,
+    data
+  )
   return response
 }

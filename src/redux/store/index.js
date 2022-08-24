@@ -10,9 +10,9 @@ import userIdProfileReducer from "../reducers/userIdProfileReducer"
 import allProfilesReducer from "../reducers/allProfileReducer"
 import expReducer from "../reducers/expReducer"
 import allPostsReducer from "../reducers/allPostsReducer"
-import singleExp from '../reducers/singleExp'
+import singleExp from "../reducers/singleExp"
 import refreshReducer from "../reducers/refreshReducer"
-
+import loginUserReducer from "../reducers/loginUserReducer"
 
 const persistConfig = {
   key: "root",
@@ -33,9 +33,9 @@ const combinedReducer = combineReducers({
   userIdProfile: userIdProfileReducer,
   userIdExp: expReducer,
   allPosts: allPostsReducer,
-  singleExperience : singleExp,
+  singleExperience: singleExp,
   allChanges: refreshReducer,
-
+  logUser: loginUserReducer,
 })
 
 const persistedReducer = persistReducer(persistConfig, combinedReducer)

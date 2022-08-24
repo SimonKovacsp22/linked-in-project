@@ -6,12 +6,13 @@ import "../style/SignPage.css"
 import { Row, Container, Col } from "react-bootstrap"
 import Button from "react-bootstrap/Button"
 import Form from "react-bootstrap/Form"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useLocation } from "react-router-dom"
 import axios from "axios"
 
 const UserRegister = () => {
   const user = useLocation()
+  const navigate = useNavigate()
   //console.log(user.state)
   const [name, setName] = useState("Sidath")
   const [surname, setSurname] = useState("Dabare")
@@ -99,8 +100,10 @@ const UserRegister = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     addNewUser()
+    navigate("/signin")
   }
   useEffect(() => {
+    //console.log(user.state)
     setEmail(user.state.email)
     setPassword(user.state.password)
   }, [])
@@ -127,6 +130,7 @@ const UserRegister = () => {
                     size='sm'
                     type='email'
                     placeholder={email}
+                    defaultValue={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </Form.Group>

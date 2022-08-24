@@ -6,9 +6,10 @@ import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 
 const Profile = () => {
-  const myProfile = useSelector((state) => state.myProfile.profileData)
- 
-  
+  //const myProfile = useSelector((state) => state.myProfile.profileData)
+  const myProfile = useSelector((state) => state.logUser.loginData)
+
+  //console.log(loginUser)
 
   return (
     <div className='profile-container'>

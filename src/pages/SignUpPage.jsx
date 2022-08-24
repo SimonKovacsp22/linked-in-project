@@ -1,38 +1,77 @@
 /** @format */
 
-import React from "react"
+import React, { useEffect } from "react"
 import { useState } from "react"
 import "../style/SignPage.css"
 import { Row, Container, Col } from "react-bootstrap"
 import Button from "react-bootstrap/Button"
 import Form from "react-bootstrap/Form"
 import { Link, useNavigate } from "react-router-dom"
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
+import {
+  getAllProfilesActionWithThunk,
+  getMyProfileDataActionWithThunk,
+} from "../redux/actions"
 
 const SignUpPage = () => {
   const profiles = useSelector((state) => state.allProfiles.allProfilesData[0])
   //console.log(profiles)
-
+  const dispatch = useDispatch()
   const navigate = useNavigate()
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [emailError, setEmailError] = useState("")
   const [passwordError, setPasswordError] = useState("")
+  const [show, setShow] = useState(false)
+  const [logUsers, setLogUsers] = useState([])
+  const getAllUsers = async () => {
+    let response = await fetch(`${process.env.REACT_APP_URL}/users`, {
+      method: "GET",
+    })
+    let data = await response.json()
+    console.log(data)
+    setLogUsers(data)
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    let user = profiles.filter((profile) => profile.email === email)
+    let user = logUsers.filter((profile) => profile.email === email)
+    console.log(user)
 
-    if (user.length > 0 || password.length > 6) {
+    // const userExist = () => {
+    //   if (user.length > 0) {
+    //     setEmailError("Sorry..!! User already exist")
+    //     setShow(true)
+    //   }
+    // }
+    // userExist()
+    if (user[0] && user[0].email === email) {
       setEmailError("Sorry..!! User already exist")
-    } else if (user.length < 0 || password.length < 6) {
+      setShow(true)
+    } else if (password.length < 6) {
       setPasswordError("Sorry..!! Password too short")
+      setShow(true)
     } else {
-      console.log(user[0])
       navigate("/register", { state: { email, password } })
     }
+
+    //navigate("/register", { state: { email, password } })
+
+    // if (user.length > 0 || password.length > 6) {
+    //   setEmailError("Sorry..!! User already exist")
+    // } else if (user.length < 0 || password.length < 6) {
+    //   setPasswordError("Sorry..!! Password too short")
+    // } else {
+    //   console.log(user[0])
+    //   navigate("/register", { state: { email, password } })
+    // }
   }
+  useEffect(() => {
+    getAllUsers()
+    dispatch(getMyProfileDataActionWithThunk())
+    dispatch(getAllProfilesActionWithThunk())
+  }, [])
 
   return (
     <Container className='col-11 mt-4 signIn-logo-container'>
@@ -85,6 +124,7 @@ const SignUpPage = () => {
             </p>
             <div className='col-12'>
               <Button
+                //disabled={show === false ? true : false}
                 variant='primary'
                 type='submit'
                 className='btn btn-block rounded-pill py-2'

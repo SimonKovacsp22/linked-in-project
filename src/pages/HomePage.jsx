@@ -20,6 +20,7 @@ import Profile from "../components/Profile"
 
 const HomePage = () => {
   const dispatch = useDispatch()
+
   useEffect(() => {
     dispatch(getMyProfileDataActionWithThunk())
     dispatch(getAllProfilesActionWithThunk())
