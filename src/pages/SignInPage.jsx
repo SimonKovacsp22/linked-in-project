@@ -4,11 +4,14 @@ import React from "react"
 import { useState } from "react"
 import "../style/SignPage.css"
 import { Row, Container, Col } from "react-bootstrap"
+import { getMyProfileDataActionWithThunk } from "../redux/actions"
 import Button from "react-bootstrap/Button"
 import Form from "react-bootstrap/Form"
 import { Link } from "react-router-dom"
+import { useSelector, useDispatch } from "react-redux"
 
 import { MenuItem, TextField } from "@mui/material"
+import { useEffect } from "react"
 // import InputLabel from "@mui/material/InputLabel"
 // import FilledInput from "@mui/material/FilledInput"
 // import InputAdornment from "@mui/material/InputAdornment"
@@ -17,27 +20,26 @@ import { MenuItem, TextField } from "@mui/material"
 // import VisibilityOff from "@mui/icons-material/VisibilityOff"
 
 const SignInPage = () => {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const profiles = useSelector((state) => state.allProfiles.allProfilesData[0])
+  //console.log(profiles)
+  const dispatch = useDispatch()
+  const [email, setEmail] = useState("admin@strive.school")
+  const [password, setPassword] = useState("123456")
+  const [logUser, setLogUser] = useState({})
 
-  //   const handleChange = (prop) => (event) => {
-  //     setValues({ ...values, [prop]: event.target.value })
-  //   }
-
-  //   const handleClickShowPassword = () => {
-  //     setValues({
-  //       ...values,
-  //       showPassword: !values.showPassword,
-  //     })
-  //   }
-
-  //   const handleMouseDownPassword = (event) => {
-  //     event.preventDefault()
-  //   }
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log("clicked")
+    let user = profiles.filter((profile) => profile.email === email)
+    console.log(user[0])
+    // setLogUser(user[0])
+    // dispatch(getMyProfileDataActionWithThunk(user[0]))
+    //localStorage.setItem("signInUser", JSON.stringify(user[0]))
   }
+  useEffect(() => {
+    //dispatch(getMyProfileDataActionWithThunk(logUser))
+    //console.log(logUser)
+  }, [logUser])
+
   return (
     <Container className='col-11 mt-4'>
       <Row>
@@ -72,6 +74,7 @@ const SignInPage = () => {
               id='outlined-password-input'
               label='Password'
               type='password'
+              defaultValue={password}
               autoComplete='current-password'
               onChange={(e) => setPassword(e.target.value)}
             />
