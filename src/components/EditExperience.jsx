@@ -4,8 +4,10 @@ import React, { useState } from "react"
 import { useEffect } from "react"
 import { Button, Container, Form, Modal } from "react-bootstrap"
 import { useSelector } from "react-redux"
+import { Link, useParams } from "react-router-dom"
 
 const EditExperience = (props) => {
+  let id = useParams()._id
   const oneOfExp = useSelector(
     (state) => state.singleExperience.singleExperiences
   )
@@ -17,7 +19,7 @@ const EditExperience = (props) => {
   const [startDate, setStartDate] = useState("")
   const [endDate, setEndDate] = useState("")
   const [description, setDescription] = useState("")
-  const [expImg, setExpImg] = useState("")
+  const [imageUrl, setImageUrl] = useState("")
   // useEffect(()=>{
   //     setRole(oneOfExp.role)
   // },[oneOfExp])
@@ -31,29 +33,64 @@ const EditExperience = (props) => {
       startDate,
       endDate,
       description,
-      expImg,
+      imageUrl,
     }
-    console.log(blog)
+    if(role === "" || company === "" || area === "" || startDate === "" || endDate === "" || description === ""){
+      alert("fill the required fields!")
+    }else{
+      console.log(blog)
+      console.log(myProfile._id);
+  
+      try {
+        let response = await fetch(
+          `${process.env.REACT_APP_URL}/users/${id}/experiences/${props.expid}`,
+          {
+            method: "PUT",
+            headers: {
+              Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify(blog),
+          }
+        )
+        let data = response.json()
+        alert("your experience succesfully edited!")
+        window.location.reload();
+      } catch (err) {
+        console.log(err, "errrrrr")
+        alert("Back-end Error!")
+      }
+    }
 
-    try {
-      let response = await fetch(
-        `${process.env.REACT_APP_URL}/profile/${myProfile._id}/experiences/${props.expid}`,
-        {
-          method: "PUT",
-          headers: {
-            Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: JSON.stringify(blog),
-        }
-      )
-      let data = response.json()
-      alert("SUCCED! reload the page for update")
-    } catch (err) {
-      console.log(err, "AGHA rouzbeh error")
     }
+    const getExp = async () => {
+      try {
+        if(props.expid!==''){
+          let response = await fetch(`${process.env.REACT_APP_URL}/users/${id}/experiences/${props.expid}`,
+              {
+                  method: "GET",
+                  headers: {
+                      "Content-Type": "application/json",
+                      Accept: "application/json",
+                  }
+              })
+              let data = await response.json()
+              setRole(data.role)
+              setCompany(data.company)
+              setArea(data.area)
+              setStartDate(data.startDate)
+              setEndDate(data.endDate)
+              setDescription(data.description)
+              setImageUrl(data.imageUrl)
+            }
+      } catch (error) {
+          console.log(error , "errrrrrr");
+      }
   }
+  useEffect(()=>{
+    getExp()
+  },[props.expid])
 
   return (
     <Modal
@@ -125,8 +162,8 @@ const EditExperience = (props) => {
             <Form.Label>Add image</Form.Label>
             <Form.Control
               type='text'
-              value={expImg}
-              onChange={(e) => setExpImg(e.target.value)}
+              value={imageUrl}
+              onChange={(e) => setImageUrl(e.target.value)}
             />
           </Form.Group>
           <Button
