@@ -1,7 +1,8 @@
-import {GET_DATA_FOR_ALL_POSTS , CREATE_POST} from '../actions'
+import {GET_DATA_FOR_ALL_POSTS , CREATE_POST , UPDATE_POST,SELECT_POST} from '../actions'
 
 const initialState = {
   allPosts: [],
+  selectedPostId:''
 }
 
 const allPostsReducer = (state = initialState, action) => {
@@ -15,6 +16,16 @@ const allPostsReducer = (state = initialState, action) => {
     case CREATE_POST:
       return {
         ...state, allPosts:[...state.allPosts,action.payload]
+      }
+
+    case SELECT_POST: 
+     return {
+      ...state, selectedPostId: action.payload
+     }
+
+      case UPDATE_POST: 
+      return {
+          ...state, allPosts: state.allPosts.map( post => post._id === state.selectedPostId ? action.payload : post)
       }
 
     default:

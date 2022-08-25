@@ -1,5 +1,4 @@
 
-import React from "react";
 import "../style/PostList.css";
 import { Card, Spinner } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,45 +9,35 @@ import {
   faHeart,
   faThumbsUp,
   faEllipsis,
+  faImage
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import { putRequestAction } from "../redux/actions";
 import { setLoadingAction } from "../redux/actions";
+import { selectPostAction, updatePostActionWithThunk } from "../redux/actions";
+import ModalUpdatePost from "./ModalUpdatePost";
+
+
 
 export default function Post({ data }) {
+
+ 
   const [seeMore, setSeeMore] = useState(false);
   const [heightAuto, setHeightAuto] = useState("22px");
   const [showEdit, setShowEdit] = useState(false);
-  const [textInput, setTextInput] = useState(data.text);
+  const [updatePost,setUpdatePost] = useState(false)
+
+  const handleClose = () => setUpdatePost(false);
+  const handleShow = () => setUpdatePost(true);
 
   const myProfile = useSelector((state) => state.myProfile.profileData);
-  const dispatch = useDispatch();
-
+ 
   const isLoading = useSelector((state) => state.allChanges.isLoading);
 
-  const handlePutRequest = async (input) => {
-    try {
-      let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/posts/" + data._id,
-        {
-          method: "PUT",
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmFhZGM5Zjk5OTlmZTAwMTVlNjZlMjIiLCJpYXQiOjE2NTUzNjQ3NjgsImV4cCI6MTY1NjU3NDM2OH0.JXJ65n1oTxFcYw90c-b5HB1OJGtIJ9L_-BZcySGIct4",
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify({ text: input }),
-        }
-      );
-
-      dispatch(setLoadingAction());
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
+  const dispatch = useDispatch();
   return (
+    <>
     <Card >
       <div className="d-flex flex-column post-top-section">
         <div className="d-flex justify-content-between mb-3 ">
@@ -69,58 +58,24 @@ export default function Post({ data }) {
           <div
             className=""
             onClick={() => {
-              setShowEdit(true);
+              handleShow()
+              dispatch(selectPostAction(data._id))
             }}
           >
-            {myProfile.username === data.username && (
+            
               <i className="bi bi-pen"></i>
-            )}
+            
           </div>
 
           {myProfile.username !== data.username && (
-            <div>
+            <div className="post-top-edit-options">
               <FontAwesomeIcon style={{ height: "25px" }} icon={faEllipsis} />
             </div>
           )}
         </div>
-        <div className="d-flex flex-column">
-          {!showEdit && (
-            <>
-              {!isLoading && (
-                <p
-                  className={"post-description-top-paragraph"}
-                  style={{ height: heightAuto }}
-                >
-                  {data.text}
-                </p>
-              )}
-              {isLoading && <Spinner animation="grow" variant="info" />}
-            </>
-          )}
-          {showEdit && (
-            <div>
-              <textarea
-                value={textInput}
-                onChange={(e) => {
-                  setTextInput(e.target.value);
-                }}
-                cols="65"
-                rows="2"
-              ></textarea>
-              <button
-                className="btn btn-primary modal-footer-post-button"
-                onClick={() => {
-                  handlePutRequest(textInput);
-                  dispatch(putRequestAction(textInput));
-                  setShowEdit(false);
-                }}
-              >
-                Save
-              </button>
-            </div>
-          )}
-
-          {!showEdit && !seeMore &&  (data.text.length > 67) && (
+        <div  className="d-flex flex-column">
+          {data.text}
+          {!seeMore &&  (data.text.length > 67) && (
             <button
               onClick={() => {
                 setSeeMore(true);
@@ -141,7 +96,7 @@ export default function Post({ data }) {
 
       <Card.Img
         variant="top"
-        src={data.image || "https://media-exp1.licdn.com/dms/image/sync/D4D34AQFJTYjm-lVQNw/ugc-proxy-shrink_800/0/1660125678728?e=1661860800&v=beta&t=h-OxA5cXZeRlSihpjbeaZneOWseytLD7sTSgVF-9Lm8"}
+        src={data.image || process.env.REACT_APP_PLACEHOLDER_IMG_POST}
       />
       <Card.Body>
         <div className="post-bottom-section">
@@ -210,5 +165,7 @@ export default function Post({ data }) {
         </div>
       </Card.Body>
     </Card>
+    <ModalUpdatePost handleClose={handleClose} updatePost={updatePost} data={data}/>
+    </>
   );
 }

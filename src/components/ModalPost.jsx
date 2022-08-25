@@ -40,7 +40,7 @@ const ModalPost =({handleClose,createPost,profile}) => {
   },[post])
 
     return (
-      <>
+      
         <Modal show={createPost} onHide={handleClose}>
           <Modal.Header >
             <div className='d-flex align-items-center justify-content-between'>
@@ -118,7 +118,7 @@ const ModalPost =({handleClose,createPost,profile}) => {
            </div>
           </Modal.Footer>
         </Modal>
-      </>
+     
     );
   }
 

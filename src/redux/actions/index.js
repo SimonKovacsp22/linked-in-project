@@ -10,6 +10,8 @@ export const PUT_REQUEST = 'PUT_REQUEST'
 export const SET_LOADING_TRUE =' SET_LOADING_TRUE'
 export const SET_LOADING_FALSE = 'SET_LOADING_FALSE'
 export const CREATE_POST = 'CREATE_POST'
+export const UPDATE_POST = 'UPDATE_POST'
+export const SELECT_POST = 'SELECT_POST'
 
 
 export const getMyProfileDataActionWithThunk = () => {
@@ -183,6 +185,39 @@ export const createPostActionWithThunk = (body,data) => async (dispatch) => {
   }
 }
 
+export const updatePostActionWithThunk = (id,body,pic) => async (dispatch) => {
+  try {
+
+    const postNoPic = await axios.put(process.env.REACT_APP_URL + '/posts/' + id,body)
+
+ 
+
+    console.log(id,body,pic)
+      if(!pic) {
+        dispatch({
+          type: UPDATE_POST,
+          payload: postNoPic.data
+        })
+
+        return
+
+      }
+    
+
+    let post = await handleFileSend(pic, id)
+
+    console.log(post.data)
+    dispatch({
+      type: UPDATE_POST,
+      payload: post.data
+    })
+    
+  } catch (error) {
+    
+  }
+  
+}
+
 export const putRequestAction = (dataSend)=> {
 
     return {
@@ -209,4 +244,11 @@ export const resetLoadingAction = () => {
   data.append("post",selectedFile)
   const response = await axios.post("https://linkedin-epicode.herokuapp.com/api/posts/" + id, data)
   return response
+}
+
+export const selectPostAction = (postId) => {
+  return {
+    type:SELECT_POST,
+    payload: postId
+  }
 }
