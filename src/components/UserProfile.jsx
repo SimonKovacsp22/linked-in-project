@@ -18,19 +18,21 @@ const UserProfile = () => {
     const [user, setUser] = useState(null)
     const [searchResult,setSearchResult]=useState([])
     const [searchTerm,setSearchTerm]= useState('')
-    const userProfile = useSelector((state) => state.userIdProfile.userIdProfileData[0])
-    useEffect(() => {
-        dispatch(getAllProfilesActionWithThunk())
-      
-    }, [])
+    
 
  
 
     const dispatch = useDispatch()
+
     useEffect(() => {
         setUser(id)
         dispatch(getProfileBasedOnId(id))
+        dispatch(getAllProfilesActionWithThunk())
     }, [id])
+
+    const userProfile = useSelector((state) => state.userIdProfile.userIdProfileData)
+
+    console.log(userProfile)
 
 
 

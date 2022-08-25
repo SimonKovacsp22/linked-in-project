@@ -11,7 +11,7 @@ const userIdProfileReducer = (state = initialState, action) => {
     case GET_DATA_FOR_SINGLE_USER_ID:
       return {
         ...state,
-        userIdProfileData: [action.payload],
+        userIdProfileData: action.payload,
       }
 
     default:

@@ -14,9 +14,6 @@ const PostList = () => {
  
 
 
-  useEffect(() => {
-    dispatch(getAllPostsActionWithThunk())
-  }, [change])
 
   const [showAlert,setShowAlert] = useState(false)
 
