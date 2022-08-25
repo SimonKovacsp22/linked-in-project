@@ -42,7 +42,7 @@ const HomePage = () => {
           <About />
         </div>
 
-        <div className='mt-3'>
+        <div className='mt-3 mx-2'>
           <AddPost />
           <PostList />
         </div>

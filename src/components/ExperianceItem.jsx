@@ -1,7 +1,7 @@
 /** @format */
 
-import React, { useEffect, useState } from "react"
-import { Button, Col, Form, Modal, Row } from "react-bootstrap"
+import React, { useState } from "react"
+import { Col, Row } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
 import Moment from "moment"
 import "../style/ExperianceItem.css"
@@ -9,15 +9,11 @@ import EditExperience from "./EditExperience"
 import { getSingletUserExpById } from "../redux/actions"
 
 const ExperianceItem = ({ userId, isAdmin }) => {
-  console.log(isAdmin)
   const pplExp = useSelector((state) => state.userIdExp.singleUserExperiences)
   const [modalShow, setModalShow] = React.useState(false)
   const [expId, getExpId] = useState("")
   const dispatch = useDispatch()
 
-  // useEffect(() => {
-  //     console.log(pplExp.area);
-  // }, [])
   return (
     <div className='experiance-div mt-2'>
       {pplExp && pplExp.length <= 0 ? (
@@ -29,8 +25,8 @@ const ExperianceItem = ({ userId, isAdmin }) => {
               <img
                 className='experiance-image m-auto'
                 src={
-                  singleExp.image
-                    ? singleExp.image
+                  singleExp.imageUrl
+                    ? singleExp.imageUrl
                     : "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png"
                 }
                 alt=''
@@ -77,7 +73,7 @@ const ExperianceItem = ({ userId, isAdmin }) => {
             </Col>
             <EditExperience
               show={modalShow}
-              expid={expId}
+              singleexp={singleExp}
               onHide={() => setModalShow(false)}
             />
           </Row>

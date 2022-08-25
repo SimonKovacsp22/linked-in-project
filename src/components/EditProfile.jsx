@@ -2,63 +2,100 @@
 
 import { useEffect, useState } from "react"
 import { Modal, Form, Button } from "react-bootstrap"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { loginUserDataActionWithThunk } from "../redux/actions"
 import "../style/EditProfile.css"
 
 export default function EditProfile(props) {
   const myProfile = useSelector((state) => state.logUser.loginData)
-  //console.log(myProfile._id);
-  const [image, setImage] = useState(null)
+
+  const [name, setName] = useState("")
+  const [surname, setSurname] = useState("")
+  const [email, setEmail] = useState("")
+  const [bio, setBio] = useState("")
+  const [title, setTitle] = useState("")
+  const [area, setArea] = useState("")
+  const [image, setImage] = useState("")
+  const [username, setUsername] = useState("")
 
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
 
-  const [editDetails, setEditDetails] = useState({
-    id: myProfile._id,
-    name: myProfile.name,
-    surname: myProfile.surname,
-    bio: myProfile.bio,
-    area: myProfile.area,
-    email: myProfile.email,
-    title: myProfile.title,
-    username: myProfile.username,
-    image: myProfile.image,
-  })
+  const dispatch = useDispatch()
 
-  const editProfile = async (e) => {
-    console.log("first")
-    e.preventDefault()
-
-    try {
-      let formData = new FormData()
-      formData.append("profile", image)
-      formData.get("profile")
-      let response = await fetch(
-        `${process.env.REACT_APP_URL}/profile/${editDetails.id}/picture`,
-        // `https://striveschool-api.herokuapp.com/api/profile/`,
-
-        {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
-          },
-          body: formData,
-        }
-      )
-      let data = await response.json()
-      console.log(data)
-    } catch (err) {
-      console.log(err)
+  const addImage = async (e) => {
+    const str = e.target.files[0]
+    let url = `${process.env.REACT_APP_URL}/files/cloudinary`
+    var formData = new FormData()
+    formData.append("image", str)
+    var requestOptions = {
+      method: "POST",
+      body: formData,
     }
+    try {
+      let res = await fetch(url, requestOptions)
+      let data = await res.json()
+      console.log(data)
+      setImage(data.url)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  const editUser = async () => {
+    let url = `${process.env.REACT_APP_URL}/users/${myProfile._id}`
+    try {
+      let res = await fetch(url, {
+        method: "PUT",
+        body: JSON.stringify({
+          name,
+          surname,
+          email,
+          bio,
+          title,
+          area,
+          image,
+          username,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      let data = await res.json()
+      console.log(data)
+      dispatch(loginUserDataActionWithThunk(data))
+
+      return data
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  const deleteUser = async (e) => {
+    e.preventDefault()
+    console.log("USER DELETED")
+    // let url = `${process.env.REACT_APP_URL}/users/${myProfile._id}`
+    // try {
+    //   let res = await fetch(url, {
+    //     method: "DELETE",
+    //   })
+    //   let data = await res.json()
+    //   dispatch(loginUserDataActionWithThunk(data))
+    //   return data
+    // } catch (error) {
+    //   console.log(error)
+    // }
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    editUser()
+    handleClose()
+    // navigate("/signin")
   }
   useEffect(() => {
     console.log(image)
   }, [image])
 
-  // const [show, setShow] = useState(false);
-  // const handleClose = () => setShow(false);
-  // const handleShow = () => setShow(true);
   return (
     <Modal
       {...props}
@@ -80,7 +117,8 @@ export default function EditProfile(props) {
               size='sm'
               type='text'
               placeholder='Enter your name'
-              defaultValue={editDetails.name}
+              defaultValue={myProfile.name}
+              onChange={(e) => setName(e.target.value)}
               autoFocus
             />
           </Form.Group>
@@ -93,10 +131,25 @@ export default function EditProfile(props) {
               size='sm'
               type='text'
               placeholder='Enter your surname'
-              defaultValue={editDetails.surname}
+              defaultValue={myProfile.surname}
+              onChange={(e) => setSurname(e.target.value)}
               autoFocus
             />
           </Form.Group>
+          {/* <Form.Group
+            className='mb-3 col-12 d-flex'
+            controlId='exampleForm.ControlInput1'>
+            <Form.Label className='col-4'>Last name*</Form.Label>
+            <Form.Control
+              className='col-8'
+              size='sm'
+              type='text'
+              placeholder='Enter your username'
+              defaultValue={myProfile .username}
+              onChange={(e) => setUsername(e.target.value)}
+              autoFocus
+            />
+          </Form.Group> */}
           <Form.Group
             className='mb-3 col-12 d-flex'
             controlId='exampleForm.ControlInput1'>
@@ -106,20 +159,22 @@ export default function EditProfile(props) {
               size='sm'
               type='text'
               placeholder='Enter your username'
-              defaultValue={editDetails.username}
+              defaultValue={myProfile.username}
+              onChange={(e) => setUsername(e.target.value)}
               autoFocus
             />
           </Form.Group>
           <Form.Group
-            className='mb-3 col-12 d-flex'
-            controlId='exampleForm.ControlInput1'>
+            controlId='formBasicPassword'
+            className='mb-3 col-12 d-flex'>
             <Form.Label className='col-4'>Email address</Form.Label>
             <Form.Control
               className='col-8'
               size='sm'
               type='email'
               placeholder='Enter your email'
-              defaultValue={editDetails.email}
+              defaultValue={myProfile.email}
+              onChange={(e) => setEmail(e.target.value)}
               autoFocus
             />
           </Form.Group>
@@ -132,7 +187,8 @@ export default function EditProfile(props) {
               size='sm'
               type='text'
               placeholder='Enter your job title'
-              defaultValue={editDetails.title}
+              defaultValue={myProfile.title}
+              onChange={(e) => setTitle(e.target.value)}
               autoFocus
             />
           </Form.Group>
@@ -145,20 +201,22 @@ export default function EditProfile(props) {
               size='sm'
               type='text'
               placeholder='Enter your bio'
-              defaultValue={editDetails.bio}
+              defaultValue={myProfile.bio}
+              onChange={(e) => setBio(e.target.value)}
               autoFocus
             />
           </Form.Group>
           <Form.Group
             className='mb-3 col-12 d-flex'
             controlId='exampleForm.ControlInput1'>
-            <Form.Label className='col-4'>Location</Form.Label>
+            <Form.Label className='col-4'>Area</Form.Label>
             <Form.Control
               className='col-8'
               size='sm'
               type='text'
               placeholder='Enter your bio'
-              defaultValue={editDetails.area}
+              defaultValue={myProfile.area}
+              onChange={(e) => setArea(e.target.value)}
               autoFocus
             />
           </Form.Group>
@@ -169,31 +227,31 @@ export default function EditProfile(props) {
             <Form.Control
               className='col-8'
               type='text'
-              defaultValue={editDetails.image}
-              // onChange={(e) => {
-              //   setImage(e.target.files[0])
-              // }}
+              size='sm'
+              defaultValue={image}
             />
           </Form.Group>
           <Form.Group
             className='mb-3 col-12 d-flex'
             controlId='exampleForm.ControlInput1'>
             <Form.Label className='col-4'>Add image</Form.Label>
-            <Form.Control
-              className='col-8'
-              type='file'
-              onChange={(e) => {
-                setImage(e.target.files[0])
-              }}
-            />
+            <Form.Control className='col-8' type='file' onChange={addImage} />
           </Form.Group>
 
           <Button
             type='submit'
             variant='primary'
-            onClick={editProfile}
+            onClick={handleSubmit}
             className='mb-3 btn btn-block col-8 mx-auto'>
             Save
+          </Button>
+          <Button
+            //disabled
+            type='submit'
+            variant='danger'
+            onClick={deleteUser}
+            className='mb-3 btn btn-block col-8 mx-auto'>
+            Delete User
           </Button>
         </Form>
       </Modal.Body>

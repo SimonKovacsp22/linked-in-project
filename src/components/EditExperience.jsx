@@ -6,10 +6,12 @@ import { Button, Container, Form, Modal } from "react-bootstrap"
 import { useSelector } from "react-redux"
 
 const EditExperience = (props) => {
+  //console.log(props)
   const oneOfExp = useSelector(
     (state) => state.singleExperience.singleExperiences
   )
-  const myProfile = useSelector((state) => state.myProfile.profileData)
+  //const myProfile = useSelector((state) => state.myProfile.profileData)
+  const myProfile = useSelector((state) => state.logUser.loginData)
 
   const [role, setRole] = useState("")
   const [company, setCompany] = useState("")
@@ -31,13 +33,13 @@ const EditExperience = (props) => {
       startDate,
       endDate,
       description,
-      expImg,
+      image: expImg,
     }
-    console.log(blog)
+    //console.log(blog)
 
     try {
       let response = await fetch(
-        `${process.env.REACT_APP_URL}/profile/${myProfile._id}/experiences/${props.expid}`,
+        `${process.env.REACT_APP_URL}/users/${myProfile._id}/experiences/${props.singleexp._id}`,
         {
           method: "PUT",
           headers: {
@@ -48,99 +50,135 @@ const EditExperience = (props) => {
           body: JSON.stringify(blog),
         }
       )
-      let data = response.json()
+      let data = await response.json()
+      console.log(data)
       alert("SUCCED! reload the page for update")
     } catch (err) {
       console.log(err, "AGHA rouzbeh error")
     }
   }
+  const addImage = async (e) => {
+    const str = e.target.files[0]
+    let url = `${process.env.REACT_APP_URL}/files/cloudinary`
+    var formData = new FormData()
+    formData.append("image", str)
+    var requestOptions = {
+      method: "POST",
+      body: formData,
+    }
+    try {
+      let res = await fetch(url, requestOptions)
+      let data = await res.json()
+      console.log(data)
+      setExpImg(data.url)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
-    <Modal
-      {...props}
-      size='lg'
-      aria-labelledby='contained-modal-title-vcenter'
-      centered>
-      <Modal.Header closeButton>
+    <Modal {...props} size='lg' aria-labelledby='contained-modal-title-vcenter'>
+      <Modal.Header className='d-flex'>
         <Modal.Title id='contained-modal-title-vcenter'>
           Edit Experiance
         </Modal.Title>
+        <i className='bi bi-x-lg' onClick={props.onHide}></i>
       </Modal.Header>
       <Modal.Body>
         <Form>
-          <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
-            <Form.Label>Role</Form.Label>
+          <Form.Group className='mb-3 col-12 d-flex '>
+            <Form.Label className='col-4'>Role</Form.Label>
             <Form.Control
+              className='col-8'
+              size='sm'
               type='text'
-              value={role}
+              defaultValue={props.singleexp.role}
               onChange={(e) => setRole(e.target.value)}
             />
           </Form.Group>
-          <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
-            <Form.Label>Company</Form.Label>
+          <Form.Group className='mb-3 col-12 d-flex'>
+            <Form.Label className='col-4'>Company</Form.Label>
             <Form.Control
+              className='col-8'
+              size='sm'
               type='text'
               placeholder='Company Name'
-              value={company}
+              defaultValue={props.singleexp.company}
               onChange={(e) => setCompany(e.target.value)}
             />
           </Form.Group>
-          <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
-            <Form.Label>Area</Form.Label>
+          <Form.Group className='mb-3 col-12 d-flex'>
+            <Form.Label className='col-4'>Area</Form.Label>
             <Form.Control
+              className='col-8'
+              size='sm'
               type='text'
               placeholder='Name Of City-Country'
-              value={area}
+              defaultValue={props.singleexp.area}
               onChange={(e) => setArea(e.target.value)}
             />
           </Form.Group>
-          <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
-            <Form.Label>start Date</Form.Label>
+          <Form.Group className='mb-3 col-12 d-flex'>
+            <Form.Label className='col-4'>start Date</Form.Label>
             <Form.Control
+              className='col-8'
+              size='sm'
               type='date'
               placeholder='Started-Date'
-              value={startDate}
+              defaultValue={props.singleexp.startDate}
               onChange={(e) => setStartDate(e.target.value)}
             />
           </Form.Group>
-          <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
-            <Form.Label>End Date</Form.Label>
+          <Form.Group className='mb-3 col-12 d-flex'>
+            <Form.Label className='col-4'>End Date</Form.Label>
             <Form.Control
+              className='col-8'
+              size='sm'
               type='date'
               placeholder='Finish-Date'
-              value={endDate}
+              defaultValue={props.singleexp.endDate}
               onChange={(e) => setEndDate(e.target.value)}
             />
           </Form.Group>
-          <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
-            <Form.Label>Description</Form.Label>
+          <Form.Group className='mb-3 col-12 d-flex'>
+            <Form.Label className='col-4'>Description</Form.Label>
             <Form.Control
+              className='col-8'
+              size='sm'
               type='text'
               placeholder='Desc'
-              value={description}
+              defaultValue={props.singleexp.description}
               onChange={(e) => setDescription(e.target.value)}
             />
           </Form.Group>
-          <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
-            <Form.Label>Add image</Form.Label>
+          <Form.Group className='mb-3 col-12 d-flex'>
+            <Form.Label className='col-4'>Image</Form.Label>
             <Form.Control
+              className='col-8'
               type='text'
-              value={expImg}
-              onChange={(e) => setExpImg(e.target.value)}
+              size='sm'
+              defaultValue={expImg}
+            />
+          </Form.Group>
+          <Form.Group className='mb-3 col-12 d-flex'>
+            <Form.Label className='col-4'>Add image</Form.Label>
+            <Form.Control
+              className='col-8'
+              type='file'
+              defaultValue={props.singleexp.expImg}
+              onChange={addImage}
             />
           </Form.Group>
           <Button
             type='submit'
             variant='primary'
-            className='mb-3'
+            className='mb-3 col-8 btn-block mx-auto'
             onClick={editingIt}>
             Save
           </Button>
         </Form>
       </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
-      </Modal.Footer>
+      <Modal.Footer></Modal.Footer>
     </Modal>
   )
 }

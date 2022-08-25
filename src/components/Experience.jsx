@@ -3,13 +3,12 @@
 import { Col, Container, Row } from "react-bootstrap"
 import "../style/Experience.css"
 import ExperianceItem from "./ExperianceItem"
-import { useDispatch, useSelector } from "react-redux"
-import React, { useEffect, useState } from "react"
-import { getSingletUserExpById, getUserExpById } from "../redux/actions"
+import { useDispatch } from "react-redux"
+import React, { useEffect } from "react"
+import { getUserExpById } from "../redux/actions"
 import AddExperiance from "./AddExperiance"
 
 const Experiance = ({ id, isAdmin }) => {
-  console.log(isAdmin)
   const [modalShow, setModalShow] = React.useState(false)
 
   const dispatch = useDispatch()

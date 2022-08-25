@@ -19,16 +19,10 @@ import EditProfile from "../components/EditProfile"
 const ProfilePage = () => {
   //const myProfile = useSelector((state) => state.myProfile.profileData)
   const myProfile = useSelector((state) => state.logUser.loginData)
-  console.log(myProfile)
+
   const [searchResult, setSearchResult] = useState([])
   const [searchTerm, setSearchTerm] = useState("")
   const [modalShow, setModalShow] = React.useState(false)
-  //const dispatch = useDispatch()
-
-  // useEffect(() => {
-  //   //dispatch(getMyProfileDataActionWithThunk())
-  //   //dispatch(loginUserDataActionWithThunk())
-  // }, [])
 
   return (
     <Container className='profile-main-container'>
@@ -41,7 +35,7 @@ const ProfilePage = () => {
       <div
         className='d-flex justify-content-between'
         style={{ marginTop: "12vh" }}>
-        <div className='left-container'>
+        <div className='left-container mr-2'>
           <div className='my-profile-div mx-auto'>
             <div className='profile-header-div'>
               <div className='profile-cover-div'>
@@ -81,7 +75,11 @@ const ProfilePage = () => {
               <div className='my-image-container'>
                 <img
                   className='my-profile-image'
-                  src={myProfile.image}
+                  src={
+                    myProfile.image
+                      ? myProfile.image
+                      : "https://static.thenounproject.com/png/2247019-200.png"
+                  }
                   alt=''
                 />
               </div>
@@ -194,7 +192,11 @@ const ProfilePage = () => {
             </div>
           </div>
           <div className='my-profile-section04 mx-auto mt-3'>
-            <Experience id={myProfile._id} isAdmin={true} />
+            {myProfile ? (
+              <Experience id={myProfile._id} isAdmin={true} />
+            ) : (
+              <p>No Data</p>
+            )}
           </div>
         </div>
         <div className='right-container'>

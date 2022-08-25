@@ -21,7 +21,6 @@ const UserRegister = () => {
   const [bio, setBio] = useState("Junior Developer")
   const [title, setTitle] = useState("Junior Developer")
   const [area, setArea] = useState("Padova")
-  //const [imageUrl, setImageUrl] = useState("")
   const [image, setImage] = useState("")
   const [username, setUsername] = useState("Sidath22")
 
@@ -75,27 +74,6 @@ const UserRegister = () => {
       console.log(error)
     }
   }
-  // const uploadFileHandler = async (e) => {
-  //   const file = e.target.files[0]
-  //   const bodyFormData = new FormData()
-  //   bodyFormData.append("image", file)
-  //   try {
-  //     const { data } = await fetch(
-  //       "http://localhost:3003/api/files/cloudinary",
-  //       bodyFormData,
-  //       {
-  //         headers: {
-  //           "Content-Type": "multipart/form-data",
-  //           authorization: process.env.CLOUDINARY_URL,
-  //         },
-  //       }
-  //     )
-
-  //     setImageUrl(data.secure_url)
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
 
   const handleSubmit = (e) => {
     e.preventDefault()

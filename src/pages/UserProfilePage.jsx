@@ -45,7 +45,7 @@ const UserProfile = () => {
       <div
         className='d-flex justify-content-between user-profile'
         style={{ marginTop: "12vh" }}>
-        <div className='left-container'>
+        <div className='left-container mr-2'>
           <div className='my-profile-div'>
             <div className='profile-header-div'>
               <div className='profile-cover-div'>
@@ -80,7 +80,11 @@ const UserProfile = () => {
               <div className='my-image-container'>
                 <img
                   className='my-profile-image'
-                  src={userProfile && userProfile.image}
+                  src={
+                    userProfile.image
+                      ? userProfile.image
+                      : "https://static.thenounproject.com/png/2247019-200.png"
+                  }
                   alt=''
                 />
               </div>

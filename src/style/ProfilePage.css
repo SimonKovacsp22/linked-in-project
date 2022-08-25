@@ -166,13 +166,13 @@ i.bi-camera-fill:hover {
 }
 .my-profile-image {
   position: absolute;
-  width: 149px;
-  height: 149px;
+  width: 145px;
+  height: 145px;
   border-radius: 50%;
   margin: auto;
   left: 0;
   right: 0;
-  top: 1px;
+  top: 0;
   bottom: 0;
 }
 .my-profile-deatails {

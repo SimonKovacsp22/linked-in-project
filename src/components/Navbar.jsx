@@ -265,7 +265,7 @@ const Customnavbar = (props) => {
                     </p>
                     <div className='border-top'>
                       <p>
-                        <Link to='/'>Sign Out</Link>
+                        <Link to='/signin'>Sign Out</Link>
                       </p>
                     </div>
                   </div>
