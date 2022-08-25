@@ -18,12 +18,14 @@
 
 .profile-cover-div {
   width: 780px;
+  max-height: 50%;
   border-radius: 10px 10px 0 0;
 }
 .my-cover-image {
   min-width: 780px;
   border-radius: 10px 10px 0 0;
   border: none;
+  min-height: 50%;
 }
 @media only screen and (max-width: 1000px) {
   .profile-main-container {
@@ -42,6 +44,7 @@
   .profile-cover-div {
     width: 100%;
     min-width: 100%;
+    min-height: 50%;
   }
   .right-container {
     width: 37% !important;
@@ -67,6 +70,15 @@
   .my-profile-image {
     max-width: 90px;
     max-height: 90px;
+  }
+  .my-profile-section02 {
+    max-width: 100%;
+  }
+  .my-profile-section03 {
+    max-width: 100%;
+  }
+  .my-profile-section04 {
+    max-width: 100%;
   }
 }
 @media only screen and (max-width: 800px) {
@@ -102,6 +114,15 @@
   .my-cover-image {
     width: 100%;
     min-width: 100%;
+  }
+  .my-profile-section02 {
+    max-width: 95%;
+  }
+  .my-profile-section03 {
+    max-width: 95%;
+  }
+  .my-profile-section04 {
+    max-width: 95%;
   }
 }
 .camera-div {
@@ -145,8 +166,8 @@ i.bi-camera-fill:hover {
 }
 .my-profile-image {
   position: absolute;
-  width: 140px;
-  height: 140px;
+  width: 149px;
+  height: 149px;
   border-radius: 50%;
   margin: auto;
   left: 0;

@@ -3,10 +3,10 @@
 import React, { useEffect, useState } from "react"
 import { Container, ProgressBar, Row } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
-import {
-  getMyProfileDataActionWithThunk,
-  loginUserDataActionWithThunk,
-} from "../redux/actions"
+// import {
+//   getMyProfileDataActionWithThunk,
+//   loginUserDataActionWithThunk,
+// } from "../redux/actions"
 import { Link } from "react-router-dom"
 import Navbar from "../components/Navbar"
 import "../style/ProfilePage.css"
@@ -42,7 +42,7 @@ const ProfilePage = () => {
         className='d-flex justify-content-between'
         style={{ marginTop: "12vh" }}>
         <div className='left-container'>
-          <div className='my-profile-div'>
+          <div className='my-profile-div mx-auto'>
             <div className='profile-header-div'>
               <div className='profile-cover-div'>
                 <img
@@ -108,7 +108,7 @@ const ProfilePage = () => {
               </div>
             </div>
           </div>
-          <div className='my-profile-section02 mt-3'>
+          <div className='my-profile-section02 mx-auto mt-3'>
             <div className='px-3 mt-3'>
               <h4>Suggested for you</h4>
               <p>
@@ -154,7 +154,7 @@ const ProfilePage = () => {
               </button>
             </div>
           </div>
-          <div className='my-profile-section03 mt-3'>
+          <div className='my-profile-section03 mx-auto mt-3'>
             <div className='px-3 mt-3'>
               <h4>Analytics</h4>
               <p>
@@ -193,8 +193,8 @@ const ProfilePage = () => {
               </div>
             </div>
           </div>
-          <div className='my-profile-section04 mt-3'>
-            <Experience id={myProfile._id} />
+          <div className='my-profile-section04 mx-auto mt-3'>
+            <Experience id={myProfile._id} isAdmin={true} />
           </div>
         </div>
         <div className='right-container'>

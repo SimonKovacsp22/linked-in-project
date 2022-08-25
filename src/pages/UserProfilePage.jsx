@@ -22,6 +22,8 @@ const UserProfile = () => {
   const [user, setUser] = useState(null)
   const [searchResult, setSearchResult] = useState([])
   const [searchTerm, setSearchTerm] = useState("")
+  //const [isAdmin, setIsAdmin] = useState(false)
+
   const userProfile = useSelector(
     (state) => state.userIdProfile.userIdProfileData[0]
   )
@@ -52,13 +54,13 @@ const UserProfile = () => {
                   src='https://images.fastcompany.net/image/upload/w_596,c_limit,q_auto:best,f_auto/wp-cms/uploads/2021/03/LinkedIn-Default-Background-2020-.jpg'
                   alt=''
                 />
-                <div className='camera-div'>
-                  <i className='bi bi-camera-fill'></i>
-                </div>
+                {/* <div className='camera-div'>
+                  <i className='bi bi-camera-fill' disabled></i>
+                </div> */}
               </div>
 
               <div className='my-profile-deatails d-flex justify-content-between p-3'>
-                <div>
+                <div className='mt-2'>
                   <h4>
                     {userProfile && userProfile.name}{" "}
                     {userProfile && userProfile.surname}
@@ -71,9 +73,9 @@ const UserProfile = () => {
                   {/* <p>{userProfile.bio}</p> */}
                   <small>12 connections</small>
                 </div>
-                <div>
+                {/* <div>
                   <i className='bi bi-pen'></i>
-                </div>
+                </div> */}
               </div>
               <div className='my-image-container'>
                 <img
@@ -191,7 +193,7 @@ const UserProfile = () => {
             </div>
           </div>
           <div className='my-profile-section04 mt-3'>
-            <Experience id={userProfile && userProfile._id} />
+            <Experience id={userProfile && userProfile._id} isAdmin={false} />
           </div>
         </div>
         <div className='right-container'>

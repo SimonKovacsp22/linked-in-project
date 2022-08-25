@@ -5,7 +5,7 @@ import { Button, Form, Modal } from "react-bootstrap"
 import { useSelector } from "react-redux"
 
 const AddExperiance = (props) => {
-  const myProfile = useSelector((state) => state.myProfile.profileData)
+  const myProfile = useSelector((state) => state.logUser.loginData)
 
   const [role, setRole] = useState("")
   const [company, setCompany] = useState("")
@@ -30,7 +30,7 @@ const AddExperiance = (props) => {
 
     try {
       let response = await fetch(
-        `${process.env.REACT_APP_URL}/profile/${myProfile._id}/experiences`,
+        `${process.env.REACT_APP_URL}/users/${myProfile._id}/experiences`,
         {
           method: "POST",
           headers: {
@@ -47,75 +47,100 @@ const AddExperiance = (props) => {
     }
   }
   return (
-    <Modal
-      {...props}
-      size='lg'
-      aria-labelledby='contained-modal-title-vcenter'
-      centered>
-      <Modal.Header closeButton>
+    <Modal {...props} size='lg' aria-labelledby='contained-modal-title-vcenter'>
+      <Modal.Header className='d-flex'>
         <Modal.Title id='contained-modal-title-vcenter'>
           Add Experiance
         </Modal.Title>
+        <i className='bi bi-x-lg' onClick={props.onHide}></i>
       </Modal.Header>
       <Modal.Body>
         <Form>
-          <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
-            <Form.Label>Role</Form.Label>
+          <Form.Group
+            className='mb-3 col-12 d-flex'
+            controlId='exampleForm.ControlInput1'>
+            <Form.Label className='col-4'>Role</Form.Label>
             <Form.Control
+              className='col-8'
+              size='sm'
               type='text'
               placeholder='Role'
               value={role}
               onChange={(e) => setRole(e.target.value)}
             />
           </Form.Group>
-          <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
-            <Form.Label>Company</Form.Label>
+          <Form.Group
+            className='mb-3 col-12 d-flex'
+            controlId='exampleForm.ControlInput1'>
+            <Form.Label className='col-4'>Company</Form.Label>
             <Form.Control
+              className='col-8'
+              size='sm'
               type='text'
               placeholder='Company Name'
               value={company}
               onChange={(e) => setCompany(e.target.value)}
             />
           </Form.Group>
-          <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
-            <Form.Label>Area</Form.Label>
+          <Form.Group
+            className='mb-3 col-12 d-flex'
+            controlId='exampleForm.ControlInput1'>
+            <Form.Label className='col-4'>Area</Form.Label>
             <Form.Control
+              className='col-8'
+              size='sm'
               type='text'
               placeholder='Name Of City-Country'
               value={area}
               onChange={(e) => setArea(e.target.value)}
             />
           </Form.Group>
-          <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
-            <Form.Label>start Date</Form.Label>
+          <Form.Group
+            className='mb-3 col-12 d-flex'
+            controlId='exampleForm.ControlInput1'>
+            <Form.Label className='col-4'>Start Date</Form.Label>
             <Form.Control
+              className='col-8'
+              size='sm'
               type='date'
               placeholder='Started-Date'
               value={startDate}
               onChange={(e) => setStartDate(e.target.value)}
             />
           </Form.Group>
-          <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
-            <Form.Label>End Date</Form.Label>
+          <Form.Group
+            className='mb-3 col-12 d-flex'
+            controlId='exampleForm.ControlInput1'>
+            <Form.Label className='col-4'>End Date</Form.Label>
             <Form.Control
+              className='col-8'
+              size='sm'
               type='date'
               placeholder='Finish-Date'
               value={endDate}
               onChange={(e) => setEndDate(e.target.value)}
             />
           </Form.Group>
-          <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
-            <Form.Label>Description</Form.Label>
+          <Form.Group
+            className='mb-3 col-12 d-flex'
+            controlId='exampleForm.ControlInput1'>
+            <Form.Label className='col-4'>Description</Form.Label>
             <Form.Control
-              type='text'
+              className='col-8'
+              size='sm'
+              as='textarea'
+              rows={3}
               placeholder='Desc'
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
           </Form.Group>
-          <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
-            <Form.Label>Add image</Form.Label>
+          <Form.Group
+            className='mb-3 col-12 d-flex'
+            controlId='exampleForm.ControlInput1'>
+            <Form.Label className='col-4'>Add image</Form.Label>
             <Form.Control
+              className='col-8'
               type='text'
               value={expImg}
               onChange={(e) => {
@@ -127,14 +152,14 @@ const AddExperiance = (props) => {
             type='submit'
             variant='primary'
             onClick={handSubmitExp}
-            className='mb-3'>
+            className='mb-3 btn-block col-8 mx-auto'>
             Save
           </Button>
         </Form>
       </Modal.Body>
-      <Modal.Footer>
+      {/* <Modal.Footer>
         <Button onClick={props.onHide}>Close</Button>
-      </Modal.Footer>
+      </Modal.Footer> */}
     </Modal>
   )
 }
