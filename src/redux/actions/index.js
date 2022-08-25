@@ -11,6 +11,7 @@ export const SET_LOADING_TRUE =' SET_LOADING_TRUE'
 export const SET_LOADING_FALSE = 'SET_LOADING_FALSE'
 export const CREATE_POST = 'CREATE_POST'
 export const UPDATE_POST = 'UPDATE_POST'
+export const DELETE_POST = 'DELETE_POST'
 export const SELECT_POST = 'SELECT_POST'
 
 
@@ -190,42 +191,23 @@ export const updatePostActionWithThunk = (id,body,pic) => async (dispatch) => {
 
     const postNoPic = await axios.put(process.env.REACT_APP_URL + '/posts/' + id,body)
 
- 
-
-    console.log(id,body,pic)
       if(!pic) {
         dispatch({
           type: UPDATE_POST,
           payload: postNoPic.data
         })
-
         return
-
       }
-    
-
     let post = await handleFileSend(pic, id)
-
-    console.log(post.data)
     dispatch({
       type: UPDATE_POST,
       payload: post.data
     })
-    
-  } catch (error) {
-    
-  }
   
+  } catch (error) {
+  }
 }
 
-export const putRequestAction = (dataSend)=> {
-
-    return {
-      type: PUT_REQUEST,
-      payload: dataSend
-    }
-
-}
 
 export const setLoadingAction = () => {
   return {
@@ -251,4 +233,19 @@ export const selectPostAction = (postId) => {
     type:SELECT_POST,
     payload: postId
   }
+}
+
+export const deletePostActionWithThunk = (postId) => async (dispatch) => {
+   try {
+     axios.delete("https://linkedin-epicode.herokuapp.com/api/posts/"+ postId)
+
+     dispatch({
+          type: DELETE_POST,
+          payload: postId})
+
+   } catch (error) {
+    
+   }
+    
+  
 }

@@ -30,7 +30,7 @@ const ModalUpdatePost = ({updatePost,handleClose,data}) => {
     <Modal show={updatePost} onHide={handleClose}>
     <Modal.Header >
       <div className='d-flex align-items-center justify-content-between'>
-      <h5>Create Post</h5>
+      <h5>Update Post</h5>
       <div className='d-flex align-items-center justify-content-center modal-header-dark-button-container'>
         <svg onClick={handleClose}
          xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-x-lg" viewBox="0 0 16 16">

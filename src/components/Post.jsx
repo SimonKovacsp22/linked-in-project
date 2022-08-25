@@ -1,6 +1,6 @@
 
 import "../style/PostList.css";
-import { Card, Spinner } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHandsClapping,
@@ -8,36 +8,29 @@ import {
   faPaperPlane,
   faHeart,
   faThumbsUp,
-  faEllipsis,
-  faImage
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux/es/exports";
-import { putRequestAction } from "../redux/actions";
-import { setLoadingAction } from "../redux/actions";
-import { selectPostAction, updatePostActionWithThunk } from "../redux/actions";
 import ModalUpdatePost from "./ModalUpdatePost";
+import PostOptions from "./PostOptions";
+import AlertDismissible from "./AlertDelete";
 
 
 
-export default function Post({ data }) {
+export default function Post({ data, showAlert, handleCloseAlert, handleShowAlert }) {
 
  
   const [seeMore, setSeeMore] = useState(false);
-  const [heightAuto, setHeightAuto] = useState("22px");
-  const [showEdit, setShowEdit] = useState(false);
   const [updatePost,setUpdatePost] = useState(false)
+
+
+
 
   const handleClose = () => setUpdatePost(false);
   const handleShow = () => setUpdatePost(true);
-
-  const myProfile = useSelector((state) => state.myProfile.profileData);
  
-  const isLoading = useSelector((state) => state.allChanges.isLoading);
-
-  const dispatch = useDispatch();
   return (
     <>
+    <AlertDismissible showAlert={showAlert} setCloseAlert={handleCloseAlert}/>
     <Card >
       <div className="d-flex flex-column post-top-section">
         <div className="d-flex justify-content-between mb-3 ">
@@ -55,23 +48,9 @@ export default function Post({ data }) {
               <p className="post-top-subtitle">{data.username}</p>
             </div>
           </div>
-          <div
-            className=""
-            onClick={() => {
-              handleShow()
-              dispatch(selectPostAction(data._id))
-            }}
-          >
-            
-              <i className="bi bi-pen"></i>
-            
+          <div>
+           <PostOptions id={data._id} updatePost={handleShow} setShowAlert={handleShowAlert}/>
           </div>
-
-          {myProfile.username !== data.username && (
-            <div className="post-top-edit-options">
-              <FontAwesomeIcon style={{ height: "25px" }} icon={faEllipsis} />
-            </div>
-          )}
         </div>
         <div  className="d-flex flex-column">
           {data.text}
@@ -79,7 +58,7 @@ export default function Post({ data }) {
             <button
               onClick={() => {
                 setSeeMore(true);
-                setHeightAuto("auto");
+                
               }}
               className={"mt-2 ml-auto post-description-top-see-more "}
             >
@@ -165,7 +144,9 @@ export default function Post({ data }) {
         </div>
       </Card.Body>
     </Card>
-    <ModalUpdatePost handleClose={handleClose} updatePost={updatePost} data={data}/>
+      <ModalUpdatePost handleClose={handleClose} updatePost={updatePost} data={data}/>
+      
+    
     </>
   );
 }

@@ -10,6 +10,16 @@ import {
 
 const PostList = () => {
 
+  const [showAlert,setShowAlert] = useState(false)
+
+  const handleShowAlert = () => {
+    setShowAlert(true)
+  }
+
+  const handleCloseAlert = () => {
+    setShowAlert(false)
+  }
+
  const dispatch =  useDispatch()
  const change = useSelector((state)=> state.allChanges.changes)
 
@@ -35,7 +45,7 @@ const PostList = () => {
         <div className='post-list'>
        
           {posts?.map((post)=>(
-            <Post key={post._id} data={post}/>
+            <Post key={post._id} data={post}  showAlert={showAlert} handleCloseAlert={handleCloseAlert} handleShowAlert={handleShowAlert} />
           ))}
         </div>
     )
