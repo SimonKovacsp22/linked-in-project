@@ -17,6 +17,7 @@ import Footer from "../components/Footer"
 import Navbar from "../components/Navbar"
 import PostList from "../components/PostList"
 import Profile from "../components/Profile"
+import OutsideAlerter from "../hooks/ClickOutHook"
 
 const HomePage = () => {
   const dispatch = useDispatch()
@@ -51,6 +52,7 @@ const HomePage = () => {
           <Footer />
         </div>
       </div>
+      
     </Container>
   )
 }

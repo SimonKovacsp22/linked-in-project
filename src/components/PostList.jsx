@@ -11,26 +11,53 @@ import {
 } from "../redux/actions"
 
 const PostList = () => {
-  const dispatch = useDispatch()
-  const change = useSelector((state) => state.allChanges.changes)
+ 
+
 
   useEffect(() => {
     dispatch(getAllPostsActionWithThunk())
   }, [change])
 
-  useEffect(() => {
-    resetLoadingAction()
-  }, [])
+  const [showAlert,setShowAlert] = useState(false)
 
-  let posts = useSelector((state) => state.allPosts.allPosts)
+  const handleShowAlert = () => {
+    setShowAlert(true)
+  }
+
+  const handleCloseAlert = () => {
+    setShowAlert(false)
+  }
+
+ const dispatch =  useDispatch()
+ const change = useSelector((state)=> state.allChanges.changes)
+
+ useEffect(()=>{
+  dispatch(getAllPostsActionWithThunk())
+  
+  
+},[change])
+
+ useEffect(()=> {
+ 
+   resetLoadingAction()
+ },[])
+
+  
+ let posts =  useSelector((state) => state.allPosts.allPosts )
+ 
+
 
   return (
-    <div className='post-list'>
-      {posts?.map((post) => (
-        <Post key={post._id} data={post} />
-      ))}
-    </div>
-  )
+
+        <div className='post-list'>
+       
+          {posts?.map((post)=>(
+            <Post key={post._id} data={post}  showAlert={showAlert} handleCloseAlert={handleCloseAlert} handleShowAlert={handleShowAlert} />
+          ))}
+        </div>
+    )
+
+
 }
 
 export default PostList
