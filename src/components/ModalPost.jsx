@@ -17,14 +17,15 @@ import { useRef } from 'react';
 
 
  const samplePost = {
-  text:"", image:"",username:"Sidath",userId:"63037d303468197c9c3c8a51"
+  text:"", image:"",username:"",userId:""
  }
 
 
 const ModalPost =({handleClose,createPost,profile}) => {
 
   const dispatch = useDispatch()
-  const userId = useSelector((state) => state.myProfile.profileData)
+  const loggedUser = useSelector((state) => state.logUser.loginData)
+  
 
   const [post, setPost]= useState(samplePost)
   const [image,setImage] = useState(null)
@@ -37,7 +38,13 @@ const ModalPost =({handleClose,createPost,profile}) => {
     else if(post.text.length < 3){
       setIsDisabled(true)
     }
+  
   },[post])
+
+  useEffect(()=> {
+    setPost({...post, username:loggedUser.name, userId: loggedUser._id})
+
+  },[])
 
     return (
       
