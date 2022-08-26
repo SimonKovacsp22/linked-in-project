@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Col, Row } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
 import Moment from "moment"
@@ -40,7 +40,7 @@ const ExperianceItem = ({ user_id, isAdmin }) => {
   }
 
   // useEffect(() => {
-  //     console.log(pplExp.area);
+
   // }, [])
   return (
     <div className='experiance-div mt-2'>

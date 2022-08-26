@@ -144,9 +144,9 @@ const EditExperience = (props) => {
     }
   }
 
-  // useEffect(() => {
-  //   //getExp()
-  // }, [props.expid])
+  useEffect(() => {
+    //getExp()
+  }, [props])
 
   return (
     <Modal {...props} size='lg' aria-labelledby='contained-modal-title-vcenter'>

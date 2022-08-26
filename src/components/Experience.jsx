@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux"
 import React, { useEffect } from "react"
 import { getUserExpById } from "../redux/actions"
 import AddExperiance from "./AddExperiance"
+
 import { Link, useParams } from "react-router-dom"
 
 const Experiance = ({ user_id, isAdmin }) => {
@@ -17,6 +18,25 @@ const Experiance = ({ user_id, isAdmin }) => {
     try {
       let response = await fetch(
         `${process.env.REACT_APP_URL}/files/CSV/${user_id}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        }
+      )
+      let data = await response.json()
+      console.log(data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  const downloadPdf = async () => {
+    console.log("pdf")
+    try {
+      let response = await fetch(
+        `${process.env.REACT_APP_URL}/files/PDF/${user_id}`,
         {
           method: "GET",
           headers: {
@@ -72,9 +92,25 @@ const Experiance = ({ user_id, isAdmin }) => {
             className='button-86 ml-auto mr-auto mb-4'
             onClick={() => {
               downloadCSV()
+              window.open(
+                `${process.env.REACT_APP_URL}/files/CSV/${user_id}`,
+                "_blank"
+              )
             }}>
             Download exps
             <br /> as a CSV file!
+          </button>
+          <button
+            className='button-86 ml-auto mr-auto mb-4'
+            onClick={() => {
+              downloadPdf()
+              //navigate(`${process.env.REACT_APP_URL}/files/PDF/${user_id}`)
+              window.open(
+                `${process.env.REACT_APP_URL}/files/PDF/${user_id}`,
+                "_blank"
+              )
+            }}>
+            Download CV
           </button>
         </Col>
       </Row>
