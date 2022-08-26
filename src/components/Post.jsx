@@ -64,6 +64,7 @@ export default function Post({
           </div>
 
           <div className='d-flex flex-column'>
+            {data.text}
             {!seeMore && data.text.length > 67 && (
               <button
                 onClick={() => {

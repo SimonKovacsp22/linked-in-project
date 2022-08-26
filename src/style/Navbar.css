@@ -6,7 +6,7 @@
   min-width: 350px;
 }
 .navbarSearch {
-  height: 5vh;
+  height: 40px;
   padding-left: 2.4rem;
   margin-top: 0.15rem;
   background-color: #eef3f7;
@@ -118,11 +118,11 @@
 }
 
 .search-dropdown {
-  width: 200px;
+  width: 350px;
   background-color: white;
   border: 0.5px solid rgb(207, 207, 207);
   top: 45px;
-  left: 10px;
+  border-radius: 5px;
 }
 .nav-profile-dropdown,
 .dropdown-menu {
@@ -137,23 +137,51 @@
 }
 
 .navbar-search-item {
-  padding: 3px 5px 3px 5px;
-  padding-left: 10px;
-  padding-bottom: 15px;
-  gap: 15px;
+  padding: .5rem 1rem;
+  gap: 1rem;
+  font-weight: 500;
+  color:rgba(0, 0, 0, 0.9);
+  text-decoration: none;
 }
+
+
+.navbar-search-item > p {
+  max-width: 275px;
+  text-overflow: ellipsis;
+}
+
+.navbar-search-item:last-of-type {
+  padding-bottom: 1rem;
+}
+
+
+
 
 .navbar-search-item:hover {
   background-color: #e6e6e6;
   cursor: pointer;
+  text-decoration: none;
+}
+
+.navbar-search-item-link:hover {
+  text-decoration: none;
+}
+
+.navbar-search-item img {
+  height: 30px;
+  margin-left: auto;
 }
 
 .navbar-search-item-recent {
   display: flex;
-  gap: 20px;
   align-items: center;
-  padding-left: 15px;
-  padding-bottom: 15px;
+  padding: .5rem 1rem;
+  gap: 1rem;
+  
+}
+
+.navbar-search-item-recent:last-of-type {
+  padding-bottom: 1rem;
 }
 
 .navbar-search-item-recent:hover {
@@ -168,10 +196,6 @@
 
 .search-dropdown svg {
   height: 13px;
-}
-
-.navbar-search-results p:first-child {
-  margin-top: 10px;
 }
 
 .navbar-dropdown-search-results-title {
@@ -190,4 +214,8 @@
 
 .hover-pointer svg {
   margin-bottom: 5px;
+}
+
+.see-all-results:hover {
+ background-color:#e6e6e6 ;
 }

@@ -19,17 +19,15 @@ const PostOptions = ({id, updatePost, setShowAlert}) => {
     ref,
     isComponentVisible,
     setIsComponentVisible
-  } = useComponentVisible(true);
+  } = useComponentVisible(false);
 
   return (
 <>
          
              <div   className="post-top-edit-options" onClick={()=> { 
-               if(isComponentVisible===true) {
-                setIsComponentVisible(false) 
-               } else {
-                setIsComponentVisible(true)
-               }
+               
+                setIsComponentVisible(true) 
+              
                 
              }} >
                   <FontAwesomeIcon style={{height:'25px',color:'rgb(107, 107, 107)'}} icon={faEllipsis} />
