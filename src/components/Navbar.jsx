@@ -50,7 +50,7 @@ const Customnavbar = (props) => {
   }
   useEffect(() => {}, [myProfile])
   return (
-    <Navbar className='navbarbg' expand='lg' fixed='top'>
+    <Navbar className='navbarbg' expand='lg' >
       <Container>
         <Navbar.Brand href='#home' className='mr-0'>
           <img
@@ -173,9 +173,11 @@ const Customnavbar = (props) => {
           <Link
             to='/'
             element={<HomePage />}
-            className=' ml-lg-5 ml-md-4 marginForHome ml-sm-3 ml-3 forHover giveColor'>
-            <ImHome3 className='d-block HomeMargin iconFont3 ' />
-            <small className=''>Home</small>
+            className=' ml-lg-5 ml-md-4 marginForHome  ml-5 forHover giveColor'>
+              <span className="expandMargin">
+            <ImHome3 className='d-block HomeMargin iconFont3 expandMargin' style={{marginTop:'0.1rem'}}/>
+            <small className='HomeMarginText'>Home</small>
+            </span>
           </Link>
           <Nav.Link to='/' className=' giveMargin2 ml-md-1 forHover giveColor'>
             <MdPeopleAlt className='d-block ml-4 iconFont2 ' />
@@ -277,7 +279,7 @@ const Customnavbar = (props) => {
             </Dropdown.Menu>
           </Dropdown>
 
-          <Dropdown className='giveBorder pl-3 ml-0'>
+          <Dropdown className='giveBorder pl-3 pl-lg-0 ml-0'>
             <Dropdown.Toggle variant='transparent' id='dropdown-basic'>
               <span>
                 <FaGripHorizontal className='ml-2 d-block iconFont' />
@@ -295,7 +297,7 @@ const Customnavbar = (props) => {
             </Dropdown.Menu>
           </Dropdown>
         </Navbar.Collapse>
-        <Nav.Link className='premiumFree mb-1 ml-auto mr-auto '>
+        <Nav.Link className='premiumFree mb-1 ml-auto mr-auto d-lg-none d-xl-inline'>
           <small>Network Smarter,Try Premium Free</small>
         </Nav.Link>
       </Container>

@@ -47,10 +47,9 @@
 }
 .giveColor {
   color: #666666;
+  text-decoration: none ;
 }
-.giveColor:hover {
-  border-bottom: 1px solid black;
-}
+
 .marginForMe {
   margin-left: 1.2rem;
 }
@@ -190,4 +189,20 @@
 
 .hover-pointer svg {
   margin-bottom: 5px;
+}
+@media only screen and (max-width: 992px) {
+  .HomeMargin{
+    margin-left: 2.9rem;
+  }
+  .HomeMarginText{
+    margin-left: 2.5rem;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .HomeMargin{
+    margin-left: 2.6rem;
+  }
+  .HomeMarginText{
+    margin-left: 2.2rem;
+  }
 }

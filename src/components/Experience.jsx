@@ -11,7 +11,7 @@ import { Link, useParams } from "react-router-dom"
 
 const Experiance = ({ user_id, isAdmin }) => {
   // console.log(user_id)
-  // const theId = useParams()._id
+  const theId = useParams()._id
 
   const downloadCSV = async () => {
     try {
@@ -68,14 +68,13 @@ const Experiance = ({ user_id, isAdmin }) => {
           </Col>
         </Col>
         <Col>
+        <a href={`${process.env.REACT_APP_URL}/files/CSV/${theId}`}>
           <button
-            className='button-86 ml-auto mr-auto mb-4'
-            onClick={() => {
-              downloadCSV()
-            }}>
+            className='button-86 ml-auto mr-auto mb-4'>
             Download exps
             <br /> as a CSV file!
           </button>
+          </a>
         </Col>
       </Row>
     </Container>
