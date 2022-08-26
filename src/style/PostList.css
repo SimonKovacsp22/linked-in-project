@@ -4,11 +4,18 @@
   width: 500px;
   margin-top: 1.5rem;
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 750px) {
   .post-list {
-    display: none;
+    width: 90%;
+    margin: 1.5rem auto;
+    min-width: 500px;
   }
 }
+/* @media only screen and (max-width: 600px) {
+  .post-list {
+    margin: 0 auto;
+  }
+} */
 
 .post-list .card {
   margin-bottom: 1.5rem;
@@ -36,9 +43,8 @@
 .post-description-top-paragraph {
   margin-bottom: 0;
 
-  color:rgb(98, 98, 98) ;
+  color: rgb(98, 98, 98);
   overflow: hidden;
-
 }
 
 .post-description-top-see-more {
@@ -49,7 +55,7 @@
 }
 
 .see-more {
-  height:auto
+  height: auto;
 }
 
 .post-description-top-see-more:hover {
@@ -76,7 +82,7 @@
 }
 
 .post-bottom-section-button:hover {
- background-color: rgb(245, 245, 245);
+  background-color: rgb(245, 245, 245);
 }
 
 .post-bottom-section h6 {
@@ -86,7 +92,7 @@
 .post-bottom-section p {
   margin: 0;
   margin-left: 4px;
-  color:rgb(157, 157, 157);
+  color: rgb(157, 157, 157);
   font-size: 0.8rem;
   line-height: 10px;
 }
@@ -164,7 +170,7 @@
   font-size: 0.9rem;
 }
 
-.post-bottom-section-large-icons-and-text:hover{
+.post-bottom-section-large-icons-and-text:hover {
   cursor: pointer;
 }
 
@@ -185,24 +191,24 @@
 }
 
 .card-img-top {
-  border-radius:0px !important;
+  border-radius: 0px !important;
 }
 .modal-content {
-border-radius:0.5rem!important ;
-top: 100px
+  border-radius: 0.5rem !important ;
+  top: 100px;
 }
 
 .modal-footer {
   border: none !important;
-  padding-left: 16px!important;
-  padding-right: 24px!important;
+  padding-left: 16px !important;
+  padding-right: 24px !important;
 }
 
 .modal-body-anyone-button {
   padding: 5px 12px;
   border-color: rgba(0, 0, 0, 0.6);
   border: 1px solid;
-  color:rgba(0, 0, 0, 0.6) ;
+  color: rgba(0, 0, 0, 0.6);
   font-size: small;
   font-weight: 500;
   border-radius: 20px;
@@ -229,13 +235,12 @@ top: 100px
 }
 
 .modal-body-anyone-button:hover {
-  background-color:rgba(94, 94, 94, 0.2) ;
+  background-color: rgba(94, 94, 94, 0.2);
   border: 2px solid rgba(0, 0, 0, 0.6);
   margin: 0;
-
 }
 .modal-header {
-  display:block !important;
+  display: block !important;
 }
 
 .modal-body-textarea {
@@ -251,37 +256,36 @@ top: 100px
 .modal-body-addhashtag-button {
   border: none;
   outline: none;
-  color:#0a66c2 ;
+  color: #0a66c2;
   font-weight: 500;
   background-color: inherit;
-  border-radius: 5px ;
-  padding: 6px 8px
+  border-radius: 5px;
+  padding: 6px 8px;
 }
 
 .modal-body-addhashtag-button:hover {
-  background-color:rgba(112,181,249,0.2) ;
+  background-color: rgba(112, 181, 249, 0.2);
 }
 
 .modal-footer-post-button {
   border-radius: 20px !important;
   padding: 4px 16px !important;
-  background-color:#186bbd !important;
+  background-color: #186bbd !important;
   color: white !important;
   border: none !important;
-  outline: none!important;
+  outline: none !important;
   font-weight: 500 !important;
   margin: 0 !important;
 }
 
 .modal-footer-post-button:hover {
-  background-color:#004182 !important;;
+  background-color: #004182 !important;
 }
 
-.btn-primary:disabled{
-  background-color:rgba(94, 94, 94, 0.2) !important;
-  color:var(--secondary) !important ;
+.btn-primary:disabled {
+  background-color: rgba(94, 94, 94, 0.2) !important;
+  color: var(--secondary) !important ;
 }
-
 
 .modal-footer-post-button:focus {
   box-shadow: none !important;
@@ -289,14 +293,14 @@ top: 100px
 }
 
 .modal-header-dark-button-container {
-    background-color: inherit;
-    height: 30px;
-    width: 30px;
-    border-radius: 50%;
+  background-color: inherit;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
 }
 
 .modal-header-dark-button-container:hover {
-  background-color:rgba(94, 94, 94, 0.2) ;
+  background-color: rgba(94, 94, 94, 0.2);
 }
 
 .modal-footer-anyone-button {
@@ -305,7 +309,7 @@ top: 100px
   background-color: inherit !important;
   color: var(--secondary) !important;
   border: none !important;
-  outline: none!important;
+  outline: none !important;
   font-weight: 500 !important;
   margin: 0 !important;
   margin-right: 30px !important;
@@ -313,7 +317,7 @@ top: 100px
 }
 
 .modal-footer-anyone-button:hover {
-  background-color:rgba(94, 94, 94, 0.2) !important;
+  background-color: rgba(94, 94, 94, 0.2) !important;
 }
 
 .modal-footer-anyone-button:focus {
@@ -336,26 +340,26 @@ top: 100px
 }
 
 .modal-footer-dark-button-container:hover {
-  background-color:rgba(94, 94, 94, 0.2);
+  background-color: rgba(94, 94, 94, 0.2);
   cursor: pointer;
 }
 
 .modal-footer-dark-button-container path {
-  fill:rgb(107, 107, 107)
+  fill: rgb(107, 107, 107);
 }
 
 .modal-footer {
   justify-content: space-between !important;
-  padding-top:0px !important
+  padding-top: 0px !important;
 }
 
 .inputfile {
-	width: 0.1px;
-	height: 0.1px;
-	opacity: 0;
-	overflow: hidden;
-	position: absolute;
-	z-index: -1;
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
 }
 
 .modal-footer-file-input-container label {
@@ -370,12 +374,12 @@ top: 100px
 }
 
 .modal-footer-file-input-container label:hover {
-  background-color:rgba(94, 94, 94, 0.2);
+  background-color: rgba(94, 94, 94, 0.2);
   cursor: pointer;
 }
 
 .modal-footer-file-input-container path {
-  fill:rgb(107, 107, 107);
+  fill: rgb(107, 107, 107);
 }
 
 .post-top-edit-options {
@@ -388,16 +392,14 @@ top: 100px
   position: relative;
 }
 
-.post-top-edit-options:hover{
-  
-  background-color:rgba(94, 94, 94, 0.2);
+.post-top-edit-options:hover {
+  background-color: rgba(94, 94, 94, 0.2);
   cursor: pointer;
-  
 }
 
 .post-options {
   background-color: white;
-  border:1px solid rgba(0,0,0,.125) ;
+  border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 5px;
   position: absolute;
   top: 42px;
@@ -405,13 +407,11 @@ top: 100px
   border-top-right-radius: 0%;
   display: flex;
   flex-direction: column;
-  box-shadow: -5px 8px 8px -4px rgba(0,0,0,1.075);
-  
-
+  box-shadow: -5px 8px 8px -4px rgba(0, 0, 0, 1.075);
 }
 
 .post-options-icons path {
- fill: rgb(107, 107, 107)
+  fill: rgb(107, 107, 107);
 }
 
 .post-options-icons svg {
@@ -422,7 +422,7 @@ top: 100px
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding:.5rem 1rem .5rem 1rem;
+  padding: 0.5rem 1rem 0.5rem 1rem;
 }
 
 .post-options-incon-and-text p {
@@ -430,10 +430,8 @@ top: 100px
   margin-left: 1rem;
   font-weight: 500;
   margin-right: 2rem;
-  
 }
 
 .post-options-incon-and-text:hover {
-  background-color:rgba(94, 94, 94, 0.2) ;
+  background-color: rgba(94, 94, 94, 0.2);
 }
-

@@ -9,15 +9,13 @@ export const GET_SINGLE_USER_EXP = "GET_SINGLE_USER_EXP"
 export const GET_DATA_FOR_ALL_POSTS = "GET_DATA_FOR_ALL_POSTS"
 export const GET_SINGLE_EXP = "GET_SINGLE_EXP"
 export const USER_LOGGED_IN = "USER_LOGGED_IN"
-export const PUT_REQUEST = 'PUT_REQUEST'
-export const SET_LOADING_TRUE =' SET_LOADING_TRUE'
-export const SET_LOADING_FALSE = 'SET_LOADING_FALSE'
-export const CREATE_POST = 'CREATE_POST'
-export const UPDATE_POST = 'UPDATE_POST'
-export const DELETE_POST = 'DELETE_POST'
-export const SELECT_POST = 'SELECT_POST'
-
-
+export const PUT_REQUEST = "PUT_REQUEST"
+export const SET_LOADING_TRUE = " SET_LOADING_TRUE"
+export const SET_LOADING_FALSE = "SET_LOADING_FALSE"
+export const CREATE_POST = "CREATE_POST"
+export const UPDATE_POST = "UPDATE_POST"
+export const DELETE_POST = "DELETE_POST"
+export const SELECT_POST = "SELECT_POST"
 
 export const getMyProfileDataActionWithThunk = () => {
   return async (dispatch) => {
@@ -99,6 +97,7 @@ export const getProfileBasedOnId = (userId) => {
       )
 
       let singleUserData = await response.json()
+      console.log(singleUserData)
 
       dispatch({
         type: GET_DATA_FOR_SINGLE_USER_ID,
@@ -198,30 +197,28 @@ export const createPostActionWithThunk = (body, data) => async (dispatch) => {
   } catch (error) {}
 }
 
+export const updatePostActionWithThunk =
+  (id, body, pic) => async (dispatch) => {
+    try {
+      const postNoPic = await axios.put(
+        process.env.REACT_APP_URL + "/posts/" + id,
+        body
+      )
 
-export const updatePostActionWithThunk = (id,body,pic) => async (dispatch) => {
-  try {
-
-    const postNoPic = await axios.put(process.env.REACT_APP_URL + '/posts/' + id,body)
-
-      if(!pic) {
+      if (!pic) {
         dispatch({
           type: UPDATE_POST,
-          payload: postNoPic.data
+          payload: postNoPic.data,
         })
         return
       }
-    let post = await handleFileSend(pic, id)
-    dispatch({
-      type: UPDATE_POST,
-      payload: post.data
-    })
-  
-  } catch (error) {
-
+      let post = await handleFileSend(pic, id)
+      dispatch({
+        type: UPDATE_POST,
+        payload: post.data,
+      })
+    } catch (error) {}
   }
-}
-
 
 export const setLoadingAction = () => {
   return {
@@ -247,22 +244,18 @@ const handleFileSend = async (selectedFile, id) => {
 
 export const selectPostAction = (postId) => {
   return {
-    type:SELECT_POST,
-    payload: postId
+    type: SELECT_POST,
+    payload: postId,
   }
 }
 
 export const deletePostActionWithThunk = (postId) => async (dispatch) => {
-   try {
-     axios.delete("https://linkedin-epicode.herokuapp.com/api/posts/"+ postId)
+  try {
+    axios.delete("https://linkedin-epicode.herokuapp.com/api/posts/" + postId)
 
-     dispatch({
-          type: DELETE_POST,
-          payload: postId})
-
-   } catch (error) {
-    
-   }
-    
-  
+    dispatch({
+      type: DELETE_POST,
+      payload: postId,
+    })
+  } catch (error) {}
 }

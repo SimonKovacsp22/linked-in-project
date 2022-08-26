@@ -3,17 +3,19 @@
 import React, { useState } from "react"
 import { useEffect } from "react"
 import { Button, Container, Form, Modal } from "react-bootstrap"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { Link, useParams } from "react-router-dom"
+import { getUserExpById } from "../redux/actions"
 
 const EditExperience = (props) => {
-
+  //console.log(props)
   let id = useParams()._id
   const oneOfExp = useSelector(
     (state) => state.singleExperience.singleExperiences
   )
   //const myProfile = useSelector((state) => state.myProfile.profileData)
   const myProfile = useSelector((state) => state.logUser.loginData)
+  const dispatch = useDispatch()
 
   const [role, setRole] = useState("")
   const [company, setCompany] = useState("")
@@ -22,7 +24,7 @@ const EditExperience = (props) => {
   const [endDate, setEndDate] = useState("")
   const [description, setDescription] = useState("")
   const [imageUrl, setImageUrl] = useState("")
-  const [expImg,setExpImg] = useState('')
+  const [expImg, setExpImg] = useState("")
   // useEffect(()=>{
   //     setRole(oneOfExp.role)
   // },[oneOfExp])
@@ -43,7 +45,7 @@ const EditExperience = (props) => {
 
     try {
       let response = await fetch(
-        `${process.env.REACT_APP_URL}/users/${myProfile._id}/experiences/${props.singleexp._id}`,
+        `${process.env.REACT_APP_URL}/users/${props.user_id}/experiences/${props.singleexp._id}`,
         {
           method: "PUT",
           headers: {
@@ -55,22 +57,28 @@ const EditExperience = (props) => {
         }
       )
       let data = await response.json()
-      console.log(data)
-      alert("SUCCED! reload the page for update")
+      // console.log(data)
+      // alert("SUCCED! reload the page for update")
+      dispatch(getUserExpById(myProfile._id))
     } catch (err) {
       console.log(err, "AGHA rouzbeh error")
-
-      
     }
-    if(role === "" || company === "" || area === "" || startDate === "" || endDate === "" || description === ""){
+    if (
+      role === "" ||
+      company === "" ||
+      area === "" ||
+      startDate === "" ||
+      endDate === "" ||
+      description === ""
+    ) {
       alert("fill the required fields!")
-    }else{
+    } else {
       console.log(blog)
-      console.log(myProfile._id);
-  
+      console.log(myProfile._id)
+
       try {
         let response = await fetch(
-          `${process.env.REACT_APP_URL}/users/${id}/experiences/${props.expid}`,
+          `${process.env.REACT_APP_URL}/users/${props.user_id}/experiences/${props.expid}`,
           {
             method: "PUT",
             headers: {
@@ -82,40 +90,40 @@ const EditExperience = (props) => {
           }
         )
         let data = response.json()
-        alert("your experience succesfully edited!")
-        window.location.reload();
+        // alert("your experience succesfully edited!")
+        // window.location.reload()
       } catch (err) {
         console.log(err, "errrrrr")
         alert("Back-end Error!")
       }
     }
-
-
-    }
-    const getExp = async () => {
-      try {
-        if(props.expid!==''){
-          let response = await fetch(`${process.env.REACT_APP_URL}/users/${id}/experiences/${props.expid}`,
-              {
-                  method: "GET",
-                  headers: {
-                      "Content-Type": "application/json",
-                      Accept: "application/json",
-                  }
-              })
-              let data = await response.json()
-              setRole(data.role)
-              setCompany(data.company)
-              setArea(data.area)
-              setStartDate(data.startDate)
-              setEndDate(data.endDate)
-              setDescription(data.description)
-              setImageUrl(data.imageUrl)
-            }
-      } catch (error) {
-          console.log(error , "errrrrrr");
-      }
   }
+  // const getExp = async () => {
+  //   try {
+  //     if (props.expid !== "") {
+  //       let response = await fetch(
+  //         `${process.env.REACT_APP_URL}/users/${props.user_id}/experiences/${props.expid}`,
+  //         {
+  //           method: "GET",
+  //           headers: {
+  //             "Content-Type": "application/json",
+  //             Accept: "application/json",
+  //           },
+  //         }
+  //       )
+  //       let data = await response.json()
+  //       setRole(data.role)
+  //       setCompany(data.company)
+  //       setArea(data.area)
+  //       setStartDate(data.startDate)
+  //       setEndDate(data.endDate)
+  //       setDescription(data.description)
+  //       setImageUrl(data.imageUrl)
+  //     }
+  //   } catch (error) {
+  //     console.log(error, "errrrrrr")
+  //   }
+  // }
 
   const addImage = async (e) => {
     const str = e.target.files[0]
@@ -129,17 +137,16 @@ const EditExperience = (props) => {
     try {
       let res = await fetch(url, requestOptions)
       let data = await res.json()
-      console.log(data)
-      setExpImg(data.url)
+      //console.log(data)
+      setImageUrl(data.url)
     } catch (error) {
       console.log(error)
     }
   }
 
-  useEffect(()=>{
-    getExp()
-  },[props.expid])
-
+  // useEffect(() => {
+  //   //getExp()
+  // }, [props.expid])
 
   return (
     <Modal {...props} size='lg' aria-labelledby='contained-modal-title-vcenter'>
@@ -217,14 +224,17 @@ const EditExperience = (props) => {
             />
           </Form.Group>
           <Form.Group className='mb-3 col-12 d-flex'>
-            <Form.Label className='col-4'>Image</Form.Label>
+            <Form.Label className='col-4'>ImageUrl</Form.Label>
             <Form.Control
               className='col-8'
               type='text'
-
               size='sm'
-              defaultValue={expImg}
+              defaultValue={imageUrl}
             />
+          </Form.Group>
+          <Form.Group className='mb-3 col-12 d-flex'>
+            <Form.Label className='col-4'>Add image</Form.Label>
+            <Form.Control className='col-8' type='file' onChange={addImage} />
           </Form.Group>
 
           <Button

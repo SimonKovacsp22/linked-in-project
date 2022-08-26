@@ -2,14 +2,14 @@
 
 import React, { useState } from "react"
 import { Button, Form, Modal } from "react-bootstrap"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { Link, useParams } from "react-router-dom"
+import { getUserExpById } from "../redux/actions"
 
 const AddExperiance = (props) => {
-
   const myProfile = useSelector((state) => state.logUser.loginData)
-  let id = useParams()._id
-
+  //let id = useParams()._id
+  const dispatch = useDispatch()
 
   const [role, setRole] = useState("")
   const [company, setCompany] = useState("")
@@ -18,6 +18,9 @@ const AddExperiance = (props) => {
   const [endDate, setEndDate] = useState("")
   const [description, setDescription] = useState("")
   const [imageUrl, setImageUrl] = useState("")
+
+  const [show, setShow] = useState(false)
+  const handleClose = () => setShow(false)
 
   const handSubmitExp = async (e) => {
     e.preventDefault()
@@ -30,15 +33,22 @@ const AddExperiance = (props) => {
       description,
       imageUrl,
     }
-    if(role === "" || company === "" || area === "" || startDate === "" || endDate === "" || description === ""){
+    if (
+      role === "" ||
+      company === "" ||
+      area === "" ||
+      startDate === "" ||
+      endDate === "" ||
+      description === ""
+    ) {
       alert("requirments must be filled!")
-    }else{
+    } else {
       console.log(blog)
-      console.log(id,"im the id ")
-  
+      //console.log(id, "im the id ")
+
       try {
         let response = await fetch(
-          `${process.env.REACT_APP_URL}/users/${id}/experiences`,
+          `${process.env.REACT_APP_URL}/users/${myProfile._id}/experiences`,
           {
             method: "POST",
             headers: {
@@ -49,17 +59,35 @@ const AddExperiance = (props) => {
           }
         )
         let data = response.json()
-        alert("Successfully added!")
-        console.log(data, "AGHA rouzbehhhh")
-        window.location.reload()
+        //alert("Successfully added!")
+        //console.log(data, "AGHA rouzbehhhh")
+        dispatch(getUserExpById(myProfile._id))
+
+        //window.location.reload()
       } catch (err) {
         console.log(err, "AGHA rouzbeh error")
       }
     }
-
-
-
+    handleClose()
+  }
+  const addImage = async (e) => {
+    const str = e.target.files[0]
+    let url = `${process.env.REACT_APP_URL}/files/cloudinary`
+    var formData = new FormData()
+    formData.append("image", str)
+    var requestOptions = {
+      method: "POST",
+      body: formData,
     }
+    try {
+      let res = await fetch(url, requestOptions)
+      let data = await res.json()
+      //console.log(data)
+      setImageUrl(data.url)
+    } catch (error) {
+      console.log(error)
+    }
+  }
   return (
     <Modal {...props} size='lg' aria-labelledby='contained-modal-title-vcenter'>
       <Modal.Header className='d-flex'>
@@ -70,10 +98,10 @@ const AddExperiance = (props) => {
       </Modal.Header>
       <Modal.Body>
         <Form>
-
-          <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
-            <Form.Label>Role*</Form.Label>
-
+          <Form.Group
+            className='mb-3 col-12 d-flex'
+            controlId='exampleForm.ControlInput1'>
+            <Form.Label className='col-4'>Role</Form.Label>
             <Form.Control
               className='col-8'
               size='sm'
@@ -83,10 +111,10 @@ const AddExperiance = (props) => {
               onChange={(e) => setRole(e.target.value)}
             />
           </Form.Group>
-
-          <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
-            <Form.Label>Company*</Form.Label>
-
+          <Form.Group
+            className='mb-3 col-12 d-flex'
+            controlId='exampleForm.ControlInput1'>
+            <Form.Label className='col-4'>Company</Form.Label>
             <Form.Control
               className='col-8'
               size='sm'
@@ -96,10 +124,10 @@ const AddExperiance = (props) => {
               onChange={(e) => setCompany(e.target.value)}
             />
           </Form.Group>
-
-          <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
-            <Form.Label>Area*</Form.Label>
-
+          <Form.Group
+            className='mb-3 col-12 d-flex'
+            controlId='exampleForm.ControlInput1'>
+            <Form.Label className='col-4'>Area</Form.Label>
             <Form.Control
               className='col-8'
               size='sm'
@@ -109,11 +137,10 @@ const AddExperiance = (props) => {
               onChange={(e) => setArea(e.target.value)}
             />
           </Form.Group>
-
-
-          <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
-            <Form.Label>start Date*</Form.Label>
-
+          <Form.Group
+            className='mb-3 col-12 d-flex'
+            controlId='exampleForm.ControlInput1'>
+            <Form.Label className='col-4'>Start Date</Form.Label>
             <Form.Control
               className='col-8'
               size='sm'
@@ -123,11 +150,10 @@ const AddExperiance = (props) => {
               onChange={(e) => setStartDate(e.target.value)}
             />
           </Form.Group>
-
-
-          <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
-            <Form.Label>End Date*</Form.Label>
-
+          <Form.Group
+            className='mb-3 col-12 d-flex'
+            controlId='exampleForm.ControlInput1'>
+            <Form.Label className='col-4'>End Date</Form.Label>
             <Form.Control
               className='col-8'
               size='sm'
@@ -137,10 +163,10 @@ const AddExperiance = (props) => {
               onChange={(e) => setEndDate(e.target.value)}
             />
           </Form.Group>
-
-          <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
-            <Form.Label>Description*</Form.Label>
-
+          <Form.Group
+            className='mb-3 col-12 d-flex'
+            controlId='exampleForm.ControlInput1'>
+            <Form.Label className='col-4'>Description</Form.Label>
             <Form.Control
               className='col-8'
               size='sm'
@@ -151,18 +177,20 @@ const AddExperiance = (props) => {
               onChange={(e) => setDescription(e.target.value)}
             />
           </Form.Group>
+          <Form.Group className='mb-3 col-12 d-flex'>
+            <Form.Label className='col-4'>ImageUrl</Form.Label>
+            <Form.Control
+              className='col-8'
+              type='text'
+              size='sm'
+              defaultValue={imageUrl}
+            />
+          </Form.Group>
           <Form.Group
             className='mb-3 col-12 d-flex'
             controlId='exampleForm.ControlInput1'>
             <Form.Label className='col-4'>Add image</Form.Label>
-            <Form.Control
-              className='col-8'
-              type='text'
-              value={imageUrl}
-              onChange={(e) => {
-                setImageUrl(e.target.value)
-              }}
-            />
+            <Form.Control className='col-8' type='file' onChange={addImage} />
           </Form.Group>
           <Button
             type='submit'

@@ -17,22 +17,25 @@ import MainFooter from "../components/MainFooter"
 
 const UserProfile = () => {
   let id = useParams()._id
-  console.log(id)
-
+  //console.log(id)
+  const dispatch = useDispatch()
   const [user, setUser] = useState(null)
   const [searchResult, setSearchResult] = useState([])
   const [searchTerm, setSearchTerm] = useState("")
   //const [isAdmin, setIsAdmin] = useState(false)
 
-  const userProfile = useSelector(
-    (state) => state.userIdProfile.userIdProfileData[0]
-  )
-  const dispatch = useDispatch()
   useEffect(() => {
+    dispatch(getProfileBasedOnId(id))
     dispatch(getAllProfilesActionWithThunk())
     setUser(id)
-    dispatch(getProfileBasedOnId(id))
   }, [id])
+  // const {userProfile} = useSelector(
+  //   (state) => state.userIdProfile.userIdProfileData
+  // )
+  const userProfile = useSelector(
+    (state) => state.userIdProfile.userIdProfileData
+  )
+  //console.log(userProfile)
 
   return (
     <Container>
@@ -197,7 +200,7 @@ const UserProfile = () => {
             </div>
           </div>
           <div className='my-profile-section04 mt-3'>
-            <Experience id={userProfile && userProfile._id} isAdmin={false} />
+            <Experience user_id={userProfile._id} isAdmin={false} />
           </div>
         </div>
         <div className='right-container'>

@@ -9,31 +9,34 @@ import { getUserExpById } from "../redux/actions"
 import AddExperiance from "./AddExperiance"
 import { Link, useParams } from "react-router-dom"
 
+const Experiance = ({ user_id, isAdmin }) => {
+  // console.log(user_id)
+  // const theId = useParams()._id
 
-const Experiance = ({ id, isAdmin }) => {
-
-  const theId = useParams()._id
   const downloadCSV = async () => {
     try {
-        let response = await fetch(`${process.env.REACT_APP_URL}/files/CSV/${theId}`, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-            }
-        })
-        let data = await response.json()
-        console.log(data);
+      let response = await fetch(
+        `${process.env.REACT_APP_URL}/files/CSV/${user_id}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        }
+      )
+      let data = await response.json()
+      console.log(data)
     } catch (error) {
-        console.log(error);
+      console.log(error)
     }
-}
+  }
   const [modalShow, setModalShow] = React.useState(false)
 
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(getUserExpById(id))
-  }, [id])
+    dispatch(getUserExpById(user_id))
+  }, [user_id])
   return (
     <Container>
       <Row>
@@ -61,14 +64,21 @@ const Experiance = ({ id, isAdmin }) => {
             </h5>
           </Col>
           <Col className='experiance-container'>
-            <ExperianceItem userId={id} isAdmin={isAdmin} />
+            <ExperianceItem user_id={user_id} isAdmin={isAdmin} />
           </Col>
         </Col>
         <Col>
-        <button className="button-86 ml-auto mr-auto mb-4" onClick={()=>{downloadCSV()}}>Download exps<br/> as a CSV file!</button>
+          <button
+            className='button-86 ml-auto mr-auto mb-4'
+            onClick={() => {
+              downloadCSV()
+            }}>
+            Download exps
+            <br /> as a CSV file!
+          </button>
         </Col>
       </Row>
     </Container>
   )
-              }
+}
 export default Experiance

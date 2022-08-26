@@ -1,5 +1,9 @@
 /** @format */
-
+@media only screen and (max-width: 750px) {
+  .about {
+    display: none;
+  }
+}
 .about {
   background-color: rgb(255, 255, 255);
   width: 250px;

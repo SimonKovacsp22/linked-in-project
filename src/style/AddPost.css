@@ -1,12 +1,20 @@
+/** @format */
+
 .add-post {
   height: 100px;
   width: 500px;
   border-radius: 10px;
   border: 0.5px solid rgb(207, 207, 207);
+  background-color: rgb(255, 255, 255);
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 750px) {
   .add-post {
-    display: none;
+    width: 90%;
+    margin: 0 auto;
+    min-width: 500px;
+  }
+  .post-input {
+    min-width: 87%;
   }
 }
 .input-container {
@@ -45,12 +53,12 @@
 }
 
 .modal-body-profile-img {
-border-radius: 50%;
-height: 50px;
-width: 50px;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
 }
 
 .post-input:hover {
   cursor: pointer;
-  background-color:rgba(94, 94, 94, 0.2) ;
+  background-color: rgba(94, 94, 94, 0.2);
 }

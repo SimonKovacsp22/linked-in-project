@@ -6,3 +6,15 @@
 .my-profile-section03 {
   height: auto;
 }
+
+@media only screen and (max-width: 1000px) {
+  .left-container {
+    width: 100%;
+    min-width: 500px;
+    height: auto;
+    margin: 0 auto;
+  }
+  .my-profile-div {
+    min-width: 100%;
+  }
+}

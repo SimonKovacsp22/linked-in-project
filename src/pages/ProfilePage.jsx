@@ -193,7 +193,7 @@ const ProfilePage = () => {
           </div>
           <div className='my-profile-section04 mx-auto mt-3'>
             {myProfile ? (
-              <Experience id={myProfile._id} isAdmin={true} />
+              <Experience user_id={myProfile._id} isAdmin={true} />
             ) : (
               <p>No Data</p>
             )}
