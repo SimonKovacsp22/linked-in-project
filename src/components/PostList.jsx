@@ -1,9 +1,10 @@
 /** @format */
 
-import React from "react"
+import React, { useRef } from "react"
 import "../style/PostList.css"
 import Post from "./Post"
 import { useDispatch, useSelector } from "react-redux/es/exports"
+import AlertDismissible from "./AlertDelete"
 import { useEffect, useState } from "react"
 import {
   getAllPostsActionWithThunk,
@@ -14,7 +15,7 @@ const PostList = () => {
  
 
 
-
+  
   const [showAlert,setShowAlert] = useState(false)
 
   const handleShowAlert = () => {
@@ -34,22 +35,27 @@ const PostList = () => {
   
 },[change])
 
- useEffect(()=> {
- 
-   resetLoadingAction()
- },[])
-
-  
  let posts =  useSelector((state) => state.allPosts.allPosts )
  
+
 
 
   return (
 
         <div className='post-list'>
+          <AlertDismissible  id='alert-delete'
+        showAlert={showAlert}
+        setCloseAlert={handleCloseAlert}
+      />
        
           {posts?.map((post)=>(
-            <Post key={post._id} data={post}  showAlert={showAlert} handleCloseAlert={handleCloseAlert} handleShowAlert={handleShowAlert} />
+            <Post key={post._id} 
+            data={post}
+            
+            handleShowAlert={handleShowAlert} 
+            
+            />
+            
           ))}
         </div>
     )

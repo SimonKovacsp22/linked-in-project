@@ -18,14 +18,14 @@ import { setLoadingAction } from "../redux/actions"
 import { useState } from "react"
 import ModalUpdatePost from "./ModalUpdatePost"
 import PostOptions from "./PostOptions"
-import AlertDismissible from "./AlertDelete"
 
-export default function Post({
+
+  const Post =({
   data,
-  showAlert,
-  handleCloseAlert,
+  
   handleShowAlert,
-}) {
+  scrollTo
+}) => {
   const [seeMore, setSeeMore] = useState(false)
   const [updatePost, setUpdatePost] = useState(false)
 
@@ -34,10 +34,7 @@ export default function Post({
 
   return (
     <>
-      <AlertDismissible
-        showAlert={showAlert}
-        setCloseAlert={handleCloseAlert}
-      />
+      
       <Card>
         <div className='d-flex flex-column post-top-section'>
           <div className='d-flex justify-content-between mb-3 '>
@@ -59,11 +56,13 @@ export default function Post({
                 id={data._id}
                 updatePost={handleShow}
                 setShowAlert={handleShowAlert}
+                scrollTo
               />
             </div>
           </div>
 
           <div className='d-flex flex-column'>
+            {data.text}
             {!seeMore && data.text.length > 67 && (
               <button
                 onClick={() => {
@@ -161,3 +160,6 @@ export default function Post({
     </>
   )
 }
+
+
+export default Post

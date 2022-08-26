@@ -17,14 +17,15 @@ import { useRef } from 'react';
 
 
  const samplePost = {
-  text:"", image:"",username:"Sidath",userId:"63037d303468197c9c3c8a51"
+  text:"", image:"",username:"",userId:""
  }
 
 
 const ModalPost =({handleClose,createPost,profile}) => {
 
   const dispatch = useDispatch()
-  const userId = useSelector((state) => state.myProfile.profileData)
+  const loggedUser = useSelector((state) => state.logUser.loginData)
+  
 
   const [post, setPost]= useState(samplePost)
   const [image,setImage] = useState(null)
@@ -37,7 +38,13 @@ const ModalPost =({handleClose,createPost,profile}) => {
     else if(post.text.length < 3){
       setIsDisabled(true)
     }
+  
   },[post])
+
+  useEffect(()=> {
+    setPost({...post, username:loggedUser.name, userId: loggedUser._id})
+
+  },[])
 
     return (
       
@@ -45,8 +52,8 @@ const ModalPost =({handleClose,createPost,profile}) => {
           <Modal.Header >
             <div className='d-flex align-items-center justify-content-between'>
             <h5>Create Post</h5>
-            <div className='d-flex align-items-center justify-content-center modal-header-dark-button-container'>
-              <svg onClick={handleClose}
+            <div onClick={handleClose} className='d-flex align-items-center justify-content-center modal-header-dark-button-container'>
+              <svg 
                xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-x-lg" viewBox="0 0 16 16">
                     <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
                   </svg>
