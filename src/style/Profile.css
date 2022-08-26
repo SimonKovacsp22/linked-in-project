@@ -122,5 +122,6 @@
   color: rgb(98, 98, 98);
 }
 .section-2 {
-  border: 0.5px solid rgb(207, 207, 207);
+  border-top: 0.5px solid rgb(207, 207, 207);
+  border-bottom: 0.5px solid rgb(207, 207, 207);
 }
