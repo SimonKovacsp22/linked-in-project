@@ -18,6 +18,7 @@ import { setLoadingAction } from "../redux/actions"
 import { useState } from "react"
 import ModalUpdatePost from "./ModalUpdatePost"
 import PostOptions from "./PostOptions"
+import AlertDismissible from "./AlertDelete"
 
 
   const Post =({
@@ -29,12 +30,13 @@ import PostOptions from "./PostOptions"
   const [seeMore, setSeeMore] = useState(false)
   const [updatePost, setUpdatePost] = useState(false)
 
+
   const handleClose = () => setUpdatePost(false)
   const handleShow = () => setUpdatePost(true)
 
   return (
     <>
-      
+    
       <Card>
         <div className='d-flex flex-column post-top-section'>
           <div className='d-flex justify-content-between mb-3 '>
@@ -57,12 +59,14 @@ import PostOptions from "./PostOptions"
                 updatePost={handleShow}
                 setShowAlert={handleShowAlert}
                 scrollTo
+
               />
             </div>
           </div>
 
           <div className='d-flex flex-column'>
             {data.text}
+
             {!seeMore && data.text.length > 67 && (
               <button
                 onClick={() => {

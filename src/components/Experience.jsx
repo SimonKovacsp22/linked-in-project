@@ -12,26 +12,8 @@ import { Link, useParams } from "react-router-dom"
 
 const Experiance = ({ user_id, isAdmin }) => {
   // console.log(user_id)
-  // const theId = useParams()._id
 
-  const downloadCSV = async () => {
-    try {
-      let response = await fetch(
-        `${process.env.REACT_APP_URL}/files/CSV/${user_id}`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-        }
-      )
-      let data = await response.json()
-      console.log(data)
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  const theId = useParams()._id
   const downloadPdf = async () => {
     console.log("pdf")
     try {
@@ -91,9 +73,8 @@ const Experiance = ({ user_id, isAdmin }) => {
           <button
             className='button-86 ml-auto mr-auto mb-4'
             onClick={() => {
-              downloadCSV()
               window.open(
-                `${process.env.REACT_APP_URL}/files/CSV/${user_id}`,
+                `${process.env.REACT_APP_URL}/files/CSV/${theId}`,
                 "_blank"
               )
             }}>
@@ -106,7 +87,7 @@ const Experiance = ({ user_id, isAdmin }) => {
               downloadPdf()
               //navigate(`${process.env.REACT_APP_URL}/files/PDF/${user_id}`)
               window.open(
-                `${process.env.REACT_APP_URL}/files/PDF/${user_id}`,
+                `${process.env.REACT_APP_URL}/files/PDF/${theId}`,
                 "_blank"
               )
             }}>

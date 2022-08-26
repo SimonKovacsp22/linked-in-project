@@ -47,10 +47,9 @@
 }
 .giveColor {
   color: #666666;
+  text-decoration: none ;
 }
-.giveColor:hover {
-  border-bottom: 1px solid black;
-}
+
 .marginForMe {
   margin-left: 1.2rem;
 }
@@ -162,7 +161,6 @@
   cursor: pointer;
   text-decoration: none;
 }
-
 .navbar-search-item-link:hover {
   text-decoration: none;
 }
@@ -198,6 +196,9 @@
   height: 13px;
 }
 
+.navbar-search-results p:first-child {
+  margin-top: 10px;
+}
 .navbar-dropdown-search-results-title {
   margin-left: 16px;
   color: var(--secondary);
@@ -218,4 +219,20 @@
 
 .see-all-results:hover {
  background-color:#e6e6e6 ;
+}
+@media only screen and (max-width: 992px) {
+  .HomeMargin{
+    margin-left: 2.9rem;
+  }
+  .HomeMarginText{
+    margin-left: 2.5rem;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .HomeMargin{
+    margin-left: 2.6rem;
+  }
+  .HomeMarginText{
+    margin-left: 2.2rem;
+  }
 }

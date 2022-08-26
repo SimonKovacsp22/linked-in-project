@@ -1,5 +1,6 @@
 /** @format */
 
+
 import React, { useEffect, useState } from "react"
 import { Col, Row } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
@@ -39,9 +40,6 @@ const ExperianceItem = ({ user_id, isAdmin }) => {
     }
   }
 
-  // useEffect(() => {
-
-  // }, [])
   return (
     <div className='experiance-div mt-2'>
       {pplExp && pplExp.length <= 0 ? (

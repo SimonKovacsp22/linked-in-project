@@ -1,6 +1,8 @@
 /** @format */
 
+
 import React, { useRef } from "react"
+
 import "../style/PostList.css"
 import Post from "./Post"
 import { useDispatch, useSelector } from "react-redux/es/exports"
@@ -15,7 +17,6 @@ const PostList = () => {
  
 
 
-  
   const [showAlert,setShowAlert] = useState(false)
 
   const handleShowAlert = () => {
