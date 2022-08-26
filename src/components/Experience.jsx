@@ -74,7 +74,7 @@ const Experiance = ({ user_id, isAdmin }) => {
             className='button-86 ml-auto mr-auto mb-4'
             onClick={() => {
               window.open(
-                `${process.env.REACT_APP_URL}/files/CSV/${theId}`,
+                `${process.env.REACT_APP_URL}/files/CSV/${user_id}`,
                 "_blank"
               )
             }}>
@@ -87,7 +87,7 @@ const Experiance = ({ user_id, isAdmin }) => {
               downloadPdf()
               //navigate(`${process.env.REACT_APP_URL}/files/PDF/${user_id}`)
               window.open(
-                `${process.env.REACT_APP_URL}/files/PDF/${theId}`,
+                `${process.env.REACT_APP_URL}/files/PDF/${user_id}`,
                 "_blank"
               )
             }}>
